@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+    <title>ENEMática</title>
+</head>
+<body style="display: flex; margin:0; padding:0; flex-direction: column; height: 100%;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbarbuttons navbar-brand" href="{% url 'app:base-list' %}">ENEMática</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="navbar-brand nav-link navbarbuttons" href="{% url 'app:questoes-list' %}">Questões</a>
+                </li>
+                <li class="nav-item">
+                  <a class="navbar-brand nav-link navbarbuttons" href="{% url 'app:equipe-list' %}">Equipe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand nav-link navbarbuttons" href="{% url 'app:contato' %}">Contato</a>
+                  </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+    <section>
+    {% block content %}
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100 img" src="https://img.freepik.com/premium-vector/math-icon-with-kids-math-tools_1639-27566.jpg?w=2000" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100 img" src="https://www.cetecc.org.br/wp-content/uploads/2018/04/58521.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100 img" src="https://veja.abril.com.br/wp-content/uploads/2022/03/GettyImages-1130913708.jpg.jpg" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+          </a>
+        </div>
+        <p class="p1" id="equipe"><b>O que é a ENEMática?</b></p>
+        <div id="div0">
+          <div id="div1">
+            <p class="p2"><b>A ENEMática é um projeto que busca proporcionar a discentes e docentes as questões de matemática utilizadas no ENEM em anos anteriores, para facilitar o 
+              processo de desenvolvimento da educação por parte dos docentes e ajudar discentes em seus estudos focados na matemática do ENEM.</b></p>
+          </div>
+        </div>
+
+        <p class="p1" id="equipe"><b>Conteúdos Matemáticos</b></p>
+        <p class="p2" ><b>Estude a partir dos conteúdos matemáticos!</b></p>
+        <div id="div2">
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              A
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=An%C3%A1lise+Combinat%C3%B3ria&anos=Todos&dificuldade=Todos">Análise Combinatória</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Aritm%C3%A9tica&anos=Todos&dificuldade=Todos">Aritmética</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              C
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Conjuntos&anos=Todos&dificuldade=Todos">Conjuntos</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Contagem&anos=Todos&dificuldade=Todos">Contagem</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Convers%C3%A3o+de+Unidades&anos=Todos&dificuldade=Todos">Conversão de Unidades</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              E
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Estat%C3%ADstica+%28an%C3%A1lise+de+gr%C3%A1ficos%29&anos=Todos&dificuldade=Todos">Estatística (análise de gráficos)</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Estat%C3%ADstica+%28m%C3%A9dia+aritm%C3%A9tica%29&anos=Todos&dificuldade=Todos">Estatística (média aritmética)</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Estat%C3%ADstica+%28m%C3%A9dia+ponderada%29&anos=Todos&dificuldade=Todos">Estatística (média ponderada)</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Estat%C3%ADstica+%28mediana%29&anos=Todos&dificuldade=Todos">Estatística (mediana)</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Estat%C3%ADstica+%28moda%29&anos=Todos&dificuldade=Todos">Estatística (moda)</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              F
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Fun%C3%A7%C3%A3o+do+1%C2%BA+grau&anos=Todos&dificuldade=Todos">Função do 1º grau</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Fun%C3%A7%C3%A3o+exponencial&anos=Todos&dificuldade=Todos">Função exponencial</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Fun%C3%A7%C3%B5es+-+an%C3%A1lise+de+gr%C3%A1fico&anos=Todos&dificuldade=Todos">Funções - análise de gráfico</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              G
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Geometria+anal%C3%ADtica&anos=Todos&dificuldade=Todos">Geometria analítica</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Geometria+espacial&anos=Todos&dificuldade=Todos">Geometria espacial</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Geometria+plana&anos=Todos&dificuldade=Todos">Geometria plana</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              I
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Inequa%C3%A7%C3%B5es&anos=Todos&dificuldade=Todos">Inequações</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              L
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Logar%C3%ADtmo&anos=Todos&dificuldade=Todos">Logarítmo</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              M
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Matem%C3%A1tica+financeira&anos=Todos&dificuldade=Todos">Matemática financeira</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Matrizes&anos=Todos&dificuldade=Todos">Matrizes</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              N
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Nota%C3%A7%C3%A3o+cient%C3%ADfica&anos=Todos&dificuldade=Todos">Notação científica</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              P
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Porcentagem&anos=Todos&dificuldade=Todos">Porcentagem</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Potencia%C3%A7%C3%A3o&anos=Todos&dificuldade=Todos">Potenciação</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Probabilidade&anos=Todos&dificuldade=Todos">Probabilidade</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Progress%C3%A3o+aritm%C3%A9tica&anos=Todos&dificuldade=Todos">Progressão aritmética</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Proje%C3%A7%C3%A3o+Ortogonal&anos=Todos&dificuldade=Todos">Projeção Ortogonal</a>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                R
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Raz%C3%A3o+e+propor%C3%A7%C3%A3o&anos=Todos&dificuldade=Todos">Razão e proporção</a>
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Regra+de+Tr%C3%AAs&anos=Todos&dificuldade=Todos">Regra de Três</a>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                S
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Sequ%C3%AAncias&anos=Todos&dificuldade=Todos">Sequências</a>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                T
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=Trigonometria&anos=Todos&dificuldade=Todos">Trigonometria</a>
+              </div>
+            </div>
+          </div>
+        <p class="p1" id="equipe"><b>Dificuldade</b></p>
+        <p class="p2"><b>Estude a partir da dificuldade!</b></p>
+        <div id="div3">
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=Todos&dificuldade=F%C3%A1cil"><button type="button" class="btn btn-success buttons">Fácil</button></a>
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=Todos&dificuldade=M%C3%A9dio"><button type="button" class="btn btn-secondary buttons bmedia">Médio</button></a>
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=Todos&dificuldade=Dif%C3%ADcil"><button type="button" class="btn btn-danger buttons">Difícil</button></a>
+        </div>
+        <p class="p1" id="equipe"><b>Ano</b></p>
+        <p class="p2"><b>Estude a partir do ano das questões!</b></p>
+        <div id="div4">
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=2018&dificuldade=Todos"><button type="button" class="btn btn-success buttons">2018</button></a>
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=2019&dificuldade=Todos"><button type="button" class="btn btn-success buttons">2019</button></a>
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=2020&dificuldade=Todos"><button type="button" class="btn btn-success buttons">2020</button></a>
+          <a href="http://127.0.0.1:8000/questao/?enunciado=&conteudo=&anos=2021&dificuldade=Todos"><button type="button" class="btn btn-success buttons">2021</button></a>
+        </div>
+        <br>
+    {% endblock content %}
+    </section>
+    <footer>
+        <div id="div5">
+            <p class="p3">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul – Campus Vacaria</p>
+            <p class="p3">Estrada Engenheiro João Viterbo de Oliveira, 3061 | Zona Rural | CEP: 95219-899 | Vacaria/RS</p>
+            <p class="p3">Desenvolvido por bolsistas do projeto ENEMática do IFRS Campus Vacaria</p>
+        </div>
+        <img id="imgfooter" src="https://ifrs.edu.br/wp-content/uploads/2017/08/logo_vertical.png">
+    </footer>
+</body>
+</html>

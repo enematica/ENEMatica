@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="div1res">
+    <p id="p1res"><b>Questão número {{numero}} / Ano de {{ano}} / {{conteudo}} / {{dificuldade}}</b></p>
+    <center><div id="div2res">{{enunciado | safe}}</div></center><br>
+        <div class="divsres">
+                {% if alternativaclicada == 'a' and resposta_certa != 'a' %}
+                    <div class="divs2res">A) {{alternativa_avalue | safe}} ❌ </div>
+                {% elif alternativaclicada == 'a' and resposta_certa == 'a' %}
+                    <div class="divs2res">A) {{alternativa_avalue | safe}} ✅ </div>
+                {% else %}
+                    <div class="divs2res">A) {{alternativa_avalue | safe}} </div>
+                {% endif %}
+        </div>
+        <div class="divsres">
+                {% if alternativaclicada == 'b' and resposta_certa != 'b' %}
+                    <div class="divs2res">B) {{alternativa_bvalue | safe}} ❌ </div>
+                {% elif alternativaclicada == 'b' and resposta_certa == 'b' %}
+                    <div class="divs2res">B) {{alternativa_bvalue | safe}} ✅ </div>
+                {% else %}
+                    <div class="divs2res">B) {{alternativa_bvalue | safe}} </div>
+                {% endif %}
+        </div>
+        <div class="divsres">
+                {% if alternativaclicada == 'c' and resposta_certa != 'c' %}
+                    <div class="divs2res">❌ C) {{alternativa_cvalue | safe}}</div>
+                {% elif alternativaclicada == 'c' and resposta_certa == 'c' %}
+                    <div class="divs2res">C) {{alternativa_cvalue | safe}} ✅ </div>
+                {% else %}
+                    <div class="divs2res">C) {{alternativa_cvalue | safe}} </div>
+                {% endif %}
+        </div>
+        <div class="divsres">
+                {% if alternativaclicada == 'd' and resposta_certa != 'd' %}
+                    <div class="divs2res">D) {{alternativa_dvalue | safe}} ❌ </div>
+                {% elif alternativaclicada == 'd' and resposta_certa == 'd' %}
+                    <div class="divs2res">D) {{alternativa_dvalue | safe}} ✅ </div>
+                {% else %}
+                    <div class="divs2res">D) {{alternativa_dvalue | safe}} </div>
+                {% endif %}
+        </div>
+        <div class="divsres">
+                {% if alternativaclicada == 'e' and resposta_certa != 'e' %}
+                    <div class="divs2res">E) {{alternativa_evalue | safe}} ❌ </div>
+                {% elif alternativaclicada == 'e' and resposta_certa == 'e' %}
+                    <div class="divs2res">E) {{alternativa_evalue | safe}} ✅ </div>
+                {% else %}
+                    <div class="divs2res">E) {{alternativa_evalue | safe}} </div>
+                {% endif %}
+        </div><br>
+</div>
+<div id="div3res">
+    {% if alternativaclicada == resposta_certa %}
+        <p id="pres"><b>Parabéns, você acertou! A resposta correta é a alternativa "{{resposta_certa}}"</b></p>
+        <p class="pres"><b>Assista ao vídeo abaixo para aprender a como resolver essa questão!</b></p>
+    {% else %}
+        <p id="p2res"><b>Oh não, você errou, mas valeu o esforço, continue tentando!</b></p>
+        <p class="pres"><b>Assista ao vídeo abaixo para aprender a como resolver essa questão!</b></p>
+    {% endif %}
+</div>
+<div id="div4res">
+    <iframe src="{{link}}" width="100%" height="100%" frameborder="0"></iframe>
+</div><br><br>
+{% endblock %}

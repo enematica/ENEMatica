@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="div1facil">
+    <form action="?" method="GET" id="formfacil" class="form-inline">
+        <div class="form-group mb-2">
+            <label for='enunciado' class="labels"><b>Enunciado:</b></label>
+            <input type="text" class="form-control text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Digite algo, ex: cone" autocomplete="off" id='enunciado'>
+        </div>
+        <div class="form-group mb-2">
+            <label for='conteudo' class="labels labels2"><b>Conteúdo:</b></label>
+            <input type="text" name='conteudo' value="{{request.GET.conteudo}}" placeholder="Digite um conteúdo:" id='conteudo' class="form-control text">
+        </div>
+        <div class="form-group mb-2">
+            <label for='anos' class="labels labels2"><b>Ano das Provas:</b></label>
+            <select class="form-select select" aria-label="Default select example" name='anos' id="anos">
+                <option value="Todos" selected>Todos</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+            </select>
+        </div>
+        <div class="form-group mb-2">
+            <label for="dificuldade" class="labels labels2"><b>Dificuldade:</b></label>
+            <select class="form-select select" aria-label="Default select example" name='dificuldade' id='dificuldade'>
+                <option value="Todos" selected>Todos</option>
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+            </select>
+        </div>
+        <div id="div2facil" class="form-group mb-2">
+            <input type="submit" class="btn btn-success submit" value="Submeter Filtros">
+            <a href="{% url 'app:questoes-list' %}"><input type="button" class="btn" value="Limpar"></a>
+        </div>
+    </form>
+</div>
+    <br><br>
+    <div id="div3facil">
+{% for questoe in object_list %}
+        <div id="div4facil">
+            <p id="p1facil"><b>Questão número {{questoe.numero}} / Ano de {{questoe.ano}} / {{questoe.conteudo}} / {{questoe.dificuldade}}</b></p>
+            <center><div id="div5facil">{{questoe.enunciado | safe}}</div></center><br>
+            <form action="{% url 'app:mostrar' %}" method="post" target="_blank">
+                {% csrf_token %}
+                <div class="form-check divsfacil">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
+                    <label class="form-check-label" for="exampleRadios1">
+                        <div class="divs2facil">A) {{questoe.alternativa_a | safe}}</div>
+                    </label>
+                    <input type="hidden" value="{{questoe.alternativa_a}}" name="valuea">
+                    <input type="hidden" value="{{questoe.alternativa_b}}" name="valueb">
+                    <input type="hidden" value="{{questoe.alternativa_c}}" name="valuec">
+                    <input type="hidden" value="{{questoe.alternativa_d}}" name="valued">
+                    <input type="hidden" value="{{questoe.alternativa_e}}" name="valuee">
+                    <input type="hidden" value="{{questoe.resposta_certa}}" name="resposta">
+                    <input type="hidden" value="{{questoe.enunciado}}" name="enunciado">
+                    <input type="hidden" value="{{questoe.numero}}" name="numero">
+                    <input type="hidden" value="{{questoe.ano}}" name="ano">
+                    <input type="hidden" value="{{questoe.conteudo}}" name="conteudo">
+                    <input type="hidden" value="{{questoe.dificuldade}}" name="dificuldade">
+                    <input type="hidden" value="{{questoe.link}}" name="link">
+                </div>
+                <div class="form-check divsfacil">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
+                    <label class="form-check-label" for="exampleRadios2">
+                        <div class="divs2facil">B) {{questoe.alternativa_b | safe}}</div>
+                    </label>
+                </div>
+                <div class="form-check divsfacil">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="c">
+                    <label class="form-check-label" for="exampleRadios3">
+                        <div class="divs2facil">C) {{questoe.alternativa_c | safe}}</div>
+                    </label>
+                </div>
+                <div class="form-check divsfacil">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="d">
+                    <label class="form-check-label" for="exampleRadios4">
+                       <div class="divs2facil">D) {{questoe.alternativa_d | safe}}</div>
+                    </label>
+                </div>
+                <div class="form-check divsfacil">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="e">
+                    <label class="form-check-label" for="exampleRadios5">
+                        <div class="divs2facil">E) {{questoe.alternativa_e | safe}}</div>
+                    </label>
+                </div><br>
+                <input type="submit" class="btn btn-success submit" value="Enviar resposta">
+            </form><br>
+        </div>
+{% endfor %}
+    </div><br><br>
+<nav aria-label="Page navigation example" id="navfacil">
+    <ul class="pagination">
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.next_page_number }}">Próxima</a></li>
+        {% endif %}
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.previous_page_number}}">Anterior</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

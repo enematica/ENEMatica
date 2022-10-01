@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="div1contato">
+  <p id="p1contato" id="equipe"><b>Fale conosco</b></p>
+  <p id="p2contato"><b>Envie-nos uma mensagem!</b></p>
+    <form action="https://formsubmit.co/e6c0fb6498d650b4f154b331f9cf9fed" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Endereço de e-mail</label>
+          <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput">Nome</label>
+          <input type="text" name="_subject" class="form-control" id="formGroupExampleInput" placeholder="Juan Henrique" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Digite a mensagem</label>
+          <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="Olá! Gostaria de pedir mais questões!!!" rows="3" required autocomplete="off"></textarea>
+        </div>
+        <div id="div2contato">
+          <button type="submit" id="buttoncontato" class="btn">Enviar mensagem</button>
+        </div>
+        <div>
+          <input type="hidden" name="_url" value="http://127.0.0.1:8000/form/">
+        </div>
+        <div>
+          <input type="hidden" name="_next" value="http://127.0.0.1:8000/form/">
+        </div>
+      </form>
+</div>
+{% endblock %}
