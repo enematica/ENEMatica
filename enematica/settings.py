@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6vp(mk1!ye(mvehhgz!-gf-xufzff&apsx3=e*l+6nmjvl0*j-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['enematica.vacaria.ifrs.edu.br']
 
