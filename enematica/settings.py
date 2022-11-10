@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6vp(mk1!ye(mvehhgz!-gf-xufzff&apsx3=e*l+6nmjvl0*j-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['enematica.vacaria.ifrs.edu.br']
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'enematica.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -142,7 +142,7 @@ CKEDITOR_CONFIGS = {
             {
                 'name': 'basicstyles',
                 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript',
-                          'Superscript', ],
+                          'Superscript',],
             },
             {
                 'name': 'clipboard',
@@ -161,7 +161,7 @@ CKEDITOR_CONFIGS = {
             {
                 'name': 'extra',
                 'items': ['Link', 'Unlink', 'Blockquote', 'Image', 'Table',
-                          'CodeSnippet', 'Mathjax', 'Embed', ],
+                          'CodeSnippet', 'Mathjax', 'Embed',],
             },
             {
                 'name': 'source',
@@ -191,7 +191,7 @@ CKEDITOR_CONFIGS = {
 
         # CKEditor height and width settings
         'height': '250px',
-        'width': 'auto',
+        'width': '500px',
         'forcePasteAsPlainText ': True,
 
         # Class used inside span to render mathematical formulae using latex
@@ -205,13 +205,21 @@ CKEDITOR_CONFIGS = {
 
         # Extra plugins to be used in the editor
         'extraPlugins': ','.join([
-            # 'devtools',  # Shows a tooltip in dialog boxes for developers
+            'devtools',  # Shows a tooltip in dialog boxes for developers
             'mathjax',  # Used to render mathematical formulae
             'codesnippet',  # Used to add code snippets
             'image2',  # Loads new and better image dialog
             'embed',  # Used for embedding media (YouTube/Slideshare etc)
-            'tableresize',  # Used to allow resizing of columns in tables
+            'tableresize',  # Used to allow resizing of columns in table
+	    'font',
         ]),
+
+       'removePlugins': ','.join([
+	    'image',
+	    'cloudservices',
+            'exportpdf',
+       ]),
+      'allowedContent': True,
     }
 }
 

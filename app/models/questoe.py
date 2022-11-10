@@ -8,7 +8,7 @@ class Questoe(BaseModel):
         ('2018', '2018'), ('2019', '2019'), ('2020', '2020'), ('2021', '2021'),
     )
     ano = models.CharField(max_length=4, choices=ESCOLHAS_ANO)
-    conteudo = models.CharField(max_length=30)
+    conteudo = models.CharField(max_length=200)
     ESCOLHAS_DIFICULDADE = (
         ('Fácil', 'Fácil'), ('Médio', 'Médio'), ('Difícil', 'Difícil'),
     )
@@ -17,7 +17,7 @@ class Questoe(BaseModel):
     )
     dificuldade = models.CharField(max_length=8, choices=ESCOLHAS_DIFICULDADE)
     link = models.CharField(max_length=1000, verbose_name ='Link para o vídeo do youtube, apagar a parte watch?v=, adicionar /embed/o que vem depois do watch?v=, exemplo: https://www.youtube.com/embed/FyOsoRALEG0')
-    enunciado1 = models.CharField(max_length=1000, default="", verbose_name='Copiar e colar o que tiver escrito no enunciado aqui, este campo é para filtro.')
+    enunciado1 = models.CharField(max_length=4000, default="", verbose_name='Copiar e colar o que tiver escrito no enunciado aqui, este campo é para filtro.')
     enunciado = RichTextUploadingField(verbose_name='Enunciado: Cuidado com o tamanho da imagem, se for colocar')
     alternativa_a = RichTextUploadingField(verbose_name='Alternativa A: Cuidado com o tamanho da imagem, se for colocar')
     alternativa_b = RichTextUploadingField(verbose_name='Alternativa B: Cuidado com o tamanho da imagem, se for colocar')
