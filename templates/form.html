@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
 <p id='pform'><b>Mensagem enviada com sucesso!</b></p>
 {% endblock %}

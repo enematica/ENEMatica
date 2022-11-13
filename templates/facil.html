@@ -1,102 +1,238 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="div1facil">
-    <form action="?" method="GET" id="formfacil" class="form-inline">
-        <div class="form-group mb-2">
-            <label for='enunciado' class="labels"><b>Enunciado:</b></label>
-            <input type="text" class="form-control text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Digite algo, ex: cone" autocomplete="off" id='enunciado'>
+{% load static %}
+<head>
+    <!-- Chamando o arquivo css e javascript e linkando imagens utilizadas -->
+    <link rel="stylesheet" href="{% static 'css/facil.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- arquivo que executa o back-end das respostas de questões -->
+    <script type="text/javascript" src="{% static 'js/facil.js' %}"></script>
+</head>
+    <!-- filtros da página -->
+    <form action="?" method="GET" id="forms">
+        <!--Filtro palavra-chave -->
+        <div class="row palavra-chave">
+            <input type="text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Palavra-chave" autocomplete="off" id='palavra-chave'>
         </div>
-        <div class="form-group mb-2">
-            <label for='conteudo' class="labels labels2"><b>Conteúdo:</b></label>
-            <input type="text" name='conteudo' value="{{request.GET.conteudo}}" placeholder="Digite um conteúdo:" id='conteudo' class="form-control text">
+        <!-- filtro ano -->
+        <div class="wrapper row" id="wrapper1">
+            <div class="select-btn" id="select-btn1">
+                <span>Ano</span>
+                <i class="uil uil-angle-down"></i>
+            </div>
+            <div class="content" id="content1">
+                <div class="search">
+                    <i class="uil uil-search"></i>
+                    <input type="text" placeholder="Pesquisar">
+                </div>
+                <ul class="options" id="options1">
+                </ul>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for='anos' class="labels labels2"><b>Ano das Provas:</b></label>
-            <select class="form-select select" aria-label="Default select example" name='anos' id="anos">
-                <option value="Todos" selected>Todos</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-            </select>
+        <!-- filtro dificuldade -->
+        <div class="wrapper row" id="wrapper2">
+            <div class="select-btn" id="select-btn2">
+                <span>Dificuldade</span>
+                <i class="uil uil-angle-down"></i>
+            </div>
+            <div class="content" id="content2">
+                <div class="search">
+                    <i class="uil uil-search"></i>
+                    <input type="text" placeholder="Pesquisar">
+                </div>
+                <ul class="options" id="options2">
+                </ul>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="dificuldade" class="labels labels2"><b>Dificuldade:</b></label>
-            <select class="form-select select" aria-label="Default select example" name='dificuldade' id='dificuldade'>
-                <option value="Todos" selected>Todos</option>
-                <option value="Fácil">Fácil</option>
-                <option value="Médio">Médio</option>
-                <option value="Difícil">Difícil</option>
-            </select>
+        <!-- filtro conteudo -->
+        <div class="wrapper row" id="wrapper3">
+            <div class="select-btn" id="select-btn3">
+                <span>Conteúdo</span>
+                <i class="uil uil-angle-down"></i>
+            </div>
+            <div class="content" id="content3">
+                <div class="search">
+                    <i class="uil uil-search"></i>
+                    <input type="text" placeholder="Pesquisar">
+                </div>
+                <ul class="options" id="options3">
+                </ul>
+            </div>
         </div>
-        <div id="div2facil" class="form-group mb-2">
-            <input type="submit" class="btn btn-success submit" value="Submeter Filtros">
+        <!-- botoes do filtro -->
+        <div id="botoes">
+            <input type="hidden" value="" id="anos" name="anos">
+            <input type="hidden" value="" id="dificuldade" name="dificuldade">
+            <input type="hidden" value="" id="conteudo" name="conteudo">
+            <input type="submit" class="btn btn-success submit" value="Filtrar">
             <a href="{% url 'app:questoes-list' %}"><input type="button" class="btn" value="Limpar"></a>
         </div>
     </form>
-</div>
-    <br><br>
-    <div id="div3facil">
+<!-- Gambiarra para o form de responder a questões não carregar nada -->
+<iframe name="hiddenFrame" class="hide"></iframe>
+<!-- questões -->
+<div class="question">
+<!--<script>
+    var resposta = [];
+</script>-->
 {% for questoe in object_list %}
-        <div id="div4facil">
-            <p id="p1facil"><b>Questão número {{questoe.numero}} / Ano de {{questoe.ano}} / {{questoe.conteudo}} / {{questoe.dificuldade}}</b></p>
-            <center><div id="div5facil">{{questoe.enunciado | safe}}</div></center><br>
-            <form action="{% url 'app:mostrar' %}" method="post" target="_blank">
-                {% csrf_token %}
-                <div class="form-check divsfacil">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
-                    <label class="form-check-label" for="exampleRadios1">
-                        <div class="divs2facil">A) {{questoe.alternativa_a | safe}}</div>
-                    </label>
-                    <input type="hidden" value="{{questoe.alternativa_a}}" name="valuea">
-                    <input type="hidden" value="{{questoe.alternativa_b}}" name="valueb">
-                    <input type="hidden" value="{{questoe.alternativa_c}}" name="valuec">
-                    <input type="hidden" value="{{questoe.alternativa_d}}" name="valued">
-                    <input type="hidden" value="{{questoe.alternativa_e}}" name="valuee">
-                    <input type="hidden" value="{{questoe.resposta_certa}}" name="resposta">
-                    <input type="hidden" value="{{questoe.enunciado}}" name="enunciado">
-                    <input type="hidden" value="{{questoe.numero}}" name="numero">
-                    <input type="hidden" value="{{questoe.ano}}" name="ano">
-                    <input type="hidden" value="{{questoe.conteudo}}" name="conteudo">
-                    <input type="hidden" value="{{questoe.dificuldade}}" name="dificuldade">
-                    <input type="hidden" value="{{questoe.link}}" name="link">
-                </div>
-                <div class="form-check divsfacil">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
-                    <label class="form-check-label" for="exampleRadios2">
-                        <div class="divs2facil">B) {{questoe.alternativa_b | safe}}</div>
-                    </label>
-                </div>
-                <div class="form-check divsfacil">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="c">
-                    <label class="form-check-label" for="exampleRadios3">
-                        <div class="divs2facil">C) {{questoe.alternativa_c | safe}}</div>
-                    </label>
-                </div>
-                <div class="form-check divsfacil">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="d">
-                    <label class="form-check-label" for="exampleRadios4">
-                       <div class="divs2facil">D) {{questoe.alternativa_d | safe}}</div>
-                    </label>
-                </div>
-                <div class="form-check divsfacil">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="e">
-                    <label class="form-check-label" for="exampleRadios5">
-                        <div class="divs2facil">E) {{questoe.alternativa_e | safe}}</div>
-                    </label>
-                </div><br>
-                <input type="submit" class="btn btn-success submit" value="Enviar resposta">
-            </form><br>
+        <!-- cabeçalho das questões -->
+        <div class="headerquestion">
+            <span><b>Número:</b> {{questoe.numero}}&nbsp&nbsp</span>
+            <span><b>Ano:</b> {{questoe.ano}}&nbsp&nbsp</span>
+            <span><b>Órgão:</b> ENEM&nbsp&nbsp</span>
+            <span><b>Dificuldade:</b> {{questoe.dificuldade}}&nbsp&nbsp</span>
+            <span><b>Conteúdo:</b> {{questoe.conteudo}}&nbsp&nbsp</span>
         </div>
+        <!-- corpo das questões -->
+        <div class="bodyquestion">
+            <span>{{questoe.enunciado | safe}}</span>
+        </div>
+        <!-- footer das questões, form pra responder uma questão -->
+        <div class="answerquestion">
+            <form action="{% url 'app:questoes-list' %}" method="GET" target="hiddenFrame">
+               {% with separador=forloop.counter %}
+                    <!-- Primeiro form do loop -->
+                    {% if separador == 1 %}
+                        <label class="container">{{questoe.alternativa_a | safe}}
+                          <input type="radio" name="radio" value="a">
+                          <span class="checkmark">&nbsp&nbsp<b>A</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_b | safe}}
+                          <input type="radio" name="radio" value="b">
+                          <span class="checkmark">&nbsp&nbsp<b>B</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_c | safe}}
+                          <input type="radio" name="radio" value="c">
+                          <span class="checkmark">&nbsp&nbsp<b>C</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_d | safe}}
+                          <input type="radio" name="radio" value="d">
+                          <span class="checkmark">&nbsp&nbsp<b>D</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_e | safe}}
+                          <input type="radio" name="radio" value="e">
+                          <span class="checkmark">&nbsp&nbsp<b>E</b></span>
+                        </label><br>
+                        <input type="hidden" value={{questoe.id}}>
+                        <input type="hidden" value="{{questoe.resposta_certa}}">
+                        <div class="container2">
+                            <input type="submit" class="btn btn-success submit responder" id="responder" value="Responder" name="responder1" onclick="ResponderOne()"><br><br>
+                            <span class="resposta" hidden="hidden" id="errorform1"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                            <span class="respostacerta" hidden="hidden" id="certoform1"> Parabéns! Você acertou!</span>
+                        </div>
+                        <!-- Opções abaixo das questões -->
+                       <div class="opcoes-questao">
+                            <button class="videoaula" onclick="mostrarVideo1()" id="botao1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+                            <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                            </svg>&nbsp&nbsp&nbsp
+                            <span class="texto-opcoes-questao">Videoaula comentada</span></button>
+                        </div><br>
+                        <center><iframe src="{{questoe.link}}" width="620px" height="500px" frameborder="0" allow="fullscreen" id="video1" hidden="hidden" class="videos"></iframe></center><br><br>
+
+                    <!-- Segundo form do loop -->
+                    {% elif separador == 2 %}
+                       <label class="container">{{questoe.alternativa_a | safe}}
+                          <input type="radio" name="radio2" value="a">
+                          <span class="checkmark">&nbsp&nbsp<b>A</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_b | safe}}
+                          <input type="radio" name="radio2" value="b">
+                          <span class="checkmark">&nbsp&nbsp<b>B</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_c | safe}}
+                          <input type="radio" name="radio2" value="c">
+                          <span class="checkmark">&nbsp&nbsp<b>C</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_d | safe}}
+                          <input type="radio" name="radio2" value="d">
+                          <span class="checkmark">&nbsp&nbsp<b>D</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_e | safe}}
+                          <input type="radio" name="radio2" value="e">
+                          <span class="checkmark">&nbsp&nbsp<b>E</b></span>
+                        </label><br>
+                        <input type="hidden" value={{questoe.id}}>
+                        <input type="hidden" value="{{questoe.resposta_certa}}">
+                        <div class="container2">
+                            <input type="submit" class="btn btn-success submit responder" id="responder2" value="Responder" name="responder2" onclick="ResponderTwo()"><br><br>
+                            <span class="resposta" hidden="hidden" id="errorform2"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                            <span class="respostacerta" hidden="hidden" id="certoform2"> Parabéns! Você acertou!</span>
+                        </div>
+                        <!-- Opções abaixo das questões -->
+                        <div class="opcoes-questao">
+                            <button class="videoaula" onclick="mostrarVideo2()" id="botao2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+                            <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                            </svg>&nbsp&nbsp&nbsp
+                            <span class="texto-opcoes-questao">Videoaula comentada</span></button>
+                        </div><br>
+                        <center><iframe src="{{questoe.link}}" width="620px" height="500px" frameborder="0" allow="fullscreen" id="video2" hidden="hidden" class="videos"></iframe></center><br><br>
+
+                    <!-- Terceiro form do loop -->
+                    {% elif separador == 3 %}
+                       <label class="container">{{questoe.alternativa_a | safe}}
+                          <input type="radio" name="radio3" value="a">
+                          <span class="checkmark">&nbsp&nbsp<b>A</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_b | safe}}
+                          <input type="radio" name="radio3" value="b">
+                          <span class="checkmark">&nbsp&nbsp<b>B</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_c | safe}}
+                          <input type="radio" name="radio3" value="c">
+                          <span class="checkmark">&nbsp&nbsp<b>C</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_d | safe}}
+                          <input type="radio" name="radio3" value="d">
+                          <span class="checkmark">&nbsp&nbsp<b>D</b></span>
+                        </label>
+                        <label class="container">{{questoe.alternativa_e | safe}}
+                          <input type="radio" name="radio3" value="e">
+                          <span class="checkmark">&nbsp&nbsp<b>E</b></span>
+                        </label><br>
+                        <input type="hidden" value={{questoe.id}}>
+                        <input type="hidden" value="{{questoe.resposta_certa}}">
+                        <div class="container2">
+                            <input type="submit" class="btn btn-success submit responder" id="responder3" value="Responder" name="responder3" onclick="ResponderThree()"><br><br>
+                            <span class="resposta" hidden="hidden" id="errorform3"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                            <span class="respostacerta" hidden="hidden" id="certoform3"> Parabéns! Você acertou!</span>
+                        </div>
+                        <!-- Opções abaixo das questões -->
+                        <div class="opcoes-questao">
+                            <button class="videoaula" id="botao3" onclick="mostrarVideo3()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+                            <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                            </svg>&nbsp&nbsp&nbsp
+                            <span class="texto-opcoes-questao">Videoaula comentada</span></button>
+                        </div><br>
+                        <center><iframe src="{{questoe.link}}" width="620px" height="500px" frameborder="0" allow="fullscreen" id="video3" hidden="hidden" class="videos"></iframe></center><br><br>
+                    {% endif %}
+                {% endwith %}
+            </form>
+            <!-- Código que pega as respostas pelo loop e acopla em um array, precisa continuar aqui -->
+            <script>
+                resposta.push('{{questoe.resposta_certa}}');
+            </script>
 {% endfor %}
-    </div><br><br>
+<!-- arquivo que executa o back-end dos filtros -->
+<script type="text/javascript" src="{% static 'js/facil2.js' %}"></script>
+</div>
+<!-- paginação -->
 <nav aria-label="Page navigation example" id="navfacil">
     <ul class="pagination">
-        {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.next_page_number }}">Próxima</a></li>
-        {% endif %}
         {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.previous_page_number}}">Anterior</a></li>
+            <li class="page-item"><a class="page-link listafacil" href="?page=1"><<</a></li>
+            <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.previous_page_number}}">{{page_obj.previous_page_number}}</a></li>
+        {% endif %}
+             <li class="page-item"><a class="page-link listafacil"  id="selecionado">{{page_obj.number}}</a><li>
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+            <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
         {% endif %}
     </ul>
 </nav>

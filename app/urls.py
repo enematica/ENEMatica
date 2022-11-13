@@ -11,5 +11,4 @@ urlpatterns = [
     path('equipe/', TemplateView.as_view(template_name='equipe.html'), name='equipe-list'),
     path('contato/', TemplateView.as_view(template_name='contato.html'), name='contato'),
     path('form/', TemplateView.as_view(template_name='form.html'), name='form'),
-    path('resposta/', views.mostrar, name='mostrar'),
 ]

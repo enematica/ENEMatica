@@ -1,0 +1,21 @@
+#p1equipe {
+    text-align: center; margin-top: 40px; font-size: 30px; color: rgb(11, 148, 11);
+}
+#p2equipe {
+    text-align: center; color: rgb(58, 54, 54);
+}
+#div1equipe {
+    display: flex; justify-content: center; column-gap: 40px; flex-wrap: wrap;
+}
+.divsequipe {
+    text-align: center;
+}
+.imgsequipe {
+    width: 100px; height: 100px; text-align: center;
+}
+.p3equipe {
+    color: rgb(11, 148, 11);
+}
+.p4equipe {
+    color: rgb(58, 54, 54); margin-top: -15px;
+}
