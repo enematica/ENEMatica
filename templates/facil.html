@@ -15,46 +15,34 @@
             <input type="text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Palavra-chave" autocomplete="off" id='palavra-chave'>
         </div>
         <!-- filtro ano -->
-        <div class="wrapper row" id="wrapper1">
+        <div class="wrapper row" id="wrapper1" onclick="formatOverlap1()">
             <div class="select-btn" id="select-btn1">
                 <span>Ano</span>
                 <i class="uil uil-angle-down"></i>
             </div>
             <div class="content" id="content1">
-                <div class="search">
-                    <i class="uil uil-search"></i>
-                    <input type="text" placeholder="Pesquisar">
-                </div>
                 <ul class="options" id="options1">
                 </ul>
             </div>
         </div>
         <!-- filtro dificuldade -->
-        <div class="wrapper row" id="wrapper2">
+        <div class="wrapper row" id="wrapper2" onclick="formatOverlap2()">
             <div class="select-btn" id="select-btn2">
                 <span>Dificuldade</span>
                 <i class="uil uil-angle-down"></i>
             </div>
             <div class="content" id="content2">
-                <div class="search">
-                    <i class="uil uil-search"></i>
-                    <input type="text" placeholder="Pesquisar">
-                </div>
                 <ul class="options" id="options2">
                 </ul>
             </div>
         </div>
         <!-- filtro conteudo -->
-        <div class="wrapper row" id="wrapper3">
+        <div class="wrapper row" id="wrapper3" onclick="formatOverlap3()">
             <div class="select-btn" id="select-btn3">
                 <span>Conteúdo</span>
                 <i class="uil uil-angle-down"></i>
             </div>
             <div class="content" id="content3">
-                <div class="search">
-                    <i class="uil uil-search"></i>
-                    <input type="text" placeholder="Pesquisar">
-                </div>
                 <ul class="options" id="options3">
                 </ul>
             </div>
@@ -64,23 +52,20 @@
             <input type="hidden" value="" id="anos" name="anos">
             <input type="hidden" value="" id="dificuldade" name="dificuldade">
             <input type="hidden" value="" id="conteudo" name="conteudo">
-            <input type="submit" class="btn btn-success submit" value="Filtrar">
-            <a href="{% url 'app:questoes-list' %}"><input type="button" class="btn" value="Limpar"></a>
+            <input type="submit" class="btn btn-success submit" id="filtrar" value="Filtrar">
+            <a href="{% url 'app:questoes-list' %}"><input type="button" class="btn btn-light" value="Limpar"></a>
         </div>
     </form>
 <!-- Gambiarra para o form de responder a questões não carregar nada -->
 <iframe name="hiddenFrame" class="hide"></iframe>
 <!-- questões -->
 <div class="question">
-<!--<script>
-    var resposta = [];
-</script>-->
+
 {% for questoe in object_list %}
         <!-- cabeçalho das questões -->
         <div class="headerquestion">
             <span><b>Número:</b> {{questoe.numero}}&nbsp&nbsp</span>
             <span><b>Ano:</b> {{questoe.ano}}&nbsp&nbsp</span>
-            <span><b>Órgão:</b> ENEM&nbsp&nbsp</span>
             <span><b>Dificuldade:</b> {{questoe.dificuldade}}&nbsp&nbsp</span>
             <span><b>Conteúdo:</b> {{questoe.conteudo}}&nbsp&nbsp</span>
         </div>
@@ -221,19 +206,50 @@
 {% endfor %}
 <!-- arquivo que executa o back-end dos filtros -->
 <script type="text/javascript" src="{% static 'js/facil2.js' %}"></script>
+<!-- As funções abaixo servem para fazer o overlap (sobreposição) dos botões de filtro no resto -->
+<!-- Devem continuar aqui, pois não funcionam em um arquivo js externo -->
+<script>
+    function formatOverlap1(){
+        let overlap = document.querySelector("#wrapper1").classList;
+        if (overlap[2] == 'active'){
+            document.querySelector("#wrapper2").style.height = "10px";
+            document.querySelector("#wrapper3").style.height = "10px";
+            document.querySelector("#wrapper1").style.height = "40px";
+        }
+    }
+
+    function formatOverlap2(){
+        let overlap = document.querySelector("#wrapper2").classList;
+        if (overlap[2] == 'active'){
+            document.querySelector("#wrapper1").style.height = "10px";
+            document.querySelector("#wrapper3").style.height = "10px";
+            document.querySelector("#wrapper2").style.height = "40px";
+        }
+
+    }
+
+    function formatOverlap3(){
+        let overlap = document.querySelector("#wrapper3").classList;
+        if (overlap[2] == 'active'){
+            document.querySelector("#wrapper2").style.height = "10px";
+            document.querySelector("#wrapper1").style.height = "10px";
+            document.querySelector("#wrapper3").style.height = "40px";
+        }
+    }
+</script>
 </div>
 <!-- paginação -->
 <nav aria-label="Page navigation example" id="navfacil">
     <ul class="pagination">
-        {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link listafacil" href="?page=1"><<</a></li>
-            <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.previous_page_number}}">{{page_obj.previous_page_number}}</a></li>
-        {% endif %}
-             <li class="page-item"><a class="page-link listafacil"  id="selecionado">{{page_obj.number}}</a><li>
-        {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-            <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
-        {% endif %}
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link listafacil" href="?page=1"><<</a></li>
+                <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.previous_page_number}}">{{page_obj.previous_page_number}}</a></li>
+            {% endif %}
+                 <li class="page-item"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
+            {% endif %}
     </ul>
 </nav>
 {% endblock %}
