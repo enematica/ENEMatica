@@ -241,15 +241,30 @@
 <!-- paginação -->
 <nav aria-label="Page navigation example" id="navfacil">
     <ul class="pagination">
+        {% if request.GET.enunciado or request.GET.conteudo or request.GET.anos or request.GET.dificuldade %}
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link listafacil" href="/questao/?page=1&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}"><<</a></li>
+                <li class="page-item"><a class="page-link listafacil" href="/questao/?page={{page_obj.previous_page_number}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">{{page_obj.previous_page_number}}</a></li>
+            {% endif %}
+                 <li class="page-item"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link listafacil" href="/questao/?page={{page_obj.next_page_number}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">{{ page_obj.next_page_number }}</a></li>
+                <li class="page-item"><a class="page-link listafacil" href="/questao/?page={{page_obj.paginator.num_pages}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">>></a></li>
+            {% endif %}
+
+        {% else %}
             {% if page_obj.has_previous %}
                 <li class="page-item"><a class="page-link listafacil" href="?page=1"><<</a></li>
                 <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.previous_page_number}}">{{page_obj.previous_page_number}}</a></li>
             {% endif %}
                  <li class="page-item"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
             {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                <li class="page-item"><a class="page-link listafacil" href="?page={{ page_obj.paginator.num_pages }}">>></a></li>
+                <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.next_page_number}}">{{ page_obj.next_page_number }}</a></li>
+                <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.paginator.num_pages}}">>></a></li>
             {% endif %}
+        {% endif %}
+
+
     </ul>
 </nav>
 {% endblock %}
