@@ -16,6 +16,7 @@ class Questoe(BaseModel):
         ('a', 'a'), ('b', 'b'), ('c', 'c'), ('d', 'd'), ('e', 'e'),
     )
     dificuldade = models.CharField(max_length=8, choices=ESCOLHAS_DIFICULDADE)
+    resposta_certa = models.CharField(max_length=1, choices=ESCOLHAS_RESPOSTA, default='')
     link = models.CharField(max_length=1000, verbose_name ='Link para o vídeo do youtube, apagar a parte watch?v=, adicionar /embed/o que vem depois do watch?v=, exemplo: https://www.youtube.com/embed/FyOsoRALEG0')
     enunciado1 = models.CharField(max_length=4000, default="", verbose_name='Copiar e colar o que tiver escrito no enunciado aqui, este campo é para filtro.')
     enunciado = RichTextUploadingField(verbose_name='Enunciado: Cuidado com o tamanho da imagem, se for colocar')
@@ -24,9 +25,8 @@ class Questoe(BaseModel):
     alternativa_c = RichTextUploadingField(verbose_name='Alternativa C: Cuidado com o tamanho da imagem, se for colocar')
     alternativa_d = RichTextUploadingField(verbose_name='Alternativa D: Cuidado com o tamanho da imagem, se for colocar')
     alternativa_e = RichTextUploadingField(verbose_name='Alternativa E: Cuidado com o tamanho da imagem, se for colocar')
-    resposta_certa = models.CharField(max_length=1, choices=ESCOLHAS_RESPOSTA, default='')
 
     def __str__(self):
         """Classe para retornar o número da questão"""
-        return f'Questão de número {self.numero}'
+        return f'{self.numero} - {self.ano}'
     
