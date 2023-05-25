@@ -72,7 +72,7 @@ const wrapper3 = document.querySelector("#wrapper3");
 selectBtn3 = wrapper3.querySelector("#select-btn3");
 options3 = wrapper3.querySelector("#options3");
 
-let conteudos = ["Análise combinatória", "Aritmética", "Conjuntos", "Contagem", "Conversão de Unidades", "Estatística (análise de gráficos)", "Estatística (média aritmética)", "Estatística (média ponderada)", "Estatística (mediana)", "Estatística (moda)", "Funcão do 1° grau", "Função exponencial", "Funções - análise de gráfico", "Geometria analítica", "Geometria espacial", "Geometria plana", "Inequações", "Logarítmo", "Matemática financeira", "Matrizes", "Notação científica", "Porcentagem", "Potenciação", "Probabilidade", "Progressão aritmética", "Projeção ortogonal", "Razão e proporção", "Regra de três", "Sequências", "Trigonometria"];
+let conteudos = ["Análise combinatória", "Análise Dimensional", "Ângulo", "Aritmética", "Conjuntos", "Contagem", "Conversão de Unidades", "Equação do 1° grau", "Equação do 2° grau","Estatística (análise de gráficos)", "Estatística (análise de tabela)","Estatística (média aritmética)", "Estatística (média ponderada)", "Estatística (mediana)", "Estatística (moda)", "Função do 1° grau", "Função exponencial", "Função Trigonométrica", "Funções - análise de gráfico", "Geometria analítica", "Geometria espacial", "Geometria plana", "Inequações", "Logaritmo", "Matemática financeira", "Matrizes", "Notação científica", "Orientação Espacial", "Porcentagem", "Potenciação", "Plano Cartesiano", "Probabilidade", "Progressão aritmética", "Progressão Geométrica", "Projeção ortogonal", "Razão e proporção", "Regra de três", "Sequências", "Sistemas Lineares", "Trigonometria"];
 
 /função que seleciona o que foi clicado /
 function addConteudo(selectedConteudo) {

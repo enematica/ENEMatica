@@ -79,3 +79,8 @@ function mostrarVideo3() {
         document.getElementById("video3").setAttribute("hidden", "hidden");
     }
 }
+
+/função que dá scroll pro topo/
+function scrollToTop(){
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}

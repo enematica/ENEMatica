@@ -38,17 +38,36 @@
     {% block content %}
       <br>
       <div id="containerbase">
-          <div id="imagem">
-            <img id="imginicial" src="https://filhosweb.com.br/site/wp-content/uploads/2020/03/login-professores.png">
-          </div>
-          <div id="textos">
-            <h1><b>Enemática</b></h1>
-            <p class="textosiniciais">Uma plataforma Web de Matemática para o ENEM</p>
-            <a href="{% url 'app:questoes-list' %}"><button type="button" class="btn btn-success" id="acessar">Acesse as questões aqui</button><a/>
-          </div>
-      </div>
+        <div id="imagem">
+          <img id="imginicial" src="https://static.vecteezy.com/system/resources/previews/016/717/597/original/mathematics-teacher-and-formula-png.png">
+        </div>
+        <div id="textos">
+          <h1><b>Enemática</b></h1>
+          <p class="textosiniciais">Uma plataforma Web de Matemática para o ENEM</p>
+          <a href="{% url 'app:questoes-list' %}"><button type="button" class="btn btn-success" id="acessar">Acesse as questões aqui</button><a/>
+        </div>
+      </div><br><br>
+      <div id="containerbase2">
+        <div>
+          <img src="https://www.tiagomota.com.br/wp-content/uploads/2019/11/adj-objetivos.png">
+          <h3>Objetivo</h2>
+          <p>Auxiliar no aprendizado de estudantes<br> e na didática de professores, através das<br>questões de matemática do ENEM</p>
+          <button type="button" class="btn btn-success">Saiba mais</button>
+        </div>
+        <div>
+          <img src="https://static.vecteezy.com/system/resources/previews/018/930/572/original/youtube-logo-youtube-icon-transparent-free-png.png">
+          <h3>Vídeos Didáticos</h2>
+          <p>Diversos vídeos didáticos sobre as questões<br> são disponibilizados no nosso canal do Youtube,<br> os quais também são utilizados em nosso site!</p>
+          <button type="button" class="btn btn-success" onclick="window.location.href='https://www.youtube.com/channel/UCxGzd2SpZ4vF8_UrtV2n62g';">Saiba mais</button>
+        </div>
+       <div>
+          <img src="https://cdn-icons-png.flaticon.com/512/6500/6500210.png">
+          <h3>Equipe</h2>
+          <p>Este projeto foi possível graças aos diversos<br> bolsistas, colaboradores e ao coordenador<br> da bolsa. Conheça nossa equipe!</p>
+          <button type="button" class="btn btn-success" onclick="window.location.href='{% url 'app:equipe-list' %}';">Saiba mais</button>
+        </div>
     {% endblock content %}
-    </section>
+    </section><br>
     <footer>
         <div id="div5">
             <p class="p3">Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul – Campus Vacaria</p>
