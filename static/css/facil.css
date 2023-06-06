@@ -8,7 +8,10 @@
   width: 65px;
   height: 40px;
 }
-
+#paginas{
+  border-bottom: solid rgb(11, 148, 11);
+  width: 150px;
+}
 .submit{
   background-color: rgb(11, 148, 11)!important;
 }
@@ -280,6 +283,14 @@
 /*Filtro de seleção */
 
 #topo{
+  background-color: rgb(11, 148, 11);
+  border-radius: 30px;
+  position: fixed;
+  right: 50px;
+  bottom: 10px;
+}
+
+#topo2{
   background-color: rgb(11, 148, 11);
   border-radius: 30px;
   position: fixed;

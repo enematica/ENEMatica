@@ -15,7 +15,7 @@ class QuestoesList(ListView):
     #template ao qual está vinculada
     template_name = 'facil.html'
     #por quantos objetos está sendo paginada
-    paginate_by = 3
+    paginate_by = 5
     def get_queryset(self):
         #recebendo os dados
         text_enunciado = self.request.GET.get('enunciado')

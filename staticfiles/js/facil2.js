@@ -3,7 +3,7 @@ const wrapper = document.querySelector("#wrapper1");
 selectBtn = wrapper.querySelector("#select-btn1");
 options = wrapper.querySelector("#options1");
 
-let anos = ["2018", "2019", "2020", "2021"];
+let anos = ["2018", "2019", "2020", "2021", "2022"];
 
 /função que seleciona o que foi clicado / 
 function addAno(selectedAno) {
@@ -72,7 +72,7 @@ const wrapper3 = document.querySelector("#wrapper3");
 selectBtn3 = wrapper3.querySelector("#select-btn3");
 options3 = wrapper3.querySelector("#options3");
 
-let conteudos = ["Análise combinatória", "Análise Dimensional", "Ângulo", "Aritmética", "Conjuntos", "Contagem", "Conversão de Unidades", "Equação do 1° grau", "Equação do 2° grau","Estatística (análise de gráficos)", "Estatística (análise de tabela)","Estatística (média aritmética)", "Estatística (média ponderada)", "Estatística (mediana)", "Estatística (moda)", "Função do 1° grau", "Função exponencial", "Função Trigonométrica", "Funções - análise de gráfico", "Geometria analítica", "Geometria espacial", "Geometria plana", "Inequações", "Logaritmo", "Matemática financeira", "Matrizes", "Notação científica", "Orientação Espacial", "Porcentagem", "Potenciação", "Plano Cartesiano", "Probabilidade", "Progressão aritmética", "Progressão Geométrica", "Projeção ortogonal", "Razão e proporção", "Regra de três", "Sequências", "Sistemas Lineares", "Trigonometria"];
+let conteudos = ["Análise combinatória", "Análise dimensional", "Ângulo", "Aritmética", "Conjuntos", "Contagem", "Conversão de unidades", "Equação do 1° grau", "Equação do 2° grau","Estatística (análise de gráficos)", "Estatística (análise de tabela)","Estatística (média aritmética)", "Estatística (média ponderada)", "Estatística (mediana)", "Estatística (moda)", "Função do 1° grau", "Função exponencial", "Função trigonométrica", "Funções - análise de gráfico", "Geometria analítica", "Geometria espacial", "Geometria plana", "Inequações", "Logaritmo", "Matemática financeira", "Matrizes", "Notação científica", "Orientação espacial", "Porcentagem", "Potenciação", "Plano cartesiano", "Probabilidade", "Progressão aritmética", "Progressão geométrica", "Projeção ortogonal", "Razão e proporção", "Regra de três", "Sequências", "Sistemas lineares", "Trigonometria"];
 
 /função que seleciona o que foi clicado /
 function addConteudo(selectedConteudo) {
