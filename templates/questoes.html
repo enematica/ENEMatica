@@ -1,0 +1,469 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/questoes.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script type="text/javascript" src="{% static 'js/questoes2.js' %}"></script>
+</head>
+
+<!-- Sidenav filter that appears when the resolution is low-->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <form action="?" method="GET" id="forms">
+    <span>
+      <div class="wrapper" id="wrapper1">
+        <div class="select-btn" id="select-btn1">
+          <span>Ano</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="content" id="content1">
+          <div class="search">
+            <i class="uil uil-search"></i>
+            <input id="input1" type="text" placeholder="Pesquisar">
+          </div>
+          <ul class="options" id="options1">
+          </ul>
+        </div>
+      </div>
+    </span>
+    <span>
+      <div class="wrapper" id="wrapper3">
+        <div class="select-btn" id="select-btn3">
+          <span>Conteúdo</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="content" id="content3">
+          <div class="search">
+            <i class="uil uil-search"></i>
+            <input id="input3" type="text" placeholder="Pesquisar">
+          </div>
+          <ul class="options" id="options3">
+          </ul>
+        </div>
+      </div>
+    </span>
+    <span>
+      <div class="wrapper" id="wrapper2">
+        <div class="select-btn" id="select-btn2">
+          <span>Dificuldade</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="content" id="content2">
+          <div class="search">
+            <i class="uil uil-search"></i>
+            <input id="input2" type="text" placeholder="Pesquisar">
+          </div>
+          <ul class="options" id="options2">
+          </ul>
+        </div>
+      </div>
+    </span>
+    <span>
+      <div class="palavra-chave">
+          <input type="text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Palavra-chave" autocomplete="off" id='palavra-chave'>
+      </div>
+    </span>
+    <span>
+      <input type="hidden" value="" id="anos" name="anos">
+      <input type="hidden" value="" id="dificuldade" name="dificuldade">
+      <input type="hidden" value="" id="conteudo" name="conteudo">
+      <input type="submit" class="btncell btn submit" id="filtrar" value="Filtrar">
+      <a><input type="button" class="btncell btn" value="Limpar" onclick="limpar()"></a>
+    </span>
+  </form>
+</div>
+
+<!-- Filtering buttons for medium and big resolutions as pc-->
+<div id="formspc">
+  <form action="?" method="GET" id="formspc">
+    <span>
+      <div class="wrapperpc" id="wrapper4">
+        <div class="select-btnpc" id="select-btn4">
+          <span>Ano</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="contentpc" id="content4">
+          <div class="searchpc">
+            <i class="uil uil-search"></i>
+            <input id="input4" type="text" placeholder="Pesquisar">
+          </div>
+          <ul class="optionspc" id="options4">
+          </ul>
+        </div>
+      </div>
+    </span>
+    <span>
+      <div class="wrapperpc" id="wrapper5">
+        <div class="select-btnpc" id="select-btn5">
+          <span>Dificuldade</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="contentpc" id="content5">
+          <div class="searchpc">
+            <i class="uil uil-search"></i>
+            <input id="input5" type="text" placeholder="Pesquisar">
+          </div>
+          <ul class="optionspc" id="options5">
+          </ul>
+        </div>
+      </div>
+    </span>
+    <span>
+      <div class="wrapperpc" id="wrapper6">
+        <div class="select-btnpc" id="select-btn6">
+          <span>Conteúdo</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="contentpc" id="content6">
+          <div class="searchpc">
+            <i class="uil uil-search"></i>
+            <input id="input6" type="text" placeholder="Pesquisar">
+          </div>
+          <ul class="optionspc" id="options6">
+          </ul>
+        </div>
+      </div>
+    </span>
+    <span>
+      <div class="palavra-chave">
+          <input type="text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Palavra-chave" autocomplete="off" id='palavra-chavepc'>
+      </div>
+    </span>
+</div>
+    <span id="buttonsfilter">
+      <input type="hidden" value="" id="anos2" name="anos">
+      <input type="hidden" value="" id="dificuldade2" name="dificuldade">
+      <input type="hidden" value="" id="conteudo2" name="conteudo">
+      <input type="submit" class="btnpc submit" id="filtrar" value="Filtrar">
+      <a href="{% url 'app:questoes' %}"><input type="button" class="btnpc" value="Limpar" onclick="limpar2()"></a>
+    </span>
+  </form>
+
+<!--The two buttons that stay in the page top when the resolution is low-->
+<span id="buttonsfiltercelular">
+  <input type="button" class="btnpc" value="Filtrar" onclick="openNav()">
+  <a href="{% url 'app:questoes' %}"><input type="button" class="btnpc" value="Limpar"></a>
+</span>
+
+<!-- Iframe helps to not reload the page when the answer button is clicked-->
+<iframe name="ola" class="hide"></iframe>
+
+<!-- Fixed button that opens the sidenav filter bar-->
+<svg onclick="openNav()" style="cursor: pointer;" id="openSideNav" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-filter" viewBox="0 0 16 16">
+  <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+</svg>
+
+<!-- Modal for the videos-->
+<div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div id="modalContent" class="modal-content">
+      <div class="modal-header">
+        <button onclick="StopVideo()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="videoYt" src="" width="100%" height="100%" allow="fullscreen"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- If to see if are there questions in the database-->
+{% if object_list %}
+  <!-- Div that shows the total pages and questions-->
+  <div id="showNumbers">
+    <p><b>Página:</b> <span>{{page_obj.number}} de {{page_obj.paginator.num_pages}}</span></p>
+    <p><b>Total de questões:</b> <span>{{page_obj.paginator.count}}</span></p>
+  </div>
+  <!-- For in the database-->
+  {% for questoe in object_list %}
+    <!-- Questions header -->
+    <div class="headerquestion">
+        <span><b>Número:</b> {{questoe.numero}}&nbsp&nbsp</span>
+        <span><b>Ano:</b> {{questoe.ano}}&nbsp&nbsp</span>
+        <span><b>Dificuldade:</b> {{questoe.dificuldade}}&nbsp&nbsp</span>
+        <span><b>Conteúdo:</b> {{questoe.conteudo}}&nbsp&nbsp</span>
+    </div>
+    <!-- Questions body-->
+    <div class="bodyquestion" id="question{{questoe.id}}">
+        <span>{{questoe.enunciado | safe}}</span>
+    </div>
+    <!-- Questions footer -->
+    <div class="answerquestion">
+        <!-- Form that encapsulate the radio buttons according to the question-->
+        <form action="{% url 'app:questoes' %}" method="GET" target="ola" id="questao">
+          <!-- Count the position of the for-->
+          {% with separador=forloop.counter %}
+                <!-- Radio buttons and data of the first question -->
+                {% if separador == 1 %}
+                  <label>
+                    <input type="radio" name="radio" value="a"/>
+                    <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio" value="b"/>
+                    <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio" value="c"/>
+                    <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio" value="d"/>
+                    <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio" value="e"/>
+                    <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+                  </label>
+                    <input type="hidden" value={{questoe.id}}>
+                    <input type="hidden" value="{{questoe.resposta_certa}}">
+                    <div class="finalcontainer">
+                        <input type="submit" class="responder" id="responder" value="Responder" name="responder1" onclick="ResponderOne()"><br><br>
+                        <span class="resposta" hidden="hidden" id="errorform1"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                        <span class="respostacerta" hidden="hidden" id="certoform1"> Parabéns! Você acertou!</span>
+                    </div>
+                  <!--Itens in the end of a question-->
+                  <div class="QuestionOptions">
+                    <div onclick="ShowVideoOne()" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                      </svg>
+                      <span>Videoaula comentada</span>
+                    </div>
+                  </div>
+                <!-- Radio buttons and data of the second question -->
+                {% elif separador == 2 %}
+                  <label>
+                    <input type="radio" name="radio2" value="a"/>
+                    <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio2" value="b"/>
+                    <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio2" value="c"/>
+                    <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio2" value="d"/>
+                    <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio2" value="e"/>
+                    <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+                  </label>
+                    <input type="hidden" value={{questoe.id}}>
+                    <input type="hidden" value="{{questoe.resposta_certa}}">
+                    <div class="finalcontainer">
+                        <input type="submit" class="responder" id="responder2" value="Responder" name="responder2" onclick="ResponderTwo()">
+                        <span class="resposta" hidden="hidden" id="errorform2"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                        <span class="respostacerta" hidden="hidden" id="certoform2"> Parabéns! Você acertou!</span>
+                    </div>
+                    <!--Itens in the end of a question-->
+                    <div class="QuestionOptions">
+                      <div onclick="ShowVideoTwo()" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                        </svg>
+                        <span>Videoaula comentada</span>
+                      </div>
+                    </div>
+                <!-- Radio buttons and data of the third question -->
+                {% elif separador == 3 %}
+                  <label>
+                    <input type="radio" name="radio3" value="a"/>
+                    <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio3" value="b"/>
+                    <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio3" value="c"/>
+                    <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio3" value="d"/>
+                    <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio3" value="e"/>
+                    <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+                  </label>
+                    <input type="hidden" value={{questoe.id}}>
+                    <input type="hidden" value="{{questoe.resposta_certa}}">
+                    <div class="finalcontainer">
+                        <input type="submit" class="responder" id="responder3" value="Responder" name="responder3" onclick="ResponderThree()"><br><br>
+                        <span class="resposta" hidden="hidden" id="errorform3"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                        <span class="respostacerta" hidden="hidden" id="certoform3"> Parabéns! Você acertou!</span>
+                    </div>
+                    <!--Itens in the end of a question-->
+                    <div class="QuestionOptions">
+                      <div onclick="ShowVideoThree()" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                        </svg>
+                        <span>Videoaula comentada</span>
+                      </div>
+                    </div>
+                <!-- Radio buttons and data of the fourth question -->
+                {% elif separador == 4 %}
+                  <label>
+                    <input type="radio" name="radio4" value="a"/>
+                    <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio4" value="b"/>
+                    <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio4" value="c"/>
+                    <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio4" value="d"/>
+                    <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio4" value="e"/>
+                    <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+                  </label>
+                    <input type="hidden" value={{questoe.id}}>
+                    <input type="hidden" value="{{questoe.resposta_certa}}">
+                    <div class="finalcontainer">
+                        <input type="submit" class="responder" id="responder4" value="Responder" name="responder4" onclick="ResponderFour()"><br><br>
+                        <span class="resposta" hidden="hidden" id="errorform4"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                        <span class="respostacerta" hidden="hidden" id="certoform4"> Parabéns! Você acertou!</span>
+                    </div>
+                    <!--Itens in the end of a question-->
+                    <div class="QuestionOptions">
+                      <div onclick="ShowVideoFour()" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                        </svg>
+                        <span>Videoaula comentada</span>
+                      </div>
+                    </div>
+                <!-- Radio buttons and data of the fifth question -->
+                {% elif separador == 5 %}
+                  <label>
+                    <input type="radio" name="radio5" value="a"/>
+                    <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio5" value="b"/>
+                    <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio5" value="c"/>
+                    <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+                  </label>
+                  <br/>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio5" value="d"/>
+                    <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+                  </label><br>
+                  <label class="labelAdjust">
+                    <input type="radio" name="radio5" value="e"/>
+                    <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+                  </label>
+                    <input type="hidden" value={{questoe.id}}>
+                    <input type="hidden" value="{{questoe.resposta_certa}}">
+                    <div class="finalcontainer">
+                        <input type="submit" class="responder" id="responder5" value="Responder" name="responder5" onclick="ResponderFive()"><br><br>
+                        <span class="resposta" hidden="hidden" id="errorform5"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                        <span class="respostacerta" hidden="hidden" id="certoform5"> Parabéns! Você acertou!</span>
+                    </div>
+                    <!--Itens in the end of a question-->
+                    <div class="QuestionOptions">
+                      <div onclick="ShowVideoFive()" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                        </svg>
+                        <span>Videoaula comentada</span>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </form>
+        <!--This script needs to stay here, it takes the questions answer and link to provide them to the javascript-->
+        <script>
+          resposta.push('{{questoe.resposta_certa}}');
+          links.push('{{questoe.link}}');
+        </script>
+  {% endfor %}
+
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example" id="navfacil">
+    <ul class="pagination" id="pagination">
+        <!-- Pagination if the user chose a filter -->
+        {% if request.GET.enunciado or request.GET.conteudo or request.GET.anos or request.GET.dificuldade %}
+            {% if page_obj.has_other_pages %}
+            <div class="btn-group" role="group" aria-label="Item pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page=1&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">&laquo;</a></li>
+                {% endif %}
+                {% for page_number in page_obj.paginator.page_range %}
+                    {% if page_obj.number == page_number %}
+                        <li class="page-item selecionado" id="{{page_obj.number}}"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
+                    {% elif page_obj.number < page_number|add:'+4' and page_obj.number > page_number|add:'-4'%}
+                        <li class="page-item" id="listafacil{{page_number}}"><a class="page-link listafacil" href="/questoes/?page={{page_number}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">{{page_number}}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page={{page_obj.paginator.num_pages}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">&raquo;</a></li>
+                {% endif %}
+            </div>
+            {% endif %}
+        <!-- Pagination if the user didn't choose a filter-->
+        {% else %}
+            {% if page_obj.has_other_pages %}
+            <div class="btn-group" role="group" aria-label="Item pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link listafacil" href="?page=1">&laquo;</a></li>
+                {% endif %}
+                {% for page_number in page_obj.paginator.page_range %}
+                    {% if page_obj.number == page_number %}
+                        <li class="page-item selecionado" id="{{page_obj.number}}"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
+                    {% elif page_obj.number < page_number|add:'+4' and page_obj.number > page_number|add:'-4'%}
+                        <li class="page-item" id="listafacil{{page_number}}"><a class="page-link listafacil" href="?page={{page_number}}"> {{ page_number }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link listafacil" href="?page={{page_obj.paginator.num_pages}}">&raquo;</a></li>
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endif %}
+    </ul>
+  </nav>
+<!-- If the returned queryset lenght is zero -->
+{% else %}
+  <p id="noQuestion">Não foram encontradas questões com os filtros escolhidos!</p>
+{% endif %}
+<!-- Second javascript file, needs to stay here-->
+<script type="text/javascript" src="{% static 'js/questoes.js' %}"></script>
+{% endblock content %}

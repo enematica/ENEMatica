@@ -1,0 +1,91 @@
+body{
+    background-color: #ebebe0;
+}
+
+
+/*Images container*/
+#imagens{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 120px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+#imagens div{
+    border: 10px solid #99b3e6;
+    border-radius: 10px;
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    cursor: pointer;
+}
+#imagens img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .2s linear;
+
+}
+#imagens img:hover{
+    transform: scale(1.1);
+}
+
+
+/*Images popup*/
+.popup-img{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.9);
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+}
+.popup-img span{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: inherit;
+}
+.popup-img img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 10px solid #99b3e6;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    max-height: calc(100% - 10%);
+    max-width: calc(100% - 20%);
+    overflow: scroll
+}
+
+/*Responsivity*/
+@media(max-width: 437px){
+    #imagens{
+      margin-top: 140px;
+    }
+}
+  
+@media(max-width: 211px){
+    #imagens{
+        margin-top: 180px;
+    }
+}
+  
+@media(max-width: 196px){
+    #imagens{
+        margin-top: 220px;
+    }
+}

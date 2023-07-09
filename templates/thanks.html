@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'css/thanks.css' %}">
+</head>
+<!-- text only present in the page-->
+<div id="texto">
+	<p class="pform"><b>Mensagem enviada com sucesso!</b></p>
+	<p class="pform">Você será redirecionado à página inicial em 5 segundos...</p>
+</div>
+<!-- Redirect the user to the home page after five seconds, no need to create external file for it-->
+<script>
+	setTimeout(function() {
+    window.location.href = "http://enematica.vacaria.ifrs.edu.br";
+	}, 5000);
+</script>
+{% endblock %}

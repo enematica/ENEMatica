@@ -1,0 +1,12 @@
+body{
+    background-color: #ebebe0;
+}
+
+#texto{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    font-size: 20px;
+}

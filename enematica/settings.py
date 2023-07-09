@@ -190,8 +190,6 @@ CKEDITOR_CONFIGS = {
         'linkShowAdvancedTab': False,
 
         # CKEditor height and width settings
-        'height': '250px',
-        'width': '500px',
         'forcePasteAsPlainText ': True,
 
         # Class used inside span to render mathematical formulae using latex

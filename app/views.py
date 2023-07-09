@@ -3,27 +3,26 @@ from multiprocessing import context
 from re import template
 from urllib import request
 from django.shortcuts import render, redirect
-from .models import Questoe
+from .models import Questoe, Resumo, Foto
 from django.views.generic import ListView
 
-# Create your views here.
 
 class QuestoesList(ListView):
-    """Classe que pega outra classe e transforma numa lista pra facilitar o processo de exibição"""
-    #model desta classe recebe a classe do banco de dados
+    """Class that turns the question class in a list class"""
     model = Questoe
-    #template ao qual está vinculada
-    template_name = 'facil.html'
-    #por quantos objetos está sendo paginada
+    #vinculated template
+    template_name = 'questoes.html'
+    #objects paginated
     paginate_by = 5
+    #method to return queryset
     def get_queryset(self):
-        #recebendo os dados
+        #receiving the data
         text_enunciado = self.request.GET.get('enunciado')
         text_conteudo = self.request.GET.get('conteudo')
         text_anos = self.request.GET.get('anos')
         text_dificuldade = self.request.GET.get('dificuldade')
-        
-        #resolvendo erros
+
+        #solving errors
         if text_conteudo == None or text_conteudo == 'undefined':
             text_conteudo = ''
         if text_dificuldade == None or text_dificuldade == 'undefined':
@@ -33,12 +32,26 @@ class QuestoesList(ListView):
         if text_enunciado == None or text_enunciado == 'undefined':
             text_enunciado = ''
 
-        #filtrando
+        #filtering
         if text_conteudo or text_enunciado or text_dificuldade or text_anos:
-            questoes = Questoe.objects.filter(enunciado1__icontains=text_enunciado, conteudo__icontains=text_conteudo, ano__icontains=text_anos, dificuldade__icontains=text_dificuldade)
+            if(text_enunciado.isnumeric()) == True:
+                questoes = Questoe.objects.filter(numero=int(text_enunciado),conteudo__icontains=text_conteudo, ano__icontains=text_anos, dificuldade__icontains=text_dificuldade)
+            else:
+                questoes = Questoe.objects.filter(enunciado1__icontains=text_enunciado,conteudo__icontains=text_conteudo, ano__icontains=text_anos, dificuldade__icontains=text_dificuldade)
         else:
             questoes = Questoe.objects.all()
-        return questoes
-        
+        return questoes.order_by('-ano','-numero')
+    
+
+class FotosList(ListView):
+    """Class that turns the resume class in a list class"""
+    model = Foto
+    template_name = 'galeria.html'   
+
+class ResumosList(ListView):
+    """Class that turns the resume class in a list class"""
+    model = Resumo
+    template_name = 'resumos.html'
+    
 
 

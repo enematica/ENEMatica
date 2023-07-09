@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+</head>
+<!-- Images container-->
+<div id="imagens">
+{% for foto in object_list %}
+    <div>
+        <img src="{{foto.imagem.url}}" alt="{{foto.contexto}}"> 
+    </div>
+{% endfor %}
+</div>
+<!-- Images popup-->
+<div class="popup-img">
+    <h3></h3>
+    <span>&times;</span>
+    <img src="" alt="">
+</div>
+<!-- Javascript, a little code don't need to create an external file-->
+<script>
+//Function that opens the popup when an image is clicked
+document.querySelectorAll('#imagens img').forEach(image =>{
+    image.onclick = () =>{
+        document.querySelector('#navHome').classList.remove('fixed-top');
+        document.querySelector('body').style.overflow = "hidden";
+        document.querySelector('.popup-img').style.display = 'block';
+        document.querySelector('.popup-img img').src = image.getAttribute('src');
+        document.querySelector('.popup-img h3').innerHTML = image.getAttribute('alt');
+    }
+});
+//Function that closes the popup when the close button is clicked
+document.querySelector('.popup-img span').onclick = () => {
+    document.querySelector('.popup-img').style.display = 'none';
+    document.querySelector('#navHome').classList.add('fixed-top');
+    document.querySelector('body').style.overflow = "scroll";
+}
+</script>
+{% endblock content %}
