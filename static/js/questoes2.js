@@ -8,8 +8,8 @@ function ResponderOne() {
       document.getElementById("certoform1").removeAttribute("hidden");
       document.getElementById("errorform1").setAttribute("hidden", "hidden");
       document.getElementById("responder").disabled = true;
-      document.getElementById("responder").style.backgroundColor = "#9999ff";
-      document.getElementById("responder").style.borderColor = "#9999ff";
+      document.getElementById("responder").style.backgroundColor = "#c2c2a3";
+      document.getElementById("responder").style.borderColor = "#c2c2a3";
       document.getElementById('responder').addEventListener('mouseover',() => {
         document.getElementById("responder").style.cursor = 'default';
         document.getElementById("responder").style.boxShadow = '0 10px 25px rgba(0,0,0,0.8)';
@@ -30,8 +30,8 @@ function ResponderTwo() {
       document.getElementById("certoform2").removeAttribute("hidden");
       document.getElementById("errorform2").setAttribute("hidden", "hidden");
       document.getElementById("responder2").disabled = true;
-      document.getElementById("responder2").style.backgroundColor = "#9999ff";
-      document.getElementById("responder2").style.borderColor = "#9999ff";
+      document.getElementById("responder2").style.backgroundColor = "#c2c2a3";
+      document.getElementById("responder2").style.borderColor = "#c2c2a3";
       document.getElementById('responder2').addEventListener('mouseover',() => {
         document.getElementById("responder2").style.cursor = 'default';
         document.getElementById("responder2").style.boxShadow = '0 10px 25px rgba(0,0,0,0.8)';
@@ -53,8 +53,8 @@ function ResponderThree() {
       document.getElementById("certoform3").removeAttribute("hidden");
       document.getElementById("errorform3").setAttribute("hidden", "hidden");
       document.getElementById("responder3").disabled = true;
-      document.getElementById("responder3").style.backgroundColor = "#9999ff";
-      document.getElementById("responder3").style.borderColor = "#9999ff";
+      document.getElementById("responder3").style.backgroundColor = "#c2c2a3";
+      document.getElementById("responder3").style.borderColor = "#c2c2a3";
       document.getElementById('responder3').addEventListener('mouseover',() => {
         document.getElementById("responder3").style.cursor = 'default';
         document.getElementById("responder3").style.boxShadow = '0 10px 25px rgba(0,0,0,0.8)';
@@ -75,8 +75,8 @@ function ResponderFour() {
       document.getElementById("certoform4").removeAttribute("hidden");
       document.getElementById("errorform4").setAttribute("hidden", "hidden");
       document.getElementById("responder4").disabled = true;
-      document.getElementById("responder4").style.backgroundColor = "#9999ff";
-      document.getElementById("responder4").style.borderColor = "#9999ff";
+      document.getElementById("responder4").style.backgroundColor = "#c2c2a3";
+      document.getElementById("responder4").style.borderColor = "#c2c2a3";
       document.getElementById('responder4').addEventListener('mouseover',() => {
         document.getElementById("responder4").style.cursor = 'default';
         document.getElementById("responder4").style.boxShadow = '0 10px 25px rgba(0,0,0,0.8)';
@@ -97,8 +97,8 @@ function ResponderFive() {
       document.getElementById("certoform5").removeAttribute("hidden");
       document.getElementById("errorform5").setAttribute("hidden", "hidden");
       document.getElementById("responder5").disabled = true;
-      document.getElementById("responder5").style.backgroundColor = "#9999ff";
-      document.getElementById("responder5").style.borderColor = "#9999ff";
+      document.getElementById("responder5").style.backgroundColor = "#c2c2a3";
+      document.getElementById("responder5").style.borderColor = "#c2c2a3";
       document.getElementById('responder5').addEventListener('mouseover',() => {
         document.getElementById("responder5").style.cursor = 'default';
         document.getElementById("responder5").style.boxShadow = '0 10px 25px rgba(0,0,0,0.8)';

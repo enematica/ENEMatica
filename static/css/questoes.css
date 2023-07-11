@@ -11,7 +11,7 @@ body{
   z-index: 5000;
   top: 0;
   left: 0;
-  background-color: #4d4dff;
+  background-color: #00cc00;
   overflow-x: scroll;
   transition: 0.5s;
   text-align:center;
@@ -166,13 +166,14 @@ body{
 #palavra-chave{
   width: 210px;
   height: 50px;
-  background: rgb(235, 235, 224);
+  background: #c2c2a3;
   border: none;
   border-radius: 5px;
   text-align: center;
   font-size: 15px;
   margin-top: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+  outline: none!important;
 }
 
 #palavra-chave:focus{
@@ -186,7 +187,7 @@ body{
   margin-top: 100px;
   width: 100px;
   height: 50px;
-  background-color: #1a1aff;
+  background-color: #006600;
   font-size: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.8);
   color: white;
@@ -195,7 +196,7 @@ body{
   box-shadow: 0 10px 25px rgba(0,0,0,1.3);
 }
 .sidenav span a .btncell{
-  background: white;
+  background: #c2c2a3;
   color: black;
 }
 
@@ -205,7 +206,7 @@ input[type="radio"] {
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  border: 2px solid #4d4dff;
+  border: 2px solid green;
   background-color: white;
   -webkit-appearance: none; /*to disable the default appearance of radio button*/
   -moz-appearance: none;
@@ -221,12 +222,12 @@ input[type="radio"]:hover ~ .spanOne { /*no need, if you don't disable default a
 }
 
 input[type="radio"]:hover{
-  background-color: #4d4dff;
+  background-color: green;
   cursor: pointer;
 }
 
 input[type="radio"]:checked { /*no need, if you don't disable default appearance*/
-  background-color: #4d4dff;
+  background-color: green;
 }
 
 input[type="radio"]:checked ~ .spanOne {
@@ -238,7 +239,7 @@ label .spanOne {
   left: -26px;
   top: -9px;
   font-size: 20px;
-  color: #4d4dff;
+  color: green;
 }
 
 label p {
@@ -284,7 +285,7 @@ label{
 }
 
 .headerquestion span{
-  color: #007399;
+  color: green;
 }
 
 
@@ -334,12 +335,12 @@ label{
 .responder {
   width: 130px;
   height: 50px;
-  background-color: #4d4dff;
+  background-color: green;
   font-size: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.8);
   color: white;
   border-radius: 5px;
-  border-color: #4d4dff;
+  border-color: green;
 }
 .responder:hover{
   box-shadow: 0 10px 25px rgba(0,0,0,1.3);
@@ -361,8 +362,8 @@ label{
   padding-left: 5px;
   padding-right: 5px;
   background-color: #eaeae1;
-  color: #004d99;
-  border: 2px solid #004d99;
+  color: green;
+  border: 2px solid green;
   border-right: none;
   border-top: none;
   border-bottom: none;
@@ -372,7 +373,7 @@ label{
 
 /*Button that opens the sidenav filters*/
 #openSideNav{
-  background-color: #4d4dff;
+  background-color: green;
   border-radius: 30px;
   position: fixed;
   padding: 5px;
@@ -440,7 +441,7 @@ img{
 }
 
 #palavra-chavepc:focus{
-  border: 1px solid #9999ff!important;
+  outline: none!important;
 }
 
 #palavra-chavepc:hover{
@@ -449,12 +450,12 @@ img{
 .btnpc{
   width: 100px;
   height: 50px;
-  background-color: #4d4dff;
+  background-color: green;
   font-size: 18px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.8);
   color: white;
   border-radius: 5px;
-  border-color: #4d4dff;
+  border-color: green;
 }
 .btnpc:hover{
   box-shadow: 0 10px 25px rgba(0,0,0,1.3);
@@ -652,7 +653,7 @@ img{
   flex-wrap: wrap;
 }
 #showNumbers span{
-  color: #007399;
+  color: green;
 }
 
 /*Pagination*/

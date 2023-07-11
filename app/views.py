@@ -47,11 +47,11 @@ class FotosList(ListView):
     """Class that turns the resume class in a list class"""
     model = Foto
     template_name = 'galeria.html'   
-
+    ordering = ['-id']
 class ResumosList(ListView):
     """Class that turns the resume class in a list class"""
     model = Resumo
     template_name = 'resumos.html'
-    
+    ordering = ['-id']
 
 

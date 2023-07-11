@@ -16,7 +16,7 @@ body{
     row-gap: 10px;
 }
 #imagens div{
-    border: 10px solid #99b3e6;
+    border: 10px solid #98e698;
     border-radius: 10px;
     width: 350px;
     height: 350px;
@@ -71,7 +71,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 10px solid #99b3e6;
+    border: 10px solid #98e698;
     border-radius: 10px;
     width: 750px;
     height: 80%;
