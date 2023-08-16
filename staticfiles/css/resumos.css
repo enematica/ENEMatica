@@ -64,7 +64,7 @@ body{
     transform: translate(-50%, -50%);
     border: 10px solid #98e698;
     border-radius: 10px;
-    width: 100%;
+    width: auto;
     height: auto;
     max-height: calc(100% - 10%);
     max-width: calc(100% - 20%);
