@@ -2,205 +2,6 @@ body{
   overflow: scroll;
 }
 
-
-/*Sidenav filter css*/
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 5000;
-  top: 0;
-  left: 0;
-  background-color: #00cc00;
-  overflow-x: scroll;
-  transition: 0.5s;
-  text-align:center;
-  overflow-y: scroll;
-}
-
-.sidenav span {
-  text-decoration: none;
-  color: black;
-  display: block;
-  transition: 0.3s;
-
-}
-
-.sidenav span:hover{
-  color: black;
-  cursor: pointer;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  color: black;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-
-
-/*Filter buttons sidenav */
-#forms{
-  margin: 50px 0 10px 0;
-  flex-wrap: nowrap!important;
-}
-.wrapper{
-  width: 210px;
-  margin: 20px auto 0;
-}
-#wrapper1{
-}
-.select-btn, li{
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.select-btn:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
-}
-.select-btn{
-  height: 50px;
-  padding: 0 20px;
-  font-size: 15px;
-  background: #c2c2a3;
-  border-radius: 7px;
-  justify-content: space-between;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-}
-.select-btn i{
-  font-size: 21px;
-  transition: transform 0.3s linear;
-}
-.wrapper.active .select-btn i{
-  transform: rotate(-180deg);
-}
-#content1{
-  position: absolute;
-  z-index: 100;
-  width: 210px;
-}
-#content2{
-  position: absolute;
-  z-index: 2;
-  width: 210px;
-}
-#content3{
-  position: absolute;
-  z-index: 1;
-  width: 210px;
-}
-.content{
-  display: none;
-  padding: 20px;
-  margin-top: 15px;
-  background: #c2c2a3;
-  border-radius: 7px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-.wrapper.active .content{
-  display: block;
-}
-.content .search{
-  position: relative;
-}
-.search i{
-  top: 50%;
-  left: 15px;
-  color: black;
-  font-size: 15px;
-  pointer-events: none;
-  transform: translateY(-50%);
-  position: absolute;
-}
-.search input{
-  background: #c2c2a3;
-  height: 50px;
-  width: 100%;
-  outline: none;
-  font-size: 15px;
-  border-radius: 5px;
-  padding: 0 20px 0 43px;
-  border: 1px solid #adad85;
-}
-.search input:focus{
-  padding-left: 42px;
-  border: 2px solid #adad85;
-}
-.search input::placeholder{
-  color: black;
-}
-.content .options{
-  margin-top: 10px;
-  margin-left: -40px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-.options::-webkit-scrollbar{
-  width: 7px;
-}
-.options::-webkit-scrollbar-track{
-  border-radius: 25px;
-}
-.options::-webkit-scrollbar-thumb{
-  border-radius: 25px;
-}
-.options li{
-  height: 50px;
-  padding: 0 13px;
-  font-size: 15px;
-  text-align: left;
-}
-.options li:hover, li.selected{
-  border-radius: 5px;
-  background: #adad85;
-}
-
-#palavra-chave{
-  width: 210px;
-  height: 50px;
-  background: #c2c2a3;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-  outline: none!important;
-}
-
-#palavra-chave:focus{
-  border: 1px solid #adad85;
-}
-
-#palavra-chave:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
-}
-.btncell{
-  margin-top: 100px;
-  width: 100px;
-  height: 50px;
-  background-color: #006600;
-  font-size: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-  color: white;
-}
-.btncell:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
-}
-.sidenav span a .btncell{
-  background: #c2c2a3;
-  color: black;
-}
-
-
 /*Radio buttons questions*/
 input[type="radio"] {
   width: 30px;
@@ -210,6 +11,31 @@ input[type="radio"] {
   background-color: white;
   -webkit-appearance: none; /*to disable the default appearance of radio button*/
   -moz-appearance: none;
+}
+.mult-select-tag .input-container{
+  height: 50px!important;
+  overflow-y: scroll;
+}
+
+.mult-select-tag .wrapper{
+  width: 400px;
+}
+
+.mult-select-tag .rounded{
+  width: 400px;
+}
+
+.mult-select-tag .item-label{
+  color: green;
+}
+
+.mult-select-tag .item-container{
+  border: 1px solid green;
+  height: 35px;
+}
+
+.mult-select-tag .item-close-svg{
+  color: green;
 }
 
 input[type="radio"]:focus { /*no need, if you don't disable default appearance*/
@@ -371,223 +197,10 @@ label{
 }
 
 
-/*Button that opens the sidenav filters*/
-#openSideNav{
-  background-color: green;
-  border-radius: 30px;
-  position: fixed;
-  padding: 5px;
-  right: 5px;
-  bottom: 10px;
-  z-index: 2;
-  visibility: hidden;
-}
-
-
 /* Align images from radio buttons*/
 img{
   vertical-align: baseline!important;
 }
-
-
-
-/* Filter buttons to pc resolution*/
-#formspc{
-  display: flex;
-  justify-content: center;
-  column-gap: 40px;
-  align-items: baseline;
-  margin-top: 50px;
-}
-
-.wrapperpc{
-  width: 210px;
-  margin: 20px auto 0;
-}
-
-#wrapper6{
-  width: 210px;
-}
-
-.select-btnpc{
-  height: 50px;
-  padding: 0 20px;
-  font-size: 18px;
-  background: #e0e0d1;
-  border-radius: 7px;
-  justify-content: space-between;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-}
-
-.select-btnpc, li{
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.select-btnpc:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
-}
-
-#palavra-chavepc{
-  width: 210px;
-  height: 50px;
-  background: #e0e0d1;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-}
-
-#palavra-chavepc:focus{
-  outline: none!important;
-}
-
-#palavra-chavepc:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
-}
-.btnpc{
-  width: 100px;
-  height: 50px;
-  background-color: green;
-  font-size: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-  color: white;
-  border-radius: 5px;
-  border-color: green;
-}
-.btnpc:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
-}
-
-#buttonsfilter{
-  display: flex;
-  justify-content: center;
-  padding: 20px 0 20px 0;
-  column-gap: 20px;
-}
-
-#buttonsfilter input:hover{
-  cursor: pointer;
-}
-
-#buttonsfilter a input{
-  background: #e0e0d1;
-  border-radius: 5px;
-  border-color: white;
-  color: black;
-}
-
-#buttonsfiltercelular{
-  justify-content: center;
-  column-gap: 20px;
-  margin-top: 100px;
-  padding: 20px 0 20px 0;
-  display: none;
-}
-
-#buttonsfiltercelular input:hover{
-  cursor: pointer;
-}
-
-#buttonsfiltercelular a input{
-  background: #e0e0d1;
-  border-radius: 5px;
-  border-color: white;
-  color: black;
-}
-
-.contentpc{
-  display: none;
-  padding: 20px;
-  margin-top: 15px;
-  background: #e0e0d1;
-  border-radius: 7px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.wrapperpc.active .contentpc{
-  display: block;
-}
-
-#content4, #content5{
-  position: absolute;
-  z-index: 2;
-  width: 210px;
-}
-
-#content6{
-  width: 340px;
-  position: absolute;
-  z-index: 2;
-}
-
-.contentpc .searchpc{
-  position: relative;
-}
-
-.contentpc .optionspc{
-  margin-top: 10px;
-  margin-left: -40px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.select-btnpc i{
-  font-size: 21px;
-  transition: transform 0.3s linear;
-}
-
-.wrapperpc.active .select-btnpc i{
-  transform: rotate(-180deg);
-}
-.optionspc::-webkit-scrollbar{
-  width: 7px;
-}
-.optionspc::-webkit-scrollbar-track{
-  border-radius: 25px;
-}
-.optionspc::-webkit-scrollbar-thumb{
-  border-radius: 25px;
-}
-.optionspc li{
-  height: 50px;
-  padding: 0 13px;
-  font-size: 18px;
-}
-.optionspc li:hover, li.selected{
-  border-radius: 5px;
-  background: #adad85;
-}
-.searchpc i{
-  top: 50%;
-  left: 15px;
-  color: black;
-  font-size: 20px;
-  pointer-events: none;
-  transform: translateY(-50%);
-  position: absolute;
-}
-.searchpc input{
-  background: #e0e0d1;
-  height: 50px;
-  width: 100%;
-  outline: none;
-  font-size: 17px;
-  border-radius: 5px;
-  padding: 0 20px 0 43px;
-  border: 1px solid #adad85;
-}
-.searchpc input:focus{
-  padding-left: 42px;
-  border: 2px solid #adad85;
-}
-.searchpc input::placeholder{
-  color: black;
-}
-
-
 
 /*Questions end options*/
 .QuestionOptions{
@@ -692,7 +305,18 @@ img{
   #modalContent{
     height: 300px;
   }
+  .mult-select-tag .rounded{
+    width: 250px;
+  }
+  .mult-select-tag .wrapper{
+    width: 250px;
+  }
+  #filtro{
+    margin-top: 170px!important;
+  }
 }
+
+
 @media (max-width: 1066px){
   #formspc{
     display: none;

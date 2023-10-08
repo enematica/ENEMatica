@@ -2,157 +2,94 @@
 {% load static %}
 {% block content %}
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
     <link rel="stylesheet" href="{% static 'css/questoes.css' %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script type="text/javascript" src="{% static 'js/questoes2.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
 </head>
 
-<!-- Sidenav filter that appears when the resolution is low-->
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <form action="?" method="GET" id="forms">
-    <span>
-      <div class="wrapper" id="wrapper1">
-        <div class="select-btn" id="select-btn1">
-          <span>Ano</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="content" id="content1">
-          <div class="search">
-            <i class="uil uil-search"></i>
-            <input id="input1" type="text" placeholder="Pesquisar">
-          </div>
-          <ul class="options" id="options1">
-          </ul>
-        </div>
-      </div>
-    </span>
-    <span>
-      <div class="wrapper" id="wrapper3">
-        <div class="select-btn" id="select-btn3">
-          <span>Conteúdo</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="content" id="content3">
-          <div class="search">
-            <i class="uil uil-search"></i>
-            <input id="input3" type="text" placeholder="Pesquisar">
-          </div>
-          <ul class="options" id="options3">
-          </ul>
-        </div>
-      </div>
-    </span>
-    <span>
-      <div class="wrapper" id="wrapper2">
-        <div class="select-btn" id="select-btn2">
-          <span>Dificuldade</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="content" id="content2">
-          <div class="search">
-            <i class="uil uil-search"></i>
-            <input id="input2" type="text" placeholder="Pesquisar">
-          </div>
-          <ul class="options" id="options2">
-          </ul>
-        </div>
-      </div>
-    </span>
-    <span>
-      <div class="palavra-chave">
-          <input type="text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Palavra-chave" autocomplete="off" id='palavra-chave'>
-      </div>
-    </span>
-    <span>
-      <input type="hidden" value="" id="anos" name="anos">
-      <input type="hidden" value="" id="dificuldade" name="dificuldade">
-      <input type="hidden" value="" id="conteudo" name="conteudo">
-      <input type="submit" class="btncell btn submit" id="filtrar" value="Filtrar">
-      <a><input type="button" class="btncell btn" value="Limpar" onclick="limpar()"></a>
-    </span>
-  </form>
-</div>
-
 <!-- Filtering buttons for medium and big resolutions as pc-->
-<div id="formspc">
-  <form action="?" method="GET" id="formspc">
-    <span>
-      <div class="wrapperpc" id="wrapper4">
-        <div class="select-btnpc" id="select-btn4">
-          <span>Ano</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="contentpc" id="content4">
-          <div class="searchpc">
-            <i class="uil uil-search"></i>
-            <input id="input4" type="text" placeholder="Pesquisar">
-          </div>
-          <ul class="optionspc" id="options4">
-          </ul>
-        </div>
-      </div>
-    </span>
-    <span>
-      <div class="wrapperpc" id="wrapper5">
-        <div class="select-btnpc" id="select-btn5">
-          <span>Dificuldade</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="contentpc" id="content5">
-          <div class="searchpc">
-            <i class="uil uil-search"></i>
-            <input id="input5" type="text" placeholder="Pesquisar">
-          </div>
-          <ul class="optionspc" id="options5">
-          </ul>
-        </div>
-      </div>
-    </span>
-    <span>
-      <div class="wrapperpc" id="wrapper6">
-        <div class="select-btnpc" id="select-btn6">
-          <span>Conteúdo</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="contentpc" id="content6">
-          <div class="searchpc">
-            <i class="uil uil-search"></i>
-            <input id="input6" type="text" placeholder="Pesquisar">
-          </div>
-          <ul class="optionspc" id="options6">
-          </ul>
-        </div>
-      </div>
-    </span>
-    <span>
-      <div class="palavra-chave">
-          <input type="text" name='enunciado' value="{{request.GET.enunciado}}" placeholder="Palavra-chave" autocomplete="off" id='palavra-chavepc'>
-      </div>
-    </span>
+<form method="GET" style="margin-top: 110px;" id="filtro">
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Conteúdo</p>
+    <select name="conteudos" id="conteudos" multiple>
+        <option value="Análise Combinatória">Análise Combinatória</option>
+        <option value="Análise Dimensional">Análise Dimensional</option>
+        <option value="Ângulo">Ângulo</option>
+        <option value="Aritmética">Aritmética</option>
+        <option value="Conjuntos">Conjuntos</option>
+        <option value="Contagem">Contagem</option>
+        <option value="Conversão de unidades">Conversão de unidades</option>
+        <option value="Equação do 1° grau">Equação do 1° grau</option>
+        <option value="Equação do 2° grau">Equação do 2° grau</option>
+        <option value="Estatística (análise de gráficos)">Estatística (análise de gráficos)</option>
+        <option value="Estatística (análise de tabela)">Estatística (análise de tabela)</option>
+        <option value="Estatística (média aritmética)">Estatística (média aritmética)</option>
+        <option value="Estatística (média ponderada)">Estatística (média ponderada)</option>
+        <option value="Estatística (mediana)">Estatística (mediana)</option>
+        <option value="Estatística (moda)">Estatística (moda)</option>
+        <option value="Função do 1° grau">Função do 1° grau</option>
+        <option value="Função exponencial">Função exponencial</option>
+        <option value="Função trigonométrica">Função trigonométrica</option>
+        <option value="Funções - análise de gráfico">Funções - análise de gráfico</option>
+        <option value="Geometria analítica">Geometria analítica</option>
+        <option value="Geometria espacial">Geometria espacial</option>
+        <option value="Geometria plana">Geometria plana</option>
+        <option value="Inequações">Inequações</option>
+        <option value="Logaritmo">Logaritmo</option>
+        <option value="Matemática financeira">Matemática financeira</option>
+        <option value="Matrizes">Matrizes</option>
+        <option value="Notação científica">Notação científica</option>
+        <option value="Orientação espacial">Orientação espacial</option>
+        <option value="Porcentagem">Porcentagem</option>
+        <option value="Potenciação">Potenciação</option>
+        <option value="Plano cartesiano">Plano cartesiano</option>
+        <option value="Probabilidade">Probabilidade</option>
+        <option value="Progressão aritmética">Progressão aritmética</option>
+        <option value="Progressão geométrica">Progressão geométrica</option>
+        <option value="Projeção ortogonal">Projeção ortogonal</option>
+        <option value="Razão e proporção">Razão e proporção</option>
+        <option value="Regra de três">Regra de três</option>
+        <option value="Sequências">Sequências</option>
+        <option value="Sistemas lineares">Sistemas lineares</option>
+        <option value="Trigonometria">Trigonometria</option>
+        <option value="Todos" selected>Todos</option>
+    </select>
+  </div>
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Ano</p>
+    <select name="anos" id="anos" multiple>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="Todos" selected>Todos</option>
+    </select>
+  </div>
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Dificuldade</p>
+    <select name="dificuldades" id="dificuldades" multiple>
+        <option value="Fácil">Fácil</option>
+        <option value="Médio">Médio</option>
+        <option value="Difícil">Difícil</option>
+        <option value="Todos" selected>Todos</option>
+    </select>
+  </div>
 </div>
-    <span id="buttonsfilter">
-      <input type="hidden" value="" id="anos2" name="anos">
-      <input type="hidden" value="" id="dificuldade2" name="dificuldade">
-      <input type="hidden" value="" id="conteudo2" name="conteudo">
-      <input type="submit" class="btnpc submit" id="filtrar" value="Filtrar">
-      <a href="{% url 'app:questoes' %}"><input type="button" class="btnpc" value="Limpar" onclick="limpar2()"></a>
-    </span>
-  </form>
-
-<!--The two buttons that stay in the page top when the resolution is low-->
-<span id="buttonsfiltercelular">
-  <input type="button" class="btnpc" value="Filtrar" onclick="openNav()">
-  <a href="{% url 'app:questoes' %}"><input type="button" class="btnpc" value="Limpar"></a>
-</span>
+  <input type="text" hidden="hidden" name="anos2" id="anos2" value="">
+  <input type="text" hidden="hidden" name="conteudos2" id="conteudos2" value="">
+  <input type="text" hidden="hidden" name="dificuldades2" id="dificuldades2" value="">
+<div style="justify-content: center; display: flex;">
+  <input style="margin-top: 10px; margin-bottom: 10px; height: 50px; width: 80px; font-size: 18px;" class="responder" type="submit" id="submeter" value="Filtrar" onclick="EnviarDados()">
+</div>
+</form>
 
 <!-- Iframe helps to not reload the page when the answer button is clicked-->
 <iframe name="ola" class="hide"></iframe>
-
-<!-- Fixed button that opens the sidenav filter bar-->
-<svg onclick="openNav()" style="cursor: pointer;" id="openSideNav" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-filter" viewBox="0 0 16 16">
-  <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-</svg>
 
 <!-- Modal for the videos-->
 <div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -418,22 +355,22 @@
   <nav aria-label="Page navigation example" id="navfacil">
     <ul class="pagination" id="pagination">
         <!-- Pagination if the user chose a filter -->
-        {% if request.GET.enunciado or request.GET.conteudo or request.GET.anos or request.GET.dificuldade %}
+        {% if request.GET.anos2 or request.GET.dificuldades2 or request.GET.conteudos2 %}
             {% if page_obj.has_other_pages %}
             <div class="btn-group" role="group" aria-label="Item pagination">
                 {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page=1&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page=1&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}">&laquo;</a></li>
                 {% endif %}
                 {% for page_number in page_obj.paginator.page_range %}
                     {% if page_obj.number == page_number %}
                         <li class="page-item selecionado" id="{{page_obj.number}}"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
                     {% elif page_obj.number < page_number|add:'+4' and page_obj.number > page_number|add:'-4'%}
-                        <li class="page-item" id="listafacil{{page_number}}"><a class="page-link listafacil" href="/questoes/?page={{page_number}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">{{page_number}}</a></li>
+                        <li class="page-item" id="listafacil{{page_number}}"><a class="page-link listafacil" href="/questoes/?page={{page_number}}&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}">{{page_number}}</a></li>
                     {% endif %}
                 {% endfor %}
 
                 {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page={{page_obj.paginator.num_pages}}&enunciado={{request.GET.enunciado}}&anos={{request.GET.anos}}&dificuldade={{request.GET.dificuldade}}&conteudo={{request.GET.conteudo}}">&raquo;</a></li>
+                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page={{page_obj.paginator.num_pages}}&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}">&raquo;</a></li>
                 {% endif %}
             </div>
             {% endif %}
