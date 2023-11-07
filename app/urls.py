@@ -11,4 +11,6 @@ urlpatterns = [
     path('thanks/', TemplateView.as_view(template_name='thanks.html'), name='thanks'),
     path('galeria/', FotosList.as_view(), name='galeria'),
     path('resumos/', ResumosList.as_view(), name='resumos'),
+    path('simulado/', SimuladoList.as_view(), name='simulado'),
+    path('h1v2327/', QuestoesList2.as_view(), name='simulado_escolas'),
 ]

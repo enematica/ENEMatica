@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" href="{% static 'css/questoes.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script type="text/javascript" src="{% static 'js/simulado.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+
+    <style type="text/css">
+      .display_none {
+        display: none;
+      }
+      .display_flex {
+        display: flex;
+      }
+    </style>
+</head>
+
+<!-- Filtering buttons for medium and big resolutions as pc-->
+<form method="GET" style="margin-top: 110px;" id="filtro"><!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<p style="text-align: center; margin-bottom: 1px; color: green; font-size: 30px;">Selecione os requisitos para gerar o simulado</p>
+<div style="justify-content: space-around; flex-wrap: wrap;" class="display_flex">
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Conteúdos</p>
+    <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Deixe em branco para selecionar todos...</p>
+      <select name="conteudos" id="conteudos" multiple>
+      <option value="Análise Combinatória">Análise Combinatória</option>
+      <option value="Análise Dimensional">Análise Dimensional</option>
+      <option value="Ângulo">Ângulo</option>
+      <option value="Aritmética">Aritmética</option>
+      <option value="Conjuntos">Conjuntos</option>
+      <option value="Contagem">Contagem</option>
+      <option value="Conversão de unidades">Conversão de unidades</option>
+      <option value="Equação do 1° grau">Equação do 1° grau</option>
+      <option value="Equação do 2° grau">Equação do 2° grau</option>
+      <option value="Estatística (análise de gráficos)">Estatística (análise de gráficos)</option>
+      <option value="Estatística (análise de tabela)">Estatística (análise de tabela)</option>
+      <option value="Estatística (média aritmética)">Estatística (média aritmética)</option>
+      <option value="Estatística (média ponderada)">Estatística (média ponderada)</option>
+      <option value="Estatística (mediana)">Estatística (mediana)</option>
+      <option value="Estatística (moda)">Estatística (moda)</option>
+      <option value="Função do 1° grau">Função do 1° grau</option>
+      <option value="Função exponencial">Função exponencial</option>
+      <option value="Função trigonométrica">Função trigonométrica</option>
+      <option value="Funções - análise de gráfico">Funções - análise de gráfico</option>
+      <option value="Geometria analítica">Geometria analítica</option>
+      <option value="Geometria espacial">Geometria espacial</option>
+      <option value="Geometria plana">Geometria plana</option>
+      <option value="Inequações">Inequações</option>
+      <option value="Logaritmo">Logaritmo</option>
+      <option value="Matemática financeira">Matemática financeira</option>
+      <option value="Matrizes">Matrizes</option>
+      <option value="Notação científica">Notação científica</option>
+      <option value="Orientação espacial">Orientação espacial</option>
+      <option value="Porcentagem">Porcentagem</option>
+      <option value="Potenciação">Potenciação</option>
+      <option value="Plano cartesiano">Plano cartesiano</option>
+      <option value="Probabilidade">Probabilidade</option>
+      <option value="Progressão aritmética">Progressão aritmética</option>
+      <option value="Progressão geométrica">Progressão geométrica</option>
+      <option value="Projeção ortogonal">Projeção ortogonal</option>
+      <option value="Razão e proporção">Razão e proporção</option>
+      <option value="Regra de três">Regra de três</option>
+      <option value="Sequências">Sequências</option>
+      <option value="Sistemas lineares">Sistemas lineares</option>
+      <option value="Trigonometria">Trigonometria</option>
+    </select>
+  </div>
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Anos</p>
+    <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Deixe em branco para selecionar todos...</p>
+    <select name="anos" id="anos" multiple>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+    </select>
+  </div>
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Dificuldades</p>
+    <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Deixe em branco para selecionar todos...</p>
+    <select name="dificuldades" id="dificuldades" multiple>
+      <option value="Fácil">Fácil</option>
+      <option value="Médio">Médio</option>
+      <option value="Difícil">Difícil</option>
+    </select>
+  </div>
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Quantidade de questões</p>
+    <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Selecione apenas uma quantidade</p>
+    <select name="quant_questoes" id="quant_questoes" multiple>
+      <option value="15" selected>15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
+      <option value="35">35</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+    </select>
+  </div>
+  <div>
+    <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Tempo por questão</p>
+    <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Selecione apenas um tempo</p>
+    <select name="tempo" id="tempo" multiple>
+      <option value="120">2 minutos</option>
+      <option value="150">2 minutos e 30 segundos</option>
+      <option value="180">3 minutos</option>
+      <option value="210" selected>3 minutos e 30 segundos</option>
+      <option value="240">4 minutos</option>
+      <option value="270">4 minutos e 30 segundos</option>
+      <option value="300">5 minutos</option>
+    </select>
+  </div>
+</div>
+  <input type="text" hidden="hidden" name="anos2" id="anos2" value="">
+  <input type="text" hidden="hidden" name="conteudos2" id="conteudos2" value="">
+  <input type="text" hidden="hidden" name="dificuldades2" id="dificuldades2" value="">
+  <input type="text" hidden="hidden" name="quant_questoes2" id="quant_questoes2" value="">
+  <input type="text" hidden="hidden" name="tempo2" id="tempo2" value="">
+<div style="justify-content: center; display: flex;">
+  <input style="margin-top: 10px; margin-bottom: 10px; height: 50px; width: 80px; font-size: 18px;" class="responder" type="submit" id="submeter" value="Filtrar" onclick="EnviarDadosNovo()">
+</div>
+</form><!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
+<script type="text/javascript">//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+new MultiSelectTag('quant_questoes',{
+    rounded:true,
+    shadow:true,
+    placeholder: 'Pesquisar',
+    onChange: function(values){
+        console.log(values)
+    }
+})
+new MultiSelectTag('tempo',{
+    rounded:true,
+    shadow:true,
+    placeholder: 'Pesquisar',
+    onChange: function(values){
+        console.log(values)
+    }
+})
+</script><!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
+<!-- Iframe helps to not reload the page when the answer button is clicked-->
+<iframe name="ola" class="hide"></iframe>
+
+<!-- Modal for the videos-->
+<div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div id="modalContent" class="modal-content">
+      <div class="modal-header">
+        <button onclick="StopVideo()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="videoYt" src="" width="100%" height="100%" allow="fullscreen"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 20px;">Filtre antes de apresentar o simulado</p>
+
+<center><input style="margin-top: 10px; margin-bottom: 10px; height: 50px; width: 180px; font-size: 18px;" onclick="Apresentar()" type="button" class="responder" value="Apresentar prova" id="apr"></center>
+
+<!-- Apresentação do cronômetro -->
+<div id="cronus" style="position: fixed; right: 50px; top: 150px; padding: 9px 0 9px 0; width: 100px; background-color: green; color: white; border-radius: 5px; border-color: black; border-style: solid; border-width: 2px;" class="display_none">
+  <center><span id="hora">00</span>:<span id="minuto">00</span>:<span id="segundo">00</span></center>
+</div>
+
+<!-- Envia a quantidade de questoes na página e o tempo dado pelo usuário ao javascript -->
+<script>
+  tempo_por_questoes.push({{tempo}});
+  quantidade_de_questoes.push({{quant_questoes}});
+</script>
+
+<!-- Cabeçalho pós filtro -->
+<br><br><br><br>
+<div  id="cabecalho_pos_filtros" class="display_none">
+  <div class="headerquestion">
+    <center><span style="font-size: 40px;">Simulado ENEMática</span></center>
+  </div>
+</div>
+
+<!-- Apresentação do resultado pós resolução da prova -->
+<br>
+<span id="respostascertas"></span>
+
+<!-- If to see if are there questions in the database-->
+<div id="pagina" class="display_none">
+
+{% if object_list.count >= quant_questoes %}
+
+  <!-- For in the database-->
+  {% for questoe in object_list %}
+    {% if forloop.counter <= quant_questoes %}
+
+      <!-- Questions header -->
+      <div class="headerquestion" style="padding: 10px 15px;">
+          <span>Questão {{questoe}} (Enem {{questoe.ano}})</span>
+      </div>
+
+      <!-- Questions body-->
+      <div class="bodyquestion" id="question{{questoe.id}}">
+        <span>{{questoe.enunciado | safe}}</span>
+      </div>
+
+      <!-- Questions footer -->
+      <div class="answerquestion">
+
+        <!-- Form that encapsulate the radio buttons according to the question-->
+        <form action="{% url 'app:simulado' %}" method="GET" target="ola" id="questao">
+
+          <!-- Count the position of the for-->
+          {% with separador=forloop.counter %}
+            <label>
+              <input type="radio" name="radio{{separador}}" value="a"/>
+              <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+            </label><br>
+            <label class="labelAdjust">
+              <input type="radio" name="radio{{separador}}" value="b"/>
+              <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+            </label><br>
+            <label class="labelAdjust">
+              <input type="radio" name="radio{{separador}}" value="c"/>
+              <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+            </label>
+            <br/>
+            <label class="labelAdjust">
+              <input type="radio" name="radio{{separador}}" value="d"/>
+              <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+            </label><br>
+            <label class="labelAdjust">
+              <input type="radio" name="radio{{separador}}" value="e"/>
+              <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+            </label>
+            <input type="radio" name="radio{{separador}}" value="x" hidden checked/>
+            <input type="hidden" value={{questoe.id}}>
+            <input type="hidden" value="{{questoe.resposta_certa}}">
+            <div class="finalcontainer">
+              <span class="resposta" hidden="hidden" id="errorform{{separador}}"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+              <span class="respostacerta" hidden="hidden" id="certoform{{separador}}"> Parabéns! Você acertou!</span>
+            </div>
+            <div class="QuestionOptions" hidden="hidden">
+              <div onclick="MostrarVideo({{separador}})" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                </svg>
+                <span>Videoaula comentada</span>
+              </div>
+            </div>
+          {% endwith %}
+        </form>
+
+        <!-- Esse script precisa ficar aqui, ele leva a resposta das perguntas e o link para fornecê-las ao javascript -->
+        <script>
+          resposta.push('{{questoe.resposta_certa}}');
+          links.push('{{questoe.link}}');
+        </script>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  <div class="headerquestion" style="margin: 10px; padding: 10px;">
+    <span>Responda todas as questões para Enviar a prova.</span>
+  </div>
+  <center><input type="submit" class="responder" id="responder" value="Responder" name="responder" onclick="Responder()"></center>
+<br><br><br>
+
+<!-- If the returned queryset lenght is zero -->
+{% else %}
+  <p id="noQuestion">Não foram encontradas questões suficientes com os filtros escolhidos para gerar o Simulado!</p>
+  <br>
+  <center><a href="{% url 'app:simulado' %}"><button type="button" class="responder">Voltar</button></a></center>
+{% endif %}
+</div>
+
+<!-- Second javascript file, needs to stay here-->
+<script type="text/javascript" src="{% static 'js/questoes.js' %}"></script>
+{% endblock content %}

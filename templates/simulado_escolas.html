@@ -1,0 +1,621 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" style="height: 100%;">
+<head>
+    <link rel="stylesheet" href="{% static 'css/simulado_escolas.css' %}">
+    <script type="text/javascript" src="{% static 'js/questoes2.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+    <style>
+        .questao{
+  font-size: 20px;
+}
+
+h1{
+    color: green!important;
+    text-align: center;
+}
+
+*{
+  font-family: "Kanit", sans-serif;
+}
+
+input[type="radio"]{
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid green;
+  background-color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="radio"]:focus {
+  outline: none;
+}
+
+input[type="radio"]:hover ~ .spanOne{
+  color: white;
+  cursor: pointer;
+}
+
+input[type="radio"]:hover{
+  background-color: green;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked{
+    background-color: green;
+}
+
+input[type="radio"]:checked ~ .spanOne{
+  color: white;
+}
+
+label .spanOne{
+  position: relative;
+  left: -30px;
+  top: -8px;
+  font-size: 20px;
+  color: green;
+}
+
+label p{
+  position: relative;
+  top: -50px;
+  margin-left: 45px;
+  cursor: pointer;
+}
+
+.mathjax-latex{
+  color: black;
+}
+
+label span:hover{
+  cursor: pointer;
+}
+
+.labelAdjust{
+  height: 0px;
+  display: inline-block;
+}
+
+#botao{
+  width: 200px;
+  height: 50px;
+  background-color: green;
+  font-size: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+  color: white;
+  border-radius: 5px;
+  border-color: green;
+}
+
+.maedobotao{
+  text-align: center;
+}
+
+.resultados{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 30px;
+  color: green;
+}
+
+    </style>
+</head>
+<body>
+<div class="simulado">
+  <h1>Simulado ENEMática</h1>
+  <form id="questoes">
+    {% for questoe in object_list %}
+    {% if questoe.numero == 162 and questoe.ano == '2018' %}
+      <div class="questao">
+        <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+        <p>{{questoe.enunciado | safe}}</p>
+        <div class="respostas">
+          <label class="labelAdjust">
+            <input type="radio" name="q3" value="a"/>
+            <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q3" value="b"/>
+            <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q3" value="c"/>
+            <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q3" value="d"/>
+            <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q3" value="e"/>
+            <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+          </label><br>
+        </div>
+      </div>
+        <input id="questao3" type="hidden" value="{{questoe.resposta_certa}}">
+    </div>
+    {% elif questoe.numero == 136 and questoe.ano == '2019' %}
+      <div class="questao">
+        <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+        <p>{{questoe.enunciado | safe}}</p>
+        <div class="respostas">
+          <label class="labelAdjust">
+            <input type="radio" name="q5" value="a"/>
+            <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q5" value="b"/>
+            <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q5" value="c"/>
+            <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q5" value="d"/>
+            <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+          </label><br>
+          <label class="labelAdjust">
+            <input type="radio" name="q5" value="e"/>
+            <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+          </label><br>
+        </div>
+      </div>
+        <input id="questao5" type="hidden" value="{{questoe.resposta_certa}}">
+    </div>
+    {% elif questoe.numero == 179 and questoe.ano == '2019' %}
+    <div class="questao">
+      <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+      <p>{{questoe.enunciado | safe}}</p>
+      <div class="respostas">
+        <label class="labelAdjust">
+          <input type="radio" name="q12" value="a"/>
+          <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+        </label><br>
+        <label class="labelAdjust">
+          <input type="radio" name="q12" value="b"/>
+          <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+        </label><br>
+        <label class="labelAdjust">
+          <input type="radio" name="q12" value="c"/>
+          <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+        </label><br>
+        <label class="labelAdjust">
+          <input type="radio" name="q12" value="d"/>
+          <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+        </label><br>
+        <label class="labelAdjust">
+          <input type="radio" name="q12" value="e"/>
+          <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+        </label><br>
+      </div>
+    </div>
+      <input id="questao12" type="hidden" value="{{questoe.resposta_certa}}">
+  </div>
+  {% elif questoe.numero == 154 and questoe.ano == '2019' %}
+  <div class="questao">
+    <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+    <p>{{questoe.enunciado | safe}}</p>
+    <div class="respostas">
+      <label class="labelAdjust">
+        <input type="radio" name="q8" value="a"/>
+        <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+      </label><br>
+      <label class="labelAdjust">
+        <input type="radio" name="q8" value="b"/>
+        <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+      </label><br>
+      <label class="labelAdjust">
+        <input type="radio" name="q8" value="c"/>
+        <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+      </label><br>
+      <label class="labelAdjust">
+        <input type="radio" name="q8" value="d"/>
+        <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+      </label><br>
+      <label class="labelAdjust">
+        <input type="radio" name="q8" value="e"/>
+        <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+      </label><br>
+    </div>
+  </div>
+    <input id="questao8" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 176 and questoe.ano == '2021' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q14" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q14" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q14" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q14" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q14" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao14" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 147 and questoe.ano == '2021' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q2" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q2" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q2" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q2" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q2" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao2" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 146 and questoe.ano == '2021' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q15" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q15" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q15" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q15" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q15" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao15" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 151 and questoe.ano == '2020' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q13" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q13" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q13" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q13" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q13" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao13" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 147 and questoe.ano == '2019' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q6" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q6" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q6" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q6" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q6" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao6" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 138 and questoe.ano == '2021' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q1" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q1" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q1" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q1" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q1" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao1" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 153 and questoe.ano == '2019' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q7" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q7" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q7" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q7" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q7" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao7" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 171 and questoe.ano == '2019' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q11" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q11" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q11" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q11" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q11" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao11" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 158 and questoe.ano == '2019' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q9" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q9" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q9" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q9" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q9" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao9" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 160 and questoe.ano == '2019' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q10" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q10" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q10" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q10" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q10" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao10" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+{% elif questoe.numero == 163 and questoe.ano == '2018' %}
+<div class="questao">
+  <h4>Questão {{questoe.numero}} de {{questoe.ano}}</h4>
+  <p>{{questoe.enunciado | safe}}</p>
+  <div class="respostas">
+    <label class="labelAdjust">
+      <input type="radio" name="q4" value="a"/>
+      <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q4" value="b"/>
+      <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q4" value="c"/>
+      <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q4" value="d"/>
+      <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+    </label><br>
+    <label class="labelAdjust">
+      <input type="radio" name="q4" value="e"/>
+      <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+    </label><br>
+  </div>
+</div>
+  <input id="questao4" type="hidden" value="{{questoe.resposta_certa}}">
+</div>
+    {% endif %}
+    {% endfor %}
+    <div class="maedobotao"><button type="submit" id="botao">Finalizar simulado</button></div>
+  </form>
+</div>
+  <div class="resultados" id="resultados"></div>
+  <div class="resultados", id="comparacao"></div>
+  <div class="resultados", id="comparacao2"></div>
+<script type="text/javascript">
+  const questoes = document.getElementById('questoes');
+  const resultado = document.getElementById('resultados');
+  const comparacao = document.getElementById('comparacao');
+  const comparacao2 = document.getElementById('comparacao2');
+  const respostascorretas = [document.getElementById('questao1').value, document.getElementById('questao2').value, document.getElementById('questao3').value, document.getElementById('questao4').value, document.getElementById('questao5').value, document.getElementById('questao6').value, document.getElementById('questao7').value, document.getElementById('questao8').value, document.getElementById('questao9').value, document.getElementById('questao10').value, document.getElementById('questao11').value, document.getElementById('questao12').value, document.getElementById('questao13').value, document.getElementById('questao14').value, document.getElementById('questao15').value];
+  questoes.addEventListener('submit',e=>{
+    e.preventDefault();
+    const questions = document.getElementsByClassName('questao');
+    for(var x = 0; x<questions.length; x++){
+      questions[x].hidden = true;
+    }
+    document.querySelector('.maedobotao').hidden = true;
+    let pontuacao = 0;
+    const respostasdousuario = [questoes.q1.value, questoes.q2.value, questoes.q3.value, questoes.q4.value, questoes.q5.value, questoes.q6.value, questoes.q7.value, questoes.q8.value, questoes.q9.value, questoes.q10.value, questoes.q11.value, questoes.q12.value, questoes.q13.value,questoes.q14.value, questoes.q15.value];
+    respostasdousuario.forEach((resposta,numero) => {
+      if(resposta == respostascorretas[numero]){
+        pontuacao += 1;
+      };
+    });
+    comparacao.innerHTML = `Suas respostas: ${respostasdousuario}`;
+    comparacao2.innerHTML = `Respostas certas: ${respostascorretas}`;
+    resultado.innerHTML = `Você acertou ${pontuacao} questões de ${respostascorretas.length} questões`;
+
+  });
+
+  let imagens = document.querySelectorAll('img');
+    let imagens2 = [];
+    for(var g = 0; g<imagens.length;g++){
+        imagens2.push(imagens[g].width);
+    }
+
+  window.onload = function () {
+    let width = document.querySelector('h1').clientWidth;
+    for(var y=0; y<imagens2.length; y++){
+      if(imagens2[y] > width){
+        imagens[y].setAttribute('width', '80%');
+        imagens[y].setAttribute('height', '80%');
+      }
+      else{
+        imagens[y].removeAttribute('width'); 
+        imagens[y].removeAttribute('height');
+      }
+    }
+
+    }
+
+    window.addEventListener('resize', function () {
+    //Adjusting the images width
+    let width = document.querySelector('h1').clientWidth;
+    for(var y=0; y<imagens2.length; y++){
+      if(imagens2[y] > width){
+        imagens[y].setAttribute('width', '80%');
+        imagens[y].setAttribute('height', '80%');
+      }
+      else{
+        imagens[y].removeAttribute('width'); 
+        imagens[y].removeAttribute('height');
+      }
+    }
+    })
+
+</script>
+</body>
+</html>
