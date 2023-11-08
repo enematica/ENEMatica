@@ -79,6 +79,11 @@
         <option value="Difícil">Difícil</option>
     </select>
   </div>
+  <div style="display: flex; align-items: flex-end;">
+    <div><p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Palavra-chave</p>
+      <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Filtre por enunciado ou número</p>
+    <center><input type="text" id="enunciado" name="enunciado"></center></div>
+  </div>
 </div>
   <input type="text" hidden="hidden" name="anos2" id="anos2" value="">
   <input type="text" hidden="hidden" name="conteudos2" id="conteudos2" value="">
@@ -355,22 +360,22 @@
   <nav aria-label="Page navigation example" id="navfacil">
     <ul class="pagination" id="pagination">
         <!-- Pagination if the user chose a filter -->
-        {% if request.GET.anos2 or request.GET.dificuldades2 or request.GET.conteudos2 %}
+        {% if request.GET.anos2 or request.GET.dificuldades2 or request.GET.conteudos2 or request.GET.enunciado %}
             {% if page_obj.has_other_pages %}
             <div class="btn-group" role="group" aria-label="Item pagination">
                 {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page=1&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page=1&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}&enunciado={{request.GET.enunciado}}">&laquo;</a></li>
                 {% endif %}
                 {% for page_number in page_obj.paginator.page_range %}
                     {% if page_obj.number == page_number %}
                         <li class="page-item selecionado" id="{{page_obj.number}}"><a class="page-link listafacil" id="selecionado">{{page_obj.number}}</a><li>
                     {% elif page_obj.number < page_number|add:'+4' and page_obj.number > page_number|add:'-4'%}
-                        <li class="page-item" id="listafacil{{page_number}}"><a class="page-link listafacil" href="/questoes/?page={{page_number}}&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}">{{page_number}}</a></li>
+                        <li class="page-item" id="listafacil{{page_number}}"><a class="page-link listafacil" href="/questoes/?page={{page_number}}&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}&enunciado={{request.GET.enunciado}}">{{page_number}}</a></li>
                     {% endif %}
                 {% endfor %}
 
                 {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page={{page_obj.paginator.num_pages}}&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}">&raquo;</a></li>
+                    <li class="page-item"><a class="page-link listafacil" href="/questoes/?page={{page_obj.paginator.num_pages}}&anos2={{request.GET.anos2}}&dificuldades2={{request.GET.dificuldades2}}&conteudos2={{request.GET.conteudos2}}&enunciado={{request.GET.enunciado}}">&raquo;</a></li>
                 {% endif %}
             </div>
             {% endif %}
