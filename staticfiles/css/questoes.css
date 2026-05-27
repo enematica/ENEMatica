@@ -1,6 +1,69 @@
 body{
-  overflow: scroll;
+  overflow-y: auto;
+  padding-top: 60px;
 }
+
+#navHome {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.logo-link {
+  top:60%; /*correção do bug da logo nao centralizada verticalmente*/
+}
+
+/* Navbar escondida com slide pra cima */
+.hide-navbar {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Botão fixo colado embaixo da navbar */
+#toggleNavbarBtn {
+  position: fixed;
+  right: 60px;
+  width: 21px;
+  height: 11px;
+  background-color: #066806;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 10000;
+  transition: background-color 0.3s ease, top 0.4s ease;
+  top: 65px; /* altura da navbar */
+}
+
+#toggleNavbarBtn:hover {
+  background-color: #2b2c2b;
+}
+
+#toggleNavbarBtn svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+
+#toggleNavbarBtn:focus, #toggleNavbarBtn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Quando navbar escondida, seta gira 180° */
+.hide-navbar + #toggleNavbarBtn svg,
+.navbar-hidden-btn svg {
+  transform: rotate(180deg);
+}
+
+/* Quando navbar escondida, botão sobe junto */
+.navbar-hidden-btn {
+  top: 0px !important;
+}
+
 
 /*Radio buttons questions*/
 input[type="radio"] {
@@ -14,7 +77,7 @@ input[type="radio"] {
 }
 .mult-select-tag .input-container{
   height: 50px!important;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .mult-select-tag .wrapper{
@@ -172,13 +235,12 @@ label{
   height: 50px;
   background-color: green;
   font-size: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
   color: white;
   border-radius: 5px;
   border-color: green;
+  
 }
 .responder:hover{
-  box-shadow: 0 10px 25px rgba(0,0,0,1.3);
   cursor: pointer;
 }
 
@@ -310,7 +372,23 @@ img{
 }
 
 /*Media queries to get the site responsive*/
+@media(max-width:992px){
+  #toggleNavbarBtn{
+    top: 65px;
+    right: 20px;
+  }
+  body{
+    margin-top: -15px;
+  }
+}
+
+
 @media(max-width: 556px){
+
+  body{
+    margin-top: -45px;
+  }
+  
   #modalContent{
     height: 300px;
   }
@@ -321,7 +399,7 @@ img{
     width: 250px;
   }
   #filtro{
-    margin-top: 170px!important;
+    margin-top: 60px!important;
   }
 }
 
@@ -341,6 +419,7 @@ img{
   }
 }
 @media(max-width: 400px){
+
   .headerquestion{
     margin: 0 0 0 0;
   }

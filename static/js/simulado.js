@@ -54,7 +54,7 @@ function StopVideo(){
 // Conjunto do cronômetro da prova
 let hora = 0;
 let minuto = 0;
-let segundo = 50;
+let segundo = 0;
 let milisegundo = 0;
 
 let passando;

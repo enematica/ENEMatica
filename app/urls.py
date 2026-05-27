@@ -13,4 +13,5 @@ urlpatterns = [
     path('resumos/', ResumosList.as_view(), name='resumos'),
     path('simulado/', SimuladoList.as_view(), name='simulado'),
     path('h1v2327/', QuestoesList2.as_view(), name='simulado_escolas'),
+    path('sobre-nos/', SobreNosView.as_view(), name='sobre_nos'),
 ]

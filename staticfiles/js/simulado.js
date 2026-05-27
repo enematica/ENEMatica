@@ -54,7 +54,7 @@ function StopVideo(){
 // Conjunto do cronômetro da prova
 let hora = 0;
 let minuto = 0;
-let segundo = 50;
+let segundo = 0;
 let milisegundo = 0;
 
 let passando;
@@ -169,5 +169,6 @@ function Apresentar() {
   document.getElementById("cabecalho_pos_filtros").classList.remove('display_none');
   document.getElementById("filtro").classList.add('display_none');
   document.getElementById("apr").classList.add('display_none');
-  start()
+  document.getElementById("texto_filtro").classList.add('display_none');
+  start();
 }

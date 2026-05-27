@@ -5,7 +5,7 @@ class Questoe(BaseModel):
     """Class question with its attributes"""
     numero = models.IntegerField()
     ESCOLHAS_ANO = (
-        ('2018', '2018'), ('2019', '2019'), ('2020', '2020'), ('2021', '2021'), ('2022', '2022'), ('2023', '2023'),
+        ('2018', '2018'), ('2019', '2019'), ('2020', '2020'), ('2021', '2021'), ('2022', '2022'), ('2023', '2023'), ('2024', '2024'), ('2025', '2025'),
     )
     ano = models.CharField(max_length=4, choices=ESCOLHAS_ANO)
     conteudo = models.CharField(max_length=200)
@@ -35,5 +35,5 @@ class Questoe(BaseModel):
 
     """Return question's number and year"""
     def __str__(self):
-        return f'{self.numero} - {self.ano}'
+        return f'{self.numero} - {self.ano} - ({self.conteudo})'
     

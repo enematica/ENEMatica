@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
+
 <head>
     <link rel="stylesheet" href="{% static 'css/resumos.css' %}">
 </head>
+
 <!-- Images container-->
 <div id="imagens">
 {% for resumo in object_list %}
@@ -12,28 +15,22 @@
     </div>
 {% endfor %}
 </div>
+
 <!-- Images popup-->
 <div class="popup-img">
+
     <h3></h3>
-    <span>&times;</span>
+
+    <span class="fechar">&times;</span>
+
+    <!-- Setas -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+
     <img src="" alt="">
+
 </div>
-<!-- Javascript, a little code don't need to create an external file-->
-<script>
-//Function that opens the popup when an image is clicked
-document.querySelectorAll('#imagens img').forEach(image =>{
-    image.onclick = () =>{
-        document.querySelector('#navHome').classList.remove('fixed-top');
-        document.querySelector('body').style.overflow = "hidden";
-        document.querySelector('.popup-img').style.display = 'block';
-        document.querySelector('.popup-img img').src = image.getAttribute('src');
-    }
-});
-//Function that closes the popup when the close button is clicked
-document.querySelector('.popup-img span').onclick = () => {
-    document.querySelector('.popup-img').style.display = 'none';
-    document.querySelector('#navHome').classList.add('fixed-top');
-    document.querySelector('body').style.overflow = "scroll";
-}
-</script>
+
+<script src="{% static 'js/galeriaresumos.js' %}"></script>
+
 {% endblock content %}

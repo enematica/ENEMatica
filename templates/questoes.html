@@ -9,19 +9,25 @@
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
 </head>
 
+<!--Botão para esconder a navbar-->
+<button id="toggleNavbarBtn" title="Mostrar/Esconder navbar" aria-label="Toggle Navbar">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M7 10l5 5 5-5H7z"/>
+  </svg>
+</button>
+<script src="{% static 'js/escondernav.js' %}"></script>
+
 <!-- Filtering buttons for medium and big resolutions as pc-->
-<form method="GET" style="margin-top: 110px;" id="filtro">
+<form method="GET" style="margin-top: 30px;" id="filtro">
 <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
   <div>
     <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Conteúdos</p>
     <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Deixe em branco para selecionar todos...</p>
     <select name="conteudos" id="conteudos" multiple>
         <option value="Análise Combinatória">Análise Combinatória</option>
-        <option value="Análise Dimensional">Análise Dimensional</option>
         <option value="Ângulo">Ângulo</option>
         <option value="Aritmética">Aritmética</option>
         <option value="Conjuntos">Conjuntos</option>
-        <option value="Contagem">Contagem</option>
         <option value="Conversão de unidades">Conversão de unidades</option>
         <option value="Equação do 1° grau">Equação do 1° grau</option>
         <option value="Equação do 2° grau">Equação do 2° grau</option>
@@ -46,7 +52,6 @@
         <option value="Orientação espacial">Orientação espacial</option>
         <option value="Porcentagem">Porcentagem</option>
         <option value="Potenciação">Potenciação</option>
-        <option value="Plano cartesiano">Plano cartesiano</option>
         <option value="Probabilidade">Probabilidade</option>
         <option value="Progressão aritmética">Progressão aritmética</option>
         <option value="Progressão geométrica">Progressão geométrica</option>
@@ -68,6 +73,8 @@
         <option value="2021">2021</option>
         <option value="2022">2022</option>
         <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
     </select>
   </div>
   <div>
@@ -82,7 +89,7 @@
   <div style="display: flex; align-items: flex-end;">
     <div><p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Palavra-chave</p>
       <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Filtre por enunciado ou número</p>
-    <center><input type="text" id="enunciado" name="enunciado"></center></div>
+    <input type="text" id="enunciado" name="enunciado"></div>
   </div>
 </div>
   <input type="text" hidden="hidden" name="anos2" id="anos2" value="">
@@ -106,7 +113,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe id="videoYt" src="" width="100%" height="100%" allow="fullscreen"></iframe>
+        <iframe
+          id="videoYt"
+          width="100%"
+          height="100%"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
