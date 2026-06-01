@@ -213,4 +213,4 @@ class SobreNosView(ListView):
     context_object_name = 'dummy_list'  # nome do objeto no template
 
     def get_queryset(self):
-        return []  # lista vazia só pra ListView não reclamar
+        return []  
