@@ -7,3 +7,4 @@ class BaseModel(models.Model):
         abstract = True
         app_label = 'app'    
 
+

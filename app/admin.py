@@ -7,4 +7,3 @@ class QuestoeAdmin(admin.ModelAdmin):
 admin.site.register(Questoe, QuestoeAdmin)
 admin.site.register(Foto)
 admin.site.register(Resumo)
-admin.site.register(Figura)
