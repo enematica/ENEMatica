@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class ImagemBase(models.Model):
@@ -30,6 +31,41 @@ class ImagemFigura(ImagemBase):
 class ModelagemFigura(models.Model):
     figura = models.ForeignKey(
         Figura,
+        on_delete=models.CASCADE,
+        related_name='arquivos'
+    )
+
+    nome = models.CharField(max_length=100)
+    arquivo = models.FileField(upload_to='modelagens/arquivos/')
+
+    def __str__(self):
+        return self.nome
+    
+
+#--------------Jogos--------------
+class Jogo(models.Model):
+    nome_jogo = models.CharField(max_length=100)
+    impressora_3d = models.BooleanField(default=False)
+    cortadora_laser = models.BooleanField(default=False)
+    descricao = RichTextUploadingField(verbose_name='descrição')
+    capa = models.ImageField(upload_to='modelagens/capas')
+
+    def __str__(self):
+        return f'{self.nome_jogo}'
+    
+class ImagemJogo(ImagemBase):
+    jogo = models.ForeignKey(
+        Jogo,
+        on_delete=models.CASCADE,
+        related_name='imagens'
+    )
+
+    def __str__(self):
+        return f"Imagem de {self.jogo.nome_jogo}"
+    
+class ModelagemJogo(models.Model):
+    jogo = models.ForeignKey(
+        Jogo,
         on_delete=models.CASCADE,
         related_name='arquivos'
     )
