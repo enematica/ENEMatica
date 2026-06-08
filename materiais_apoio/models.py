@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from app.models.questoe import Questoe
 
 # Create your models here.
 class ImagemBase(models.Model):
@@ -76,4 +77,46 @@ class ModelagemJogo(models.Model):
     def __str__(self):
         return self.nome
     
+#--------------Questões Modeladas--------------
+class QuestaoModelada(models.Model):
+    questao = models.ForeignKey(
+        Questoe,
+        on_delete=models.CASCADE,
+        related_name='modelagens'
+    )
+    
+    impressora_3d = models.BooleanField(default=False)
+    cortadora_laser = models.BooleanField(default=False)
+    descricao = RichTextUploadingField(verbose_name='descrição da modelagem')
+    capa = models.ImageField(upload_to='modelagens/capas')
 
+    class Meta:
+        verbose_name = "Questao Modelada"
+        verbose_name_plural = "Questoes Modeladas"
+    
+    def __str__(self):
+        return f'{self.questao}'
+    
+class ImagemQuestao(ImagemBase):
+    questao = models.ForeignKey(
+        QuestaoModelada,
+        on_delete=models.CASCADE,
+        related_name='imagens'
+    )
+
+    def __str__(self):
+        return f"Imagem de {self.questao.questao.numero}"
+    
+class ModelagemQuestao(models.Model):
+    questao = models.ForeignKey(
+        QuestaoModelada,
+        on_delete=models.CASCADE,
+        related_name='arquivos'
+    )
+
+    nome = models.CharField(max_length=100)
+    arquivo = models.FileField(upload_to='modelagens/arquivos/')
+
+    def __str__(self):
+        return self.nome
+    

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Figura, ImagemFigura, ModelagemFigura, Jogo, ImagemJogo, ModelagemJogo
+from .models import Figura, ImagemFigura, ModelagemFigura, Jogo, ImagemJogo, ModelagemJogo, QuestaoModelada, ImagemQuestao, ModelagemQuestao
 
 # Register your models here.
 class ImagemFiguraInline(admin.StackedInline):
@@ -16,7 +16,8 @@ class FiguraAdmin(admin.ModelAdmin):
         ImagemFiguraInline,
         ModelagemFiguraInline,      
     ]
-    
+
+
 class ImagemJogoInline(admin.StackedInline):
     model = ImagemJogo
     extra = 1
@@ -30,4 +31,20 @@ class FiguraAdmin(admin.ModelAdmin):
     inlines = [
         ImagemJogoInline,
         ModelagemJogoInline,      
+    ]
+    
+
+class ImagemQuestaoInline(admin.StackedInline):
+    model = ImagemQuestao
+    extra = 1
+
+class ModelagemQuestaoInline(admin.StackedInline):
+    model = ModelagemQuestao
+    extra = 1
+
+@admin.register(QuestaoModelada)
+class FiguraAdmin(admin.ModelAdmin):
+    inlines = [
+        ImagemQuestaoInline,
+        ModelagemQuestaoInline,      
     ]
