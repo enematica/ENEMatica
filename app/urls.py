@@ -1,6 +1,7 @@
 from django.urls import path,include
 from django.views.generic import TemplateView
 from .views import *
+from materiais_apoio.views import MateriaisApoio
 app_name = 'app'
 
 
@@ -13,5 +14,5 @@ urlpatterns = [
     path('simulado/', SimuladoList.as_view(), name='simulado'),
     path('h1v2327/', QuestoesList2.as_view(), name='simulado_escolas'),
     path('sobre-nos/', SobreNosView.as_view(), name='sobre_nos'),
-    path('materiais-apoio/', include('materiais_apoio.urls'))
+    path('materiais-apoio/', MateriaisApoio, name='materiais_apoio'),
 ]
