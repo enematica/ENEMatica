@@ -1,7 +1,7 @@
 from django.urls import path,include
 from django.views.generic import TemplateView
 from .views import *
-from materiais_apoio.views import MateriaisApoio
+from materiais_apoio.views import MateriaisApoio, FiguraDetail, JogoDetail, QuestaoModeladaDetail
 app_name = 'app'
 
 
@@ -15,4 +15,7 @@ urlpatterns = [
     path('h1v2327/', QuestoesList2.as_view(), name='simulado_escolas'),
     path('sobre-nos/', SobreNosView.as_view(), name='sobre_nos'),
     path('materiais-apoio/', MateriaisApoio, name='materiais_apoio'),
+    path('figura/<int:id>/', FiguraDetail, name='figura_detail'),
+    path('jogo/<int:id>/', JogoDetail, name='jogo_detail'),
+    path('questaomodelada/<int:id>/', QuestaoModeladaDetail, name='questaomodelada_detail'),
 ]

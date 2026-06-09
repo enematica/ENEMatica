@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{figura.nome_figura}}</h1>
+    <img src="{{figura.capa.url}}" alt="capa">
+{% endblock %}

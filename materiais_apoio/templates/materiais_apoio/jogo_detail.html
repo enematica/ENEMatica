@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{jogo.nome_jogo}}</h1>
+    <img src="{{jogo.capa.url}}" alt="capa">
+{% endblock %}

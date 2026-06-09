@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{questao.questao}}</h1>
+    <img src="{{questao.capa.url}}" alt="capa">
+{% endblock %}
