@@ -17,13 +17,14 @@
 
                 <div class="cabecalho-modelo">
 
-                    <a href="javascript:history.back()" class="btn-voltar">
+                    <a href="{% url 'app:materiais_apoio' %}" class="btn-voltar">
                         <span class="seta-voltar"></span>
                     </a>
 
-                    <h1 class="titulo-modelo">
-                        {{ figura.nome_figura }}
-                    </h1>
+                        <h1 class="titulo-modelo">
+                            {{ figura.nome_figura }}
+                        </h1>
+                    
 
                 </div>
 

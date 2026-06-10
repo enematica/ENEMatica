@@ -190,7 +190,7 @@
 .btn-download{
     width:100%;
 
-    background:#92b562;
+    background-color:#92b562;
     color:white;
 
     border:none;
@@ -208,6 +208,7 @@
 }
 
 .btn-download:hover{
+    background:#7fa052;
     transform:translateY(-2px);
 }
 
