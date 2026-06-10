@@ -1,0 +1,193 @@
+.modelo-container{
+    max-width:1200px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.modelo-galeria{
+    width:fit-content;
+    margin:0 auto;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+
+    gap:35px;
+}
+
+/* ÁREA DA IMAGEM */
+
+.preview-container{
+    display:flex;
+    flex-direction:column;
+}
+
+.titulo-modelo{
+    font-size:2.5rem;
+    font-weight:700;
+    margin-bottom:20px;
+    color:#1f2937;
+}
+
+.imagem-principal{
+    width:500px;
+    height:500px;
+
+    background:#fff;
+
+    border-radius:20px;
+    overflow:hidden;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.imagem-principal img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    display:block;
+}
+
+/* MINIATURAS */
+
+.miniaturas{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+    margin-top:70px;
+}
+
+.thumb{
+    width:90px;
+    height:90px;
+
+    border-radius:12px;
+    overflow:hidden;
+
+    border:2px solid #d1d5db;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.thumb:hover{
+    border-color:#2563eb;
+}
+
+.thumb.ativa{
+    border-color:#2563eb;
+}
+
+.thumb img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    display:block;
+}
+
+/* INFORMAÇÕES */
+
+.info-modelo{
+    width:300px;
+
+    margin-top:70px;
+
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.info-modelo h2{
+    font-size:2rem;
+    margin:0;
+    color:#1f2937;
+}
+
+.fabricacao h3{
+    font-size:1.1rem;
+    margin-bottom:12px;
+
+    color:#374151;
+}
+
+.fabricacao ul{
+    margin:0;
+    padding-left:22px;
+}
+
+.fabricacao li{
+    margin-bottom:10px;
+    color:#4b5563;
+    line-height:1.5;
+}
+
+/* BOTÃO DOWNLOAD */
+
+.btn-download{
+    width:100%;
+
+    background:#2563eb;
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    font-size:1rem;
+    font-weight:600;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn-download:hover{
+    transform:translateY(-2px);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+    .modelo-galeria{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .miniaturas{
+        flex-direction:row;
+        margin-top:20px;
+    }
+
+    .info-modelo{
+        width:100%;
+        margin-top:20px;
+    }
+}
+
+@media(max-width:600px){
+
+    .imagem-principal{
+        width:90vw;
+        height:90vw;
+    }
+
+    .titulo-modelo{
+        font-size:2rem;
+    }
+
+    .thumb{
+        width:80px;
+        height:80px;
+    }
+}

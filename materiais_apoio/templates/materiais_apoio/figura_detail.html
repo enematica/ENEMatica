@@ -2,6 +2,72 @@
 {% load static %}
 
 {% block content %}
-    <h1>{{figura.nome_figura}}</h1>
-    <img src="{{figura.capa.url}}" alt="capa">
+
+<head>
+    <link rel="stylesheet" href="{% static 'materiais_apoio/css/figura_detail.css' %}">
+</head>
+
+<div class="modelo-container">
+
+    <div class="modelo-galeria">
+
+        <!-- Área principal -->
+        <div class="preview-container">
+
+            <h1 class="titulo-modelo">
+                {{ figura.nome_figura }}
+            </h1>
+
+            <div class="imagem-principal">
+                <img
+                    src="{{ figura.capa.url }}"
+                    alt="{{ figura.nome_figura }}"
+                >
+            </div>
+
+        </div>
+
+        <!-- Miniaturas -->
+        <div class="miniaturas">
+
+            <div class="thumb ativa">
+                <img src="{{ figura.capa.url }}" alt="">
+            </div>
+
+            <div class="thumb">
+                <img src="{{ figura.capa.url }}" alt="">
+            </div>
+
+            <div class="thumb">
+                <img src="{{ figura.capa.url }}" alt="">
+            </div>
+
+        </div>
+
+        <!-- Informações -->
+        <div class="info-modelo">
+
+            <h2>{{ figura.nome_figura }}</h2>
+
+            <div class="fabricacao">
+
+                <h3>Este modelo foi confeccionado utilizando:</h3>
+
+                <ul>
+                    <li>Impressora 3D</li>
+                    <li>Cortadora Laser</li>
+                </ul>
+
+            </div>
+
+            <button class="btn-download">
+                Baixar Modelo
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}
