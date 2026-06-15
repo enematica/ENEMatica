@@ -245,10 +245,10 @@
 
 .btn-download{
     width:100%;
-
+    text-decoration: none;
     background-color:#92b562;
     color:white;
-
+    text-align: center;
     border:none;
 
     padding:15px;
@@ -265,6 +265,8 @@
 
 .btn-download:hover{
     background:#7fa052;
+    text-decoration: none;
+    color:white;
     transform:translateY(-2px);
 }
 
@@ -372,11 +374,11 @@
     .cabecalho-modelo{
         flex-wrap:wrap;
         gap:12px;
-        padding-left:30px;
+        padding-left:15px;
     }
 
     .btn-voltar{
-        left:0;
+        left:0px;
     }
 
     .thumb{
