@@ -1,5 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 from .models import Figura, Jogo, QuestaoModelada
+from io import BytesIO
+import zipfile
+import os
+
 
 # Create your views here.
 def MateriaisApoio(request):
@@ -35,3 +40,43 @@ def QuestaoModeladaDetail(request, id):
         'questao' : questao,
     }
     return render(request, 'materiais_apoio/questaomodelada_detail.html', contexto)
+
+
+
+def gerar_zip(objeto, nome_zip):
+    buffer = BytesIO()
+
+    with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+        for arquivo in objeto.arquivos.all():
+            zip_file.write(
+                arquivo.arquivo.path,
+                os.path.basename(arquivo.arquivo.name)
+            )
+
+    buffer.seek(0)
+
+    response = HttpResponse(
+        buffer.getvalue(),
+        content_type='application/zip'
+    )
+
+    response['Content-Disposition'] = (
+        f'attachment; filename="{nome_zip}.zip"'
+    )
+
+    return response
+
+
+def DownloadFigura(request, id):
+    figura = get_object_or_404(Figura, id=id)
+    return gerar_zip(figura, figura.nome_figura)
+
+
+def DownloadJogo(request, id):
+    jogo = get_object_or_404(Jogo, id=id)
+    return gerar_zip(jogo, jogo.nome_jogo)
+
+
+def DownloadQuestao(request, id):
+    questao = get_object_or_404(QuestaoModelada, id=id)
+    return gerar_zip(questao, f"questao_{questao.id}")

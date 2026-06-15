@@ -36,11 +36,11 @@ class ModelagemFigura(models.Model):
         related_name='arquivos'
     )
 
-    nome = models.CharField(max_length=100)
     arquivo = models.FileField(upload_to='modelagens/arquivos/')
 
+
     def __str__(self):
-        return self.nome
+        return self.arquivo.name.split('/')[-1]
     
 
 #--------------Jogos--------------
@@ -71,11 +71,10 @@ class ModelagemJogo(models.Model):
         related_name='arquivos'
     )
 
-    nome = models.CharField(max_length=100)
     arquivo = models.FileField(upload_to='modelagens/arquivos/')
 
     def __str__(self):
-        return self.nome
+        return self.arquivo.name.split('/')[-1]
     
 #--------------Questões Modeladas--------------
 class QuestaoModelada(models.Model):
@@ -114,9 +113,8 @@ class ModelagemQuestao(models.Model):
         related_name='arquivos'
     )
 
-    nome = models.CharField(max_length=100)
     arquivo = models.FileField(upload_to='modelagens/arquivos/')
 
     def __str__(self):
-        return self.nome
+        return self.arquivo.name.split('/')[-1]
     
