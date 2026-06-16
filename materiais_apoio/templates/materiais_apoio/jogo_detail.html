@@ -2,6 +2,130 @@
 {% load static %}
 
 {% block content %}
-    <h1>{{jogo.nome_jogo}}</h1>
-    <img src="{{jogo.capa.url}}" alt="capa">
+
+<head>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <link rel="stylesheet"
+          href="{% static 'materiais_apoio/css/jogo_detail.css' %}">
+</head>
+
+<div class="modelo-container">
+
+    <div class="modelo-galeria">
+
+        <!-- IMAGEM PRINCIPAL -->
+
+        <div class="preview-container">
+
+            <div class="cabecalho-modelo">
+
+                <a href="{% url 'app:materiais_apoio:materiais_apoio' %}" class="btn-voltar">
+                    <span class="seta-voltar"></span>
+                </a>
+
+                <h1 class="titulo-modelo">
+                    <a href="{% url 'app:materiais_apoio:materiais_apoio' %}">{{ jogo.nome_jogo }}</a>
+                </h1>
+
+
+            </div>
+
+            <div class="swiper modeloSwiper imagem-principal">
+
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <img src="{{ jogo.capa.url }}"
+                             alt="{{ jogo.nome_jogo }}">
+                    </div>
+
+                    {% for imagem in jogo.imagens.all %}
+                        <div class="swiper-slide">
+                            <img src="{{ imagem.imagem.url }}"
+                                 alt="{{ jogo.nome_jogo }}">
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+            </div>
+
+        </div>
+
+        <!-- MINIATURAS -->
+
+        <!-- MINIATURAS -->
+
+        <div class="miniaturas">
+
+            <div class="thumb active" data-index="0">
+                <img src="{{ jogo.capa.url }}"
+                    alt="imagem de {{ jogo.nome_jogo }}">
+            </div>
+
+            {% for imagem in jogo.imagens.all %}
+                <div class="thumb" data-index="{{ forloop.counter }}">
+                    <img src="{{ imagem.imagem.url }}"
+                        alt="imagem de {{ jogo.nome_jogo }}">
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="info-modelo">
+
+            <h2>{{ jogo.nome_jogo }}</h2>
+
+            <div class="fabricacao">
+
+                <h3>Este modelo foi confeccionado utilizando:</h3>
+
+                <ul>
+
+                    {% if jogo.impressora_3d %}
+                        <li>Impressora 3D</li>
+                    {% endif %}
+
+                    {% if jogo.cortadora_laser %}
+                        <li>Cortadora Laser</li>
+                    {% endif %}
+
+                </ul>
+
+            </div>
+            <a href="{% url 'app:materiais_apoio:download_jogo' jogo.id %}" class="btn-download">
+                Baixar Modelo
+            </a>
+
+            <div class="tutorial-modelo">
+
+                <h3>Como utilizar este modelo?</h3>
+
+                <p>
+                    Baixe gratuitamente o arquivo e produza sua própria peça
+                    utilizando uma Impressora 3D, Cortadora Laser ou um
+                    serviço especializado. O modelo físico auxilia na
+                    visualização espacial e torna o estudo da Matemática
+                    mais intuitivo e concreto.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="{% static 'materiais_apoio/js/thumbslider.js' %}"></script>
+
 {% endblock %}
