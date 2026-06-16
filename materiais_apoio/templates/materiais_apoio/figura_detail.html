@@ -21,12 +21,12 @@
 
             <div class="cabecalho-modelo">
 
-                <a href="{% url 'app:materiais_apoio' %}" class="btn-voltar">
+                <a href="{% url 'app:materiais_apoio:materiais_apoio' %}" class="btn-voltar">
                     <span class="seta-voltar"></span>
                 </a>
 
                 <h1 class="titulo-modelo">
-                    <a href="{% url 'app:materiais_apoio' %}">{{ figura.nome_figura }}</a>
+                    <a href="{% url 'app:materiais_apoio:materiais_apoio' %}">{{ figura.nome_figura }}</a>
                 </h1>
 
 
@@ -100,7 +100,7 @@
                 </ul>
 
             </div>
-            <a href="{% url 'app:download_figura' figura.id %}" class="btn-download">
+            <a href="{% url 'app:materiais_apoio:download_figura' figura.id %}" class="btn-download">
                 Baixar Modelo
             </a>
 

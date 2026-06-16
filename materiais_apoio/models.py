@@ -4,7 +4,7 @@ from app.models.questoe import Questoe
 
 # Create your models here.
 class ImagemBase(models.Model):
-    imagem = models.ImageField(upload_to='modelagens/fotos', help_text='Obs: COLOCAR IMAGEM DA CAPA AQUI TAMBÉM')
+    imagem = models.ImageField(upload_to='modelagens/fotos')
 
     class Meta:
         abstract = True

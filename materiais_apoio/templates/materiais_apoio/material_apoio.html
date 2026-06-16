@@ -17,19 +17,19 @@
     </style>
 
     {% for q in questao %}
-        <a href="{% url 'app:questaomodelada_detail' q.id %}">
+        <a href="{% url 'app:materiais_apoio:questaomodelada_detail' q.id %}">
             <img src="{{q.capa.url}}" alt="imagem capa">
         </a>
     {% endfor %}
 
     {% for f in figura %}
-        <a href="{% url 'app:figura_detail' f.id %}">
+        <a href="{% url 'app:materiais_apoio:figura_detail' f.id %}">
             <img src="{{f.capa.url}}" alt="imagem capa">
         </a>
     {% endfor %}
 
     {% for j in jogo %}
-        <a href="{% url 'app:jogo_detail' j.id %}">
+        <a href="{% url 'app:materiais_apoio:jogo_detail' j.id %}">
             <img src="{{j.capa.url}}" alt="imagem capa">
         </a>
     {% endfor %}
