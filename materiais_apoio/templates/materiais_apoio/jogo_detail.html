@@ -125,8 +125,10 @@
 </div>
 
 <div class="modelo-descricao">
-    <h3>Descrição</h3>
-    <p>{{ jogo.descricao }}</p> 
+    <h3>Descrição / Como Jogar</h3>
+    <div class="descricao-conteudo">
+        {{ jogo.descricao|safe }}
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
