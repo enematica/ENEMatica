@@ -76,7 +76,7 @@
 
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 
-    font-size:1.8rem;
+    font-size:1.7rem;
     font-weight:700;
 
     color:#1f2937;
@@ -218,7 +218,7 @@
 }
 
 .info-modelo h2{
-    font-size:2rem;
+    font-size:1.8rem;
     margin:0;
     color:#1f2937;
 }
@@ -306,7 +306,7 @@
     z-index: 1;
     margin-top: -36px;
     background-color: white;
-    width: 210px;
+    width: 100px;
 }
 
 .modelo-descricao{
