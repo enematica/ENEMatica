@@ -4,11 +4,9 @@
 {% block content %}
 
 <head>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-    <link rel="stylesheet"
-          href="{% static 'materiais_apoio/css/questoesmodeladas_detail.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <link rel="stylesheet" href="{% static 'materiais_apoio/css/questoaomodelada_detail.css' %}">
 </head>
 
 <div class="modelo-container">
@@ -57,7 +55,6 @@
 
         </div>
 
-        <!-- MINIATURAS -->
 
         <!-- MINIATURAS -->
 
@@ -124,12 +121,62 @@
 
 </div>
 
-<div class="modelo-descricao">
-    <h3>Descrição</h3>
-    <div class="descricao-conteudo">
-        {{ questao.descricao|safe }}
+
+<div class="modelo-questao">
+
+    <h3>Questão Original</h3>
+
+    <div class="headerquestion">
+        <span><b>Número:</b> {{ questao.questao.numero }}</span>
+        <span><b>Ano:</b> {{ questao.questao.ano }}</span>
+        <span><b>Dificuldade:</b> {{ questao.questao.dificuldade }}</span>
+        <span><b>Conteúdo:</b> {{ questao.questao.conteudo }}</span>
     </div>
+
+    <div class="bodyquestion">
+        {{ questao.questao.enunciado|safe }}
+    </div>
+
+    <div class="answerquestion">
+
+        <label>
+            <span class="spanOne">A</span>
+            {{ questao.questao.alternativa_a|safe }}
+        </label>
+
+        <label class="labelAdjust">
+            <span class="spanOne">B</span>
+            {{ questao.questao.alternativa_b|safe }}
+        </label>
+
+        <label class="labelAdjust">
+            <span class="spanOne">C</span>
+            {{ questao.questao.alternativa_c|safe }}
+        </label>
+
+        <label class="labelAdjust">
+            <span class="spanOne">D</span>
+            {{ questao.questao.alternativa_d|safe }}
+        </label>
+
+        <label class="labelAdjust">
+            <span class="spanOne">E</span>
+            {{ questao.questao.alternativa_e|safe }}
+        </label>
+
+    </div>
+
 </div>
+
+
+<div class="modelo-descricao">
+        <h3>Descrição</h3>
+        <div class="descricao-conteudo">
+            {{ questao.descricao|safe }}
+        </div>
+    </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
