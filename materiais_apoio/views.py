@@ -79,4 +79,4 @@ def DownloadJogo(request, id):
 
 def DownloadQuestao(request, id):
     questao = get_object_or_404(QuestaoModelada, id=id)
-    return gerar_zip(questao, f"questao_{questao.id}")
+    return gerar_zip(questao, f"Questao_{questao.questao.numero}-{questao.questao.ano}")
