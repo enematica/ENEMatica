@@ -15,24 +15,27 @@
             height: auto;
         }
     </style>
+    {% if questao or figura or jogo %}
+        {% for q in questao %}
+            <a href="{% url 'app:materiais_apoio:questaomodelada_detail' q.id %}">
+                <img src="{{q.capa.url}}" alt="imagem capa">
+            </a>
+        {% endfor %}
 
-    {% for q in questao %}
-        <a href="{% url 'app:materiais_apoio:questaomodelada_detail' q.id %}">
-            <img src="{{q.capa.url}}" alt="imagem capa">
-        </a>
-    {% endfor %}
+        {% for f in figura %}
+            <a href="{% url 'app:materiais_apoio:figura_detail' f.id %}">
+                <img src="{{f.capa.url}}" alt="imagem capa">
+            </a>
+        {% endfor %}
 
-    {% for f in figura %}
-        <a href="{% url 'app:materiais_apoio:figura_detail' f.id %}">
-            <img src="{{f.capa.url}}" alt="imagem capa">
-        </a>
-    {% endfor %}
-
-    {% for j in jogo %}
-        <a href="{% url 'app:materiais_apoio:jogo_detail' j.id %}">
-            <img src="{{j.capa.url}}" alt="imagem capa">
-        </a>
-    {% endfor %}
-
+        {% for j in jogo %}
+            <a href="{% url 'app:materiais_apoio:jogo_detail' j.id %}">
+                <img src="{{j.capa.url}}" alt="imagem capa">
+            </a>
+        {% endfor %}
+            
+    {% else %}
+            <h1>Não há nada adicionado ainda</h1>
+    {% endif %}
 
 {% endblock %}
