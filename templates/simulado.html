@@ -193,7 +193,7 @@ new MultiSelectTag('tempo',{
 <br><br><br><br>
 <div  id="cabecalho_pos_filtros" class="display_none">
   <div class="headerquestion">
-    <center><span style="font-size: 40px;">Simulado ENEMática</span></center>
+    <span style="font-size: 40px; display:block; margin: auto;">Simulado ENEMática</span>
   </div>
 </div>
 
@@ -208,79 +208,75 @@ new MultiSelectTag('tempo',{
 
   <!-- For in the database-->
   {% for questoe in object_list %}
-    {% if forloop.counter <= quant_questoes %}
-
-      <!-- Questions header -->
-      <div class="headerquestion" style="padding: 10px 15px;">
-          <span>Questão {{questoe}} (Enem {{questoe.ano}})</span>
-      </div>
-
-      <!-- Questions body-->
-      <div class="bodyquestion" id="question{{questoe.id}}">
-        <span>{{questoe.enunciado | safe}}</span>
-      </div>
-
-      <!-- Questions footer -->
-      <div class="answerquestion">
-
-        <!-- Form that encapsulate the radio buttons according to the question-->
-        <form action="{% url 'app:simulado' %}" method="GET" target="ola" id="questao">
-
-          <!-- Count the position of the for-->
-          {% with separador=forloop.counter %}
-            <label>
-              <input type="radio" name="radio{{separador}}" value="a"/>
-              <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
-            </label><br>
-            <label class="labelAdjust">
-              <input type="radio" name="radio{{separador}}" value="b"/>
-              <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
-            </label><br>
-            <label class="labelAdjust">
-              <input type="radio" name="radio{{separador}}" value="c"/>
-              <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
-            </label>
-            <br/>
-            <label class="labelAdjust">
-              <input type="radio" name="radio{{separador}}" value="d"/>
-              <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
-            </label><br>
-            <label class="labelAdjust">
-              <input type="radio" name="radio{{separador}}" value="e"/>
-              <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
-            </label>
-            <input type="radio" name="radio{{separador}}" value="x" hidden checked/>
-            <input type="hidden" value={{questoe.id}}>
-            <input type="hidden" value="{{questoe.resposta_certa}}">
-            <div class="finalcontainer">
-              <span class="resposta" hidden="hidden" id="errorform{{separador}}"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
-              <span class="respostacerta" hidden="hidden" id="certoform{{separador}}"> Parabéns! Você acertou!</span>
-            </div>
-            <div class="QuestionOptions" hidden="hidden">
-              <div onclick="MostrarVideo({{separador}})" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-                </svg>
-                <span>Videoaula comentada</span>
-              </div>
-            </div>
-          {% endwith %}
-        </form>
-
-        <!-- Esse script precisa ficar aqui, ele leva a resposta das perguntas e o link para fornecê-las ao javascript -->
-        <script>
-          resposta.push('{{questoe.resposta_certa}}');
-          links.push('{{questoe.link}}');
-        </script>
-      </div>
-    {% endif %}
+      {% if forloop.counter <= quant_questoes %}
+        <div class="containerquestion">
+          <!-- Questions header -->
+          <div class="headerquestion" style="padding: 10px 15px;">
+              <span>Questão {{questoe}} (Enem {{questoe.ano}})</span>
+          </div>
+          <!-- Questions body-->
+          <div class="bodyquestion" id="question{{questoe.id}}">
+            <span>{{questoe.enunciado | safe}}</span>
+          </div>
+          <!-- Questions footer -->
+          <div class="answerquestion">
+            <!-- Form that encapsulate the radio buttons according to the question-->
+            <form action="{% url 'app:simulado' %}" method="GET" target="ola" id="questao">
+              <!-- Count the position of the for-->
+              {% with separador=forloop.counter %}
+                <label>
+                  <input type="radio" name="radio{{separador}}" value="a"/>
+                  <span class="spanOne">A</span>{{questoe.alternativa_a | safe}}
+                </label><br>
+                <label class="labelAdjust">
+                  <input type="radio" name="radio{{separador}}" value="b"/>
+                  <span class="spanOne">B</span>{{questoe.alternativa_b | safe}}
+                </label><br>
+                <label class="labelAdjust">
+                  <input type="radio" name="radio{{separador}}" value="c"/>
+                  <span class="spanOne">C</span>{{questoe.alternativa_c | safe}}
+                </label>
+                <br/>
+                <label class="labelAdjust">
+                  <input type="radio" name="radio{{separador}}" value="d"/>
+                  <span class="spanOne">D</span>{{questoe.alternativa_d | safe}}
+                </label><br>
+                <label class="labelAdjust">
+                  <input type="radio" name="radio{{separador}}" value="e"/>
+                  <span class="spanOne">E</span>{{questoe.alternativa_e | safe}}
+                </label>
+                <input type="radio" name="radio{{separador}}" value="x" hidden checked/>
+                <input type="hidden" value={{questoe.id}}>
+                <input type="hidden" value="{{questoe.resposta_certa}}">
+                <div class="finalcontainer">
+                  <span class="resposta" hidden="hidden" id="errorform{{separador}}"> Você errou! A resposta correta é a letra <b>{{questoe.resposta_certa | capfirst}}</b></span>
+                  <span class="respostacerta" hidden="hidden" id="certoform{{separador}}"> Parabéns! Você acertou!</span>
+                </div>
+                <div class="QuestionOptions" hidden="hidden">
+                  <div onclick="MostrarVideo({{separador}})" class="ButtonVideo" id="ButtonVideoOne" data-toggle="modal" data-target="#exampleModalCenter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                    </svg>
+                    <span>Videoaula comentada</span>
+                  </div>
+                </div>
+              {% endwith %}
+            </form>
+            <!-- Esse script precisa ficar aqui, ele leva a resposta das perguntas e o link para fornecê-las ao javascript -->
+            <script>
+              resposta.push('{{questoe.resposta_certa}}');
+              links.push('{{questoe.link}}');
+            </script>
+          </div>
+        </div>
+      {% endif %}
   {% endfor %}
 
   <div class="headerquestion" style="margin: 10px; padding: 10px;">
     <span>Responda todas as questões para Enviar a prova.</span>
   </div>
-  <center><input type="submit" class="responder" id="responder" value="Responder" name="responder" onclick="Responder()"></center>
+  <input type="submit" class="responder" id="responder" value="Responder" name="responder" onclick="Responder()" style="display: block; margin:auto;">
 <br><br><br>
 
 <!-- If the returned queryset lenght is zero -->
