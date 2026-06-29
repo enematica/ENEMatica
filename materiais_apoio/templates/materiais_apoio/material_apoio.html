@@ -1,41 +1,169 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
-    <style>
-        body{
-            margin-top: 100px;
-        }
-        a{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        img{
-            max-width: 100px;
-            height: auto;
-        }
-    </style>
+
+<link rel="stylesheet" href="{% static 'materiais_apoio/css/material_apoio.css' %}">
+
+<div class="catalogo">
+
+    <header class="titulo-pagina">
+        <h1>Materiais de Apoio</h1>
+
+        <p>
+            Explore materiais didáticos desenvolvidos para auxiliar o ensino e a aprendizagem da Matemática por meio de recursos interativos.
+        </p>
+    </header>
+
     {% if questao or figura or jogo %}
-        {% for q in questao %}
-            <a href="{% url 'app:materiais_apoio:questaomodelada_detail' q.id %}">
-                <img src="{{q.capa.url}}" alt="imagem capa">
-            </a>
-        {% endfor %}
 
-        {% for f in figura %}
-            <a href="{% url 'app:materiais_apoio:figura_detail' f.id %}">
-                <img src="{{f.capa.url}}" alt="imagem capa">
-            </a>
-        {% endfor %}
+    <!-- ================= QUESTÕES ================= -->
 
-        {% for j in jogo %}
-            <a href="{% url 'app:materiais_apoio:jogo_detail' j.id %}">
-                <img src="{{j.capa.url}}" alt="imagem capa">
+    {% if questao %}
+    <section class="secao-categoria">
+
+        <div class="titulo-secao">
+            <h2>
+                Questões<br>
+                Modeladas
+            </h2>
+        </div>
+
+        <div class="grid">
+
+            {% for q in questao %}
+
+            <a href="{% url 'app:materiais_apoio:questaomodelada_detail' q.id %}" class="card">
+
+                <div class="card-img-wrapper">
+                    <img src="{{ q.capa.url }}" alt="{{ q.nome }}">
+                </div>
+
+                <div class="card-body">
+
+                    <h3>{{ q.nome }}</h3>
+
+                    {% if q.descricao %}
+                    <p class="card-descricao">
+                        {{ q.descricao }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
             </a>
-        {% endfor %}
-            
-    {% else %}
-            <h1>Não há nada adicionado ainda</h1>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
     {% endif %}
+
+
+
+    <!-- ================= FIGURAS ================= -->
+
+    {% if figura %}
+    <section class="secao-categoria">
+
+        <div class="titulo-secao">
+            <h2>
+                Figuras<br>
+                Modeladas
+            </h2>
+        </div>
+
+        <div class="grid">
+
+            {% for f in figura %}
+
+            <a href="{% url 'app:materiais_apoio:figura_detail' f.id %}" class="card">
+
+                <div class="card-img-wrapper">
+                    <img src="{{ f.capa.url }}" alt="{{ f.nome }}">
+                </div>
+
+                <div class="card-body">
+
+                    <h3>{{ f.nome }}</h3>
+
+                    {% if f.descricao %}
+                    <p class="card-descricao">
+                        {{ f.descricao }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+    {% endif %}
+
+
+
+    <!-- ================= JOGOS ================= -->
+
+    {% if jogo %}
+    <section class="secao-categoria">
+
+        <div class="titulo-secao">
+            <h2>
+                Jogos<br>
+                Matemáticos
+            </h2>
+        </div>
+
+        <div class="grid">
+
+            {% for j in jogo %}
+
+            <a href="{% url 'app:materiais_apoio:jogo_detail' j.id %}" class="card">
+
+                <div class="card-img-wrapper">
+                    <img src="{{ j.capa.url }}" alt="{{ j.nome }}">
+                </div>
+
+                <div class="card-body">
+
+                    <h3>{{ j.nome }}</h3>
+
+                    {% if j.descricao %}
+                    <p class="card-descricao">
+                        {{ j.descricao }}
+                    </p>
+                    {% endif %}
+
+                </div>
+
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+    {% endif %}
+
+    {% else %}
+
+    <div class="vazio">
+
+        <h2>Nenhum material disponível</h2>
+
+        <p>
+            Novos materiais serão publicados em breve.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
 
 {% endblock %}
