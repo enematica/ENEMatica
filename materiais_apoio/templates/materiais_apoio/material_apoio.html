@@ -36,18 +36,16 @@
             <a href="{% url 'app:materiais_apoio:questaomodelada_detail' q.id %}" class="card">
 
                 <div class="card-img-wrapper">
-                    <img src="{{ q.capa.url }}" alt="{{ q.nome }}">
+                    <img src="{{ q.capa.url }}" alt="{{ q.questao.numero }}">
                 </div>
 
                 <div class="card-body">
 
-                    <h3>{{ q.nome }}</h3>
+                    <h3>Questão {{ q.questao.numero }} - {{ q.questao.ano }}</h3>
 
-                    {% if q.descricao %}
                     <p class="card-descricao">
-                        {{ q.descricao }}
+                        {{ q.questao.conteudo }}
                     </p>
-                    {% endif %}
 
                 </div>
 
@@ -81,18 +79,17 @@
             <a href="{% url 'app:materiais_apoio:figura_detail' f.id %}" class="card">
 
                 <div class="card-img-wrapper">
-                    <img src="{{ f.capa.url }}" alt="{{ f.nome }}">
+                    <img src="{{ f.capa.url }}" alt="{{ f.nome_figura }}">
                 </div>
 
                 <div class="card-body">
 
-                    <h3>{{ f.nome }}</h3>
+                    <h3>{{ f.nome_figura }}</h3>
 
-                    {% if f.descricao %}
                     <p class="card-descricao">
-                        {{ f.descricao }}
+                        Figura 3D para visualização matemática
                     </p>
-                    {% endif %}
+
 
                 </div>
 
@@ -126,18 +123,17 @@
             <a href="{% url 'app:materiais_apoio:jogo_detail' j.id %}" class="card">
 
                 <div class="card-img-wrapper">
-                    <img src="{{ j.capa.url }}" alt="{{ j.nome }}">
+                    <img src="{{ j.capa.url }}" alt="{{ j.nome_jogo }}">
                 </div>
 
                 <div class="card-body">
 
-                    <h3>{{ j.nome }}</h3>
+                    <h3>{{ j.nome_jogo }}</h3>
 
-                    {% if j.descricao %}
-                    <p class="card-descricao">
-                        {{ j.descricao }}
-                    </p>
-                    {% endif %}
+                    <div class="card-descricao">
+                        {{ j.descricao|striptags|cut:"&nbsp;"|truncatewords:15 }}
+                    </div>
+
 
                 </div>
 
