@@ -1,6 +1,6 @@
 :root{
     --primary:#92b562;
-    --primary-dark:#678142;
+    --primary-dark:#126312;
     --text:#222831;
     --text-light:#6b7280;
     --border:#d6d9de;
@@ -51,7 +51,7 @@ body{
 }
 
 .titulo-pagina p{
-    max-width:650px;
+    max-width:550px;
     margin:auto;
     color:var(--text-light);
     font-size:.92rem;
@@ -117,6 +117,7 @@ body{
     border-color:var(--primary);
     transform:translateY(-2px);
     box-shadow:0 4px 12px rgba(0,0,0,.05);
+    text-decoration: none;
 }
 
 

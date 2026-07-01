@@ -86,9 +86,14 @@
 
                     <h3>{{ f.nome_figura }}</h3>
 
-                    <p class="card-descricao">
-                        Figura 3D para visualização matemática
-                    </p>
+                    <ul class="card-descricao">
+                        {% if f.impressora_3d %}
+                            <li>Impressora 3D</li>
+                        {% endif %}
+                        {% if f.cortadora_laser %}
+                            <li>Cortadora Laser</li>
+                        {% endif %}   
+                    </ul>
 
 
                 </div>
