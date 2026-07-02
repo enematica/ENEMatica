@@ -29,7 +29,7 @@
             </h2>
         </div>
 
-        <div class="grid">
+        <div class="grid" data-items="8">
 
             {% for q in questao %}
 
@@ -72,7 +72,7 @@
             </h2>
         </div>
 
-        <div class="grid">
+        <div class="grid" data-items="8">
 
             {% for f in figura %}
 
@@ -121,7 +121,7 @@
             </h2>
         </div>
 
-        <div class="grid">
+        <div class="grid" data-items="8">
 
             {% for j in jogo %}
 
@@ -166,5 +166,5 @@
     {% endif %}
 
 </div>
-
+<script src="{% static 'materiais_apoio/js/pagination.js' %}"></script>
 {% endblock %}
