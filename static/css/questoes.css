@@ -174,14 +174,14 @@ label{
   height: 100%;
 }
 .containerquestion{
-    margin: 20px auto;
-    width: 100%;
-    max-width: 920px;
-    padding: 25px;
-    background: #fff;
-    border: 1px solid #cacdd3;
-    border-radius: 10px;
-    box-sizing: border-box;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 920px;
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #cacdd3;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 /* HEADER */
@@ -309,6 +309,7 @@ img{
   background-color: #eaeae1;
   height: 30px;
   align-items: center;
+  border-radius: 3px;
 }
 .ButtonVideo{
   cursor: pointer;
