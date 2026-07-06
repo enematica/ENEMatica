@@ -8,9 +8,9 @@ import os
 
 # Create your views here.
 def MateriaisApoio(request):
-    figura = Figura.objects.all()
-    jogo = Jogo.objects.all()
-    questao = QuestaoModelada.objects.all()
+    figura = Figura.objects.all().order_by('-id')
+    jogo = Jogo.objects.all().order_by('-id')
+    questao = QuestaoModelada.objects.all().order_by('-id')
     
     contexto = {
         "figura" : figura,
