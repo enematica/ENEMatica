@@ -290,6 +290,117 @@
     line-height:1.55;
     margin:0;
 }
+/* DESCRICAO */
+.modelo-descricao{
+    border: 1px solid #6b7280dc;
+    border-radius: 5px;
+    width: 67vw;
+    margin:auto;
+    padding: 25px;
+}
+
+.modelo-descricao > h3{
+    font-size: 1.1em;
+    text-align: center;
+    color: #4c515a;
+    z-index: 1;
+    margin-top: -36px;
+    background-color: white;
+    width: 110px;
+}
+
+.modelo-descricao{
+    width: 100%;
+    max-width: 910px;
+    margin: 50px auto;
+    padding: 25px;
+    border: 1px solid #cacdd3;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.modelo-descricao h3{
+    text-align: center;
+    color: #678142;
+    margin-bottom: 25px;
+}
+
+.descricao-conteudo{
+    width: 100%;
+    overflow: hidden;
+    line-height: 1.8;
+    font-size: 1rem;
+    color: #374151;
+}
+
+/* Texto */
+
+.descricao-conteudo p{
+    margin-bottom: 13px;
+}
+
+.descricao-conteudo h1,
+.descricao-conteudo h2,
+.descricao-conteudo h3,
+.descricao-conteudo h4,
+.descricao-conteudo h5,
+.descricao-conteudo h6{
+    margin: 20px 0 10px;
+}
+
+/* Resolve palavras gigantes */
+
+.descricao-conteudo *{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+/* Imagens */
+
+.descricao-conteudo img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+/* Tabelas */
+
+.descricao-conteudo table{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+/* Vídeos */
+
+.descricao-conteudo iframe{
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    height: auto;
+}
+
+/* Código */
+
+.descricao-conteudo pre,
+.descricao-conteudo code{
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+/* Listas */
+
+.descricao-conteudo ul,
+.descricao-conteudo ol{
+    padding-left: 25px;
+    margin-bottom: 16px;
+}
 
 /* RESPONSIVO */
 
@@ -358,6 +469,19 @@
 
         margin-top:20px;
     }
+
+    .descricao-conteudo{
+        width: 100%;
+        overflow: hidden;
+        line-height: 1.8;
+        font-size: 0.9rem;
+        color: #374151;
+    }
+
+    .descricao-conteudo p{
+        font-size: 0.95em;
+    }
+    
 }
 
 @media(max-width:600px){

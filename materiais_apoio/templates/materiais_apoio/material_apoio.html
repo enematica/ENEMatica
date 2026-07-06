@@ -86,14 +86,9 @@
 
                     <h3>{{ f.nome_figura }}</h3>
 
-                    <ul class="card-descricao">
-                        {% if f.impressora_3d %}
-                            <li>Impressora 3D</li>
-                        {% endif %}
-                        {% if f.cortadora_laser %}
-                            <li>Cortadora Laser</li>
-                        {% endif %}   
-                    </ul>
+                    <div class="card-descricao">
+                        {{ f.descricao|striptags|cut:"&nbsp;"|truncatewords:15 }}
+                    </div>
 
 
                 </div>

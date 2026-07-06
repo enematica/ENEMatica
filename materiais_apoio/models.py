@@ -15,6 +15,7 @@ class Figura(models.Model):
     impressora_3d = models.BooleanField(default=False)
     cortadora_laser = models.BooleanField(default=False)
     capa = models.ImageField(upload_to='modelagens/capas')
+    descricao = RichTextUploadingField(verbose_name='descrição')
 
     def __str__(self):
         return f'{self.nome_figura}'
