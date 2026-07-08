@@ -621,4 +621,12 @@
     .miniaturas{
         height:100px;
     }
+
+    .modelo-questao {
+        border-radius: 0px;
+    }
+
+    .modelo-descricao{
+        border-radius: 0px;
+    }
 }

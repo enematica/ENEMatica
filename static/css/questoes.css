@@ -416,7 +416,10 @@ img{
   body{
     margin-top: -45px;
   }
-  
+  .headerquestion span {
+    font-size: 1em;
+  }
+
   #modalContent{
     height: 300px;
   }
@@ -446,10 +449,29 @@ img{
     visibility: visible;
   }
 }
-@media(max-width: 400px){
 
+@media (max-width: 600px){
+  .containerquestion{
+    border-radius: 0px;
+    padding:15px;
+  }
+
+  .bodyquestion{
+    margin-left:0;
+    margin-right:0;
+  }
+
+  .answerquestion{
+    margin-left:0;
+    margin-right:0;
+  }
+}
+@media(max-width: 400px){
   .headerquestion{
     margin: 0 0 0 0;
+  }
+  .headerquestion span {
+    font-size: 0.6em;
   }
   #questao label{
     margin-left: 5px;
@@ -470,8 +492,7 @@ img{
     font-size: 15px;
   }
   label .spanOne{
-    top: -10px;
-    left: -24px;
+    left: -23px;
   }
   .btnpc{
     width: 80px;
@@ -502,6 +523,19 @@ img{
 @media(max-width: 437px){
   #buttonsfiltercelular{
     margin-top: 120px;
+  }
+}
+
+@media(max-width:430px){
+  .headerquestion span {
+    font-size: 0.8em;
+  }
+  #questao label{
+    margin-left:35px;
+  }
+
+  input[type="radio"]{
+    margin-left:-35px;
   }
 }
 

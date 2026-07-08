@@ -513,4 +513,7 @@
     .miniaturas{
         height:100px;
     }
+    .modelo-descricao{
+        border-radius: 0px;
+    }
 }
