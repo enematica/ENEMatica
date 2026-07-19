@@ -16,10 +16,13 @@
         display: flex;
       }
 
-      #pagina img {
-      max-width: 650px;
-      width: 80%;
-      height: auto;
+      #pagina img{
+          display: block;
+          max-width: 100% !important;
+          width: auto !important;
+          height: auto !important;
+          object-fit: contain;
+          margin: 15px auto;
       }
     </style>
 </head>
@@ -174,10 +177,6 @@ new MultiSelectTag('tempo',{
 </div>
 <hr>
 
-<p id="texto_filtro" style="text-align: center; margin-bottom: 1px; color: gray; font-size: 20px;">Filtre antes de apresentar o simulado</p>
-
-<center><input style="margin-top: 10px; margin-bottom: 10px; height: 50px; width: 180px; font-size: 18px;" onclick="Apresentar()" type="button" class="responder" value="Apresentar prova" id="apr"></center>
-
 <!-- Envia a quantidade de questoes na página e o tempo dado pelo usuário ao javascript -->
 <script>
   tempo_por_questoes.push({{tempo}});
@@ -186,7 +185,7 @@ new MultiSelectTag('tempo',{
 
 <!-- Apresentação do cronômetro -->
 <div id="cronus" style="position: fixed; right: 50px; top: 150px; padding: 9px 0 9px 0; width: 100px; background-color: green; color: white; border-radius: 5px; border-color: black; border-style: solid; border-width: 2px;" class="display_none">
-  <center><span id="hora">00</span>:<span id="minuto">00</span>:<span id="segundo">00</span></center>
+  <div style="text-align: center;"><span id="hora">00</span>:<span id="minuto">00</span>:<span id="segundo">00</span></div>
 </div>
 
 <!-- Cabeçalho pós filtro -->
@@ -205,7 +204,7 @@ new MultiSelectTag('tempo',{
 <div id="pagina" class="display_none">
 
 {% if object_list.count >= quant_questoes %}
-
+  <button onclick="window.print()">Imprimir</button>
   <!-- For in the database-->
   {% for questoe in object_list %}
       {% if forloop.counter <= quant_questoes %}
@@ -283,10 +282,18 @@ new MultiSelectTag('tempo',{
 {% else %}
   <p id="noQuestion">Não foram encontradas questões suficientes com os filtros escolhidos para gerar o Simulado!</p>
   <br>
-  <center><a href="{% url 'app:simulado' %}"><button type="button" class="responder">Voltar</button></a></center>
+  <a href="{% url 'app:simulado' %}"><button type="button" class="responder">Voltar</button></a>
 {% endif %}
 </div>
 
 <!-- Second javascript file, needs to stay here-->
 <script type="text/javascript" src="{% static 'js/questoes.js' %}"></script>
+
+{% if object_list.count >= quant_questoes %}
+<script>
+    window.onload = function () {
+        Apresentar();
+    };
+</script>
+{% endif %}
 {% endblock content %}
