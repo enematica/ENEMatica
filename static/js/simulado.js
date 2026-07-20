@@ -168,6 +168,9 @@ function Apresentar() {
   document.getElementById("pagina").classList.remove('display_none');
   document.getElementById("cabecalho_pos_filtros").classList.remove('display_none');
   document.getElementById("filtro").classList.add('display_none');
-  document.getElementById("apr").classList.add('display_none');
+  const apr = document.getElementById("apr");
+  if (apr) {
+      apr.classList.add("display_none");
+  }
   start()
 }
