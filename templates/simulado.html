@@ -31,7 +31,6 @@
         display:flex;
         justify-content: center;
         flex-wrap: wrap;
-        font-size:2.1rem;
         color:#126312;
         letter-spacing:-.5px;
         margin: -80px auto -25px auto;
@@ -39,10 +38,16 @@
         border-radius: 8px;
         border-left: 4px solid #92b562;
         border-right: 4px solid #92b562;
-        max-width: 450px;
+        max-width: 500px;
+        box-shadow:0px 3px 5px rgba(0, 0, 0, 0.103);
+      }
+      #titulo span{
+        font-size: 2.1em;
       }
       #cabecalho-info{
-        display: block;
+        display: flex;
+        flex-direction: row;
+        gap:5px;
         margin: auto;
         max-width: 920px;
       }
@@ -54,7 +59,8 @@
         color: #2b2b2b;
         font-size: 0.9rem;
         font-weight: 500;
-        padding: 8px 18px;
+        height: 42px;
+        padding: 0px 18px;
         border: 1px solid #e0e0e0;
         border-radius: 6px;
         cursor: pointer;
@@ -78,13 +84,33 @@
         background-color: #ffffff;
         color: #333333;
         border: 1px solid #e0e0e0;
-        padding: 8px 18px;
+        height: 42px;
+        padding: 9px 18px;
         border-radius: 6px;
         font-size: 0.95rem;
         font-weight: 500;
         letter-spacing: 0.5px;
+        position: fixed;
+        right: 80px;
+        top: 181px;
       }
 
+      @media (max-width: 850px) {
+          #titulo{
+            margin-top: -30px;
+            margin-bottom: 10px;
+          }
+          #titulo span{
+            font-size: 1.8em;
+          }
+          #cronus{
+            position: static; 
+            bottom: auto;
+            right: auto;
+            left: auto;
+            top: auto;
+          }
+      }
     </style>
 </head>
 
@@ -244,16 +270,11 @@ new MultiSelectTag('tempo',{
   quantidade_de_questoes.push({{quant_questoes}});
 </script>
 
-<!-- Apresentação do cronômetro -->
-<div id="cronus" style="position: fixed; right: 80px; top: 191px; padding: 9px 0 9px 0; width: 100px; " class="display_none">
-  <div style="text-align: center;"><span id="hora">00</span>:<span id="minuto">00</span>:<span id="segundo">00</span></div>
-</div>
-
 <!-- Cabeçalho pós filtro -->
 <br><br><br><br>
 <div  id="cabecalho_pos_filtros" class="display_none">
   <div id="titulo">
-    <span style="font-size: 40px; display:block; margin: auto;">Simulado ENEMática</span>
+    <span style="display:block; margin: auto;">Simulado ENEMática</span>
   </div>
 </div>
 
@@ -267,6 +288,10 @@ new MultiSelectTag('tempo',{
 {% if object_list.count >= quant_questoes %}
   <section id="cabecalho-info">
     <button id="printbutton" onclick="window.print()">Imprimir</button>
+    <!-- Apresentação do cronômetro -->
+    <div id="cronus" class="display_none">
+      <div style="text-align: center;"><span id="hora">00</span>:<span id="minuto">00</span>:<span id="segundo">00</span></div>
+    </div>
   </section>
   <!-- For in the database-->
   {% for questoe in object_list %}
