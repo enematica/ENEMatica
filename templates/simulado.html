@@ -31,15 +31,11 @@
         display:flex;
         justify-content: center;
         flex-wrap: wrap;
-        color:#126312;
+        color:#2f7d32;
+        font-weight: 500;
         letter-spacing:-.5px;
-        margin: -80px auto -25px auto;
+        margin: -80px auto -10px auto;
         background: #f8f9fa;
-        border-radius: 8px;
-        border-left: 4px solid #92b562;
-        border-right: 4px solid #92b562;
-        max-width: 500px;
-        box-shadow:0px 3px 5px rgba(0, 0, 0, 0.103);
       }
       #titulo span{
         font-size: 2.1em;
@@ -191,8 +187,9 @@
     <p style="text-align: center; margin-bottom: 1px; color: green; font-size: 20px;">Quantidade de questões</p>
     <p style="text-align: center; margin-bottom: 1px; color: gray; font-size: 14px;">Selecione apenas uma quantidade</p>
     <select name="quant_questoes" id="quant_questoes" multiple>
-      <option value="10">10</option>
-      <option value="15" selected>15</option>
+      <option value="5">5</option>
+      <option value="10" selected>10</option>
+      <option value="15">15</option>
       <option value="20">20</option>
       <option value="25">25</option>
       <option value="30">30</option>
@@ -266,8 +263,8 @@ new MultiSelectTag('tempo',{
 
 <!-- Envia a quantidade de questoes na página e o tempo dado pelo usuário ao javascript -->
 <script>
-  tempo_por_questoes.push({{tempo}});
-  quantidade_de_questoes.push({{quant_questoes}});
+  tempo_por_questoes = {{tempo}};
+  quantidade_de_questoes = {{quant_questoes}};
 </script>
 
 <!-- Cabeçalho pós filtro -->
@@ -281,6 +278,8 @@ new MultiSelectTag('tempo',{
 <!-- Apresentação do resultado pós resolução da prova -->
 <br>
 <span id="respostascertas"></span>
+<span id="tempototal"></span>
+<span id="tempomedio"></span>
 
 <!-- If to see if are there questions in the database-->
 <div id="pagina" class="display_none">

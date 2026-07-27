@@ -1,8 +1,11 @@
 var resposta = [];
 var links = [];
 var contagem_de_acertos = 0;
-var tempo_por_questoes = [];
-var quantidade_de_questoes = [];
+let tempo_por_questoes = 0;
+let quantidade_de_questoes = 0;
+let tempo_total = 0;
+let tempo_medio_por_questoes = 0
+
 
 // Função de envio das respostas para a correção, após enviada será corrigido e apresentado os resultados e os vídeos
 function Responder() {
@@ -28,11 +31,24 @@ function Responder() {
       document.getElementById("certoform"+String(contagem_questoes+1)).setAttribute("hidden", "hidden");
     }
   }
+
+  // Tempo total e tempo médio
+  tempo_total -= tempoRestante;
+  tempo_medio_por_questoes = tempo_total / quantidade_de_questoes;
   document.getElementById("responder").disabled = true;
   document.getElementById("responder").style.backgroundColor = "#c2c2a3";
   document.getElementById("responder").style.borderColor = "#c2c2a3";
   document.getElementById("respostascertas").innerHTML = `<br><strong style="font-size: 25px; color: green; margin-left: 20px;">${"Acertos: " + contagem_de_acertos + " de " + quantidade_de_questoes}</strong><br><br><br>`;
-  pause()
+    document.getElementById("tempototal").innerHTML =
+    `<br><strong style="font-size: 25px; color: green; margin-left: 20px;">
+    Tempo Total: ${formatarTempo(tempo_total).texto}
+    </strong><br><br><br>`;
+
+    document.getElementById("tempomedio").innerHTML =
+    `<br><strong style="font-size: 25px; color: green; margin-left: 20px;">
+    Tempo Médio por questões: ${formatarTempo(Math.round(tempo_medio_por_questoes)).texto}
+    </strong><br><br><br>`;
+  pararCronometro()
 
   // Subida para o topo da página
   window.scrollTo({
@@ -51,52 +67,54 @@ function StopVideo(){
   document.querySelector('#videoYt').src = "";
 }
 
+
+function formatarTempo(totalSegundos) {
+    const horas = Math.floor(totalSegundos / 3600);
+    const minutos = Math.floor((totalSegundos % 3600) / 60);
+    const segundos = totalSegundos % 60;
+
+    return {
+        horas: String(horas).padStart(2, "0"),
+        minutos: String(minutos).padStart(2, "0"),
+        segundos: String(segundos).padStart(2, "0"),
+        texto: `${String(horas).padStart(2, "0")}:${String(minutos).padStart(2, "0")}:${String(segundos).padStart(2, "0")}`
+    };
+}
+
 // Conjunto do cronômetro da prova
-let hora = 0;
-let minuto = 0;
-let segundo = 0;
-let milisegundo = 0;
+let tempoRestante = 0;
+let intervalo;
 
-let passando;
+function iniciarCronometro() {
+    tempoRestante = tempo_por_questoes * quantidade_de_questoes;
+    tempo_total = tempoRestante;
+    atualizarCronometro();
 
-if ((tempo_por_questoes*quantidade_de_questoes) >= 3600) {
-  var max_horas = parseInt((tempo_por_questoes*quantidade_de_questoes)/3600)
-} else {
-  var max_horas = 0
+    intervalo = setInterval(function () {
+
+        tempoRestante--;
+
+        atualizarCronometro();
+
+        if (tempoRestante <= 0) {
+            clearInterval(intervalo);
+            Responder();
+        }
+
+    }, 1000);
 }
 
-function start() {
-  pause();
-  passando = setInterval(() => { timer(); }, 10);
+function pararCronometro() {
+    clearInterval(intervalo);
 }
 
-function pause() {
-  clearInterval(passando);
-}
+function atualizarCronometro() {
 
-function timer() {
-  if ((milisegundo += 10) == 1000) {
-    milisegundo = 0;
-    segundo++;
-  }
-  if (segundo == 60) {
-    segundo = 0;
-    minuto++;
-  }
-  if (minuto == 60) {
-    minuto = 0;
-    hora++;
-  }
-  if ((minuto == tempo_por_questoes*quantidade_de_questoes/60-max_horas) && (hora == max_horas) && (segundo == 1)) {
-    Responder()
-  }
-  document.getElementById('hora').innerText = returnData(hora);
-  document.getElementById('minuto').innerText = returnData(minuto);
-  document.getElementById('segundo').innerText = returnData(segundo);
-}
+    const tempo = formatarTempo(tempoRestante);
 
-function returnData(input) {
-  return input >= 10 ? input : `0${input}`
+    document.getElementById("hora").innerHTML = tempo.horas;
+    document.getElementById("minuto").innerHTML = tempo.minutos;
+    document.getElementById("segundo").innerHTML = tempo.segundos;
 }
 
 // Função de enviar os dados incluíndo a quntidade de questões e o tempo 
@@ -172,5 +190,5 @@ function Apresentar() {
   if (apr) {
       apr.classList.add("display_none");
   }
-  start()
+  iniciarCronometro();
 }
