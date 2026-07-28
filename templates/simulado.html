@@ -34,7 +34,9 @@
         color:#2f7d32;
         font-weight: 500;
         letter-spacing:-.5px;
-        margin: -80px auto -10px auto;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin: -80px auto -50px auto;
         background: #f8f9fa;
       }
       #titulo span{
@@ -61,6 +63,7 @@
         border-radius: 6px;
         cursor: pointer;
         transition: all 0.2s ease;
+        margin-top: -20px;
         margin-bottom: -10px;
       }
 
@@ -88,7 +91,82 @@
         letter-spacing: 0.5px;
         position: fixed;
         right: 80px;
-        top: 181px;
+        top: 249px;
+      }
+
+      #resultados{
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 50px auto 25px auto;
+        max-width: 950px;
+      }
+
+      .resultado-card{
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 18px 25px;
+        min-width: 215px;
+        text-align: center;
+        transition: .2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      }
+
+      .resultado-card:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0,0,0,.08);
+      }
+
+      .resultado-titulo{
+        font-size: .78rem;
+        color: #777;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: .8px;
+        font-weight: 600;
+        line-height: 1.2;
+        white-space: normal;
+        word-break: break-word;
+      }
+
+      .resultado-valor{
+        font-size: 1.8rem;
+        color: #2f7d32;
+        font-weight: 700;
+      }
+
+      @media (max-width: 768px){
+
+          #printbutton {
+            margin-left: 10px;
+          }
+          #resultados{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 430px;
+            margin: 0px auto 20px auto;
+            padding: 0 12px;
+          }
+
+          .resultado-card,
+          .cronus-final{
+            width: 100%;
+            min-width: 0;
+            padding: 16px 12px;
+            box-sizing: border-box;
+          }
+
+          .resultado-titulo{
+              font-size: .75rem;
+              line-height: 1.2;
+          }
+
+          .resultado-valor{
+              font-size: 1.6rem;
+          }
       }
 
       @media (max-width: 850px) {
@@ -277,9 +355,12 @@ new MultiSelectTag('tempo',{
 
 <!-- Apresentação do resultado pós resolução da prova -->
 <br>
-<span id="respostascertas"></span>
-<span id="tempototal"></span>
-<span id="tempomedio"></span>
+<section id="resultados">
+  <span id="respostascertas"></span>
+  <span id="tempototal"></span>
+  <span id="tempomedio"></span>
+  <span id="temporestante"></span>
+</section>
 
 <!-- If to see if are there questions in the database-->
 <div id="pagina" class="display_none">

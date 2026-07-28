@@ -32,23 +32,60 @@ function Responder() {
     }
   }
 
+  // Botão de imprimir
+  const printbutton = document.getElementById("printbutton");
+
   // Tempo total e tempo médio
   tempo_total -= tempoRestante;
   tempo_medio_por_questoes = tempo_total / quantidade_de_questoes;
   document.getElementById("responder").disabled = true;
   document.getElementById("responder").style.backgroundColor = "#c2c2a3";
   document.getElementById("responder").style.borderColor = "#c2c2a3";
-  document.getElementById("respostascertas").innerHTML = `<br><strong style="font-size: 25px; color: green; margin-left: 20px;">${"Acertos: " + contagem_de_acertos + " de " + quantidade_de_questoes}</strong><br><br><br>`;
-    document.getElementById("tempototal").innerHTML =
-    `<br><strong style="font-size: 25px; color: green; margin-left: 20px;">
-    Tempo Total: ${formatarTempo(tempo_total).texto}
-    </strong><br><br><br>`;
+    document.getElementById("respostascertas").innerHTML = `
+    <div class="resultado-card">
+        <div class="resultado-titulo">
+            Acertos
+        </div>
+        <div class="resultado-valor">
+            ${contagem_de_acertos}/${quantidade_de_questoes}
+        </div>
+    </div>
+    `;
 
-    document.getElementById("tempomedio").innerHTML =
-    `<br><strong style="font-size: 25px; color: green; margin-left: 20px;">
-    Tempo Médio por questões: ${formatarTempo(Math.round(tempo_medio_por_questoes)).texto}
-    </strong><br><br><br>`;
+    document.getElementById("tempototal").innerHTML = `
+    <div class="resultado-card">
+        <div class="resultado-titulo">
+            Tempo Total
+        </div>
+        <div class="resultado-valor">
+            ${formatarTempo(tempo_total).texto}
+        </div>
+    </div>
+    `;
+
+    document.getElementById("tempomedio").innerHTML = `
+    <div class="resultado-card">
+        <div class="resultado-titulo">
+            Tempo Médio p/ Questão
+        </div>
+        <div class="resultado-valor">
+            ${formatarTempo(Math.round(tempo_medio_por_questoes)).texto}
+        </div>
+    </div>
+    `;
+    document.getElementById("temporestante").innerHTML = `
+    <div class="resultado-card">
+        <div class="resultado-titulo">
+            Tempo Restante
+        </div>
+        <div class="resultado-valor">
+            ${formatarTempo(tempoRestante).texto}
+        </div>
+    </div>
+    `;
   pararCronometro()
+  cronus.style.display = "none";
+  printbutton.style.marginTop = "0px";
 
   // Subida para o topo da página
   window.scrollTo({
