@@ -91,7 +91,7 @@
         letter-spacing: 0.5px;
         position: fixed;
         right: 80px;
-        top: 249px;
+        top: 228px;
       }
 
       #resultados{
@@ -137,6 +137,14 @@
         font-weight: 700;
       }
 
+      @media (max-width: 443px) {
+        .resultado-restante .resultado-titulo{
+            width: 80px;
+            margin: 0 auto 8px;
+            white-space: normal;
+        }
+      }
+
       @media (max-width: 768px){
 
           #printbutton {
@@ -177,13 +185,17 @@
           #titulo span{
             font-size: 1.8em;
           }
-          #cronus{
-            position: static; 
-            bottom: auto;
-            right: auto;
-            left: auto;
-            top: auto;
-          }
+      }
+      @media (max-width: 1000px){
+        #cronus{
+          position: static; 
+          bottom: auto;
+          right: auto;
+          left: auto;
+          top: auto;
+          margin-top: -20px;
+          margin-bottom: -10px;
+        }
       }
     </style>
 </head>
@@ -332,7 +344,17 @@ new MultiSelectTag('tempo',{
         </button>
       </div>
       <div class="modal-body">
-        <iframe id="videoYt" src="" width="100%" height="100%" allow="fullscreen"></iframe>
+        <iframe
+            id="videoYt"
+            width="100%"
+            height="100%"
+            src=""
+            title="YouTube video player"
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>

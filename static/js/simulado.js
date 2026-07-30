@@ -74,7 +74,7 @@ function Responder() {
     </div>
     `;
     document.getElementById("temporestante").innerHTML = `
-    <div class="resultado-card">
+    <div class="resultado-card resultado-restante">
         <div class="resultado-titulo">
             Tempo Restante
         </div>
@@ -96,7 +96,7 @@ function Responder() {
 
 // Função para apresentar os vídeos
 function MostrarVideo(num) {
-  document.querySelector('#videoYt').src = links[Number(num)];
+  document.querySelector('#videoYt').src = links[Number(num)-1];
 }
 
 // Função para parar um video
