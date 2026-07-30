@@ -96,7 +96,7 @@ function Responder() {
 
 // Função para apresentar os vídeos
 function MostrarVideo(num) {
-  document.querySelector('#videoYt').src = links[Number(num)-1];
+  document.querySelector('#videoYt').src = links[Number(num)-1]; // deixar o -1 pois se não ele puxa a ordem errada.
 }
 
 // Função para parar um video
