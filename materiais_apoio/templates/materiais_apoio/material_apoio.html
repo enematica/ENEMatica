@@ -87,7 +87,7 @@
                     <h3>{{ f.nome_figura }}</h3>
 
                     <div class="card-descricao">
-                        {{ f.descricao|striptags|cut:"&nbsp;"|truncatewords:15 }}
+                        {{ f.descricao|safe|truncatewords_html:15 }}
                     </div>
 
 
@@ -131,7 +131,7 @@
                     <h3>{{ j.nome_jogo }}</h3>
 
                     <div class="card-descricao">
-                        {{ j.descricao|striptags|cut:"&nbsp;"|truncatewords:15 }}
+                        {{ j.descricao|safe|truncatewords_html:15 }}
                     </div>
 
 
