@@ -231,7 +231,7 @@ label{
 }
 
 .labelAdjust{
-  margin-top: -17px;
+  margin-top: -19px;
 }
 
 
@@ -500,6 +500,7 @@ img{
   }
   .responder{
     width: 100px;
+    margin-left: -5px;
   }
   label p{
     top: -36px;
@@ -507,6 +508,13 @@ img{
   .QuestionOptions svg{
     width: 12px;
     height: 12px;
+  }
+    input[type="radio"]{
+    margin-left:-30px;
+  }
+  label p{
+    left: 8px;
+    top: -31px
   }
 }
 
@@ -534,9 +542,6 @@ img{
     margin-left:35px;
   }
 
-  input[type="radio"]{
-    margin-left:-35px;
-  }
 }
 
 @media(max-width: 211px){
