@@ -1,0 +1,528 @@
+/* =====================================
+   PRINT SIMULADO ENEMÁTICA
+   Estilo prova ENEM
+===================================== */
+
+
+@page {
+    size: A4;
+    margin: 1.2cm;
+}
+
+
+
+body {
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    background:white !important;
+
+    color:black !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+/* ===============================
+   ESCONDER ELEMENTOS
+================================ */
+
+
+nav,
+header,
+#navHome,
+#toggleNavbarBtn,
+#filtro,
+#cabecalho-info,
+#printbutton,
+#cronus,
+#resultados,
+#responder,
+.QuestionOptions,
+.finalcontainer,
+iframe,
+.modal,
+.hide,
+footer,
+.footer,
+#footer {
+
+    display:none !important;
+
+}
+
+
+
+/* ===============================
+   TITULO
+================================ */
+
+
+#cabecalho_pos_filtros {
+
+    display:block !important;
+
+}
+
+
+
+#titulo {
+
+    display:block !important;
+
+    margin: -70px -40px -60px 0px !important;
+
+    max-width: 490px;
+
+    text-align:center !important;
+
+}
+
+
+
+#titulo span {
+
+    font-size:20px !important;
+
+    font-weight:bold !important;
+
+}
+
+
+
+/* ===============================
+   COLUNAS QUESTÕES
+================================ */
+
+
+#pagina {
+
+    column-count:2 !important;
+
+    column-gap:10px;
+
+    width:100%;
+
+}
+
+
+
+/* ===============================
+   CARD QUESTÃO
+================================ */
+
+
+.containerquestion {
+
+    width:100% !important;
+
+    display:inline-block !important;
+
+    margin:0 0 8px 0 !important;
+
+    padding:6px !important;
+
+    box-sizing:border-box;
+
+
+    border:1px solid #777 !important;
+
+    border-radius:0 !important;
+
+    background:white !important;
+
+
+    break-inside:avoid !important;
+
+    page-break-inside:avoid !important;
+
+}
+
+
+
+/* ===============================
+   CABEÇALHO QUESTÃO
+================================ */
+
+
+.headerquestion {
+
+
+    background:white !important;
+
+    border:none !important;
+
+    border-bottom:1px solid #999 !important;
+
+
+    border-radius:0 !important;
+
+
+    padding:3px !important;
+
+
+    margin-bottom:4px !important;
+
+
+    font-size:9px !important;
+
+}
+
+
+
+.headerquestion span {
+
+
+    color:black !important;
+
+    font-weight:bold !important;
+
+}
+
+
+
+/* ===============================
+   ENUNCIADO
+================================ */
+
+
+.bodyquestion {
+
+
+    margin:3px 0 !important;
+
+
+    font-size:9px !important;
+
+
+    line-height:1.2 !important;
+
+
+    color:black !important;
+
+}
+
+
+
+/* ===============================
+   IMAGENS DO ENUNCIADO
+================================ */
+
+
+.bodyquestion img {
+
+
+    max-width:250px !important;
+
+
+    width:auto !important;
+
+
+    height:auto !important;
+
+
+    display:block !important;
+
+
+    margin:5px auto !important;
+
+
+    object-fit:contain !important;
+
+}
+
+
+
+/* ===============================
+   ALTERNATIVAS
+================================ */
+
+
+.answerquestion {
+
+
+    margin-top:4px !important;
+
+
+    font-size:9px !important;
+
+}
+
+
+
+.answerquestion label {
+
+
+    position:static !important;
+
+
+    display:flex !important;
+
+
+    align-items:flex-start !important;
+
+
+    gap:4px !important;
+
+
+    height:auto !important;
+
+
+    margin:2px 0 !important;
+
+
+    line-height:1.15 !important;
+
+
+    color:black !important;
+
+}
+
+
+
+/* remove posições antigas */
+
+.answerquestion label p {
+
+
+    position:static !important;
+
+
+    display:inline !important;
+
+
+    margin:0 !important;
+
+}
+
+
+
+/* ===============================
+   LETRAS DAS ALTERNATIVAS
+================================ */
+
+
+.answerquestion input[type="radio"] {
+
+    display:none !important;
+
+}
+
+
+
+.answerquestion .spanOne {
+
+
+    position:static !important;
+
+
+    display:inline-flex !important;
+
+
+    justify-content:center !important;
+
+
+    align-items:center !important;
+
+
+
+    width:13px !important;
+
+
+    height:13px !important;
+
+
+
+    border-radius:50% !important;
+
+
+
+    background:white !important;
+
+
+
+    border:1px solid black !important;
+
+
+
+    color:black !important;
+
+
+
+    font-size:8px !important;
+
+
+
+    font-weight:bold !important;
+
+
+
+    text-transform:lowercase !important;
+
+
+
+    flex-shrink:0 !important;
+
+}
+
+
+
+/* ===============================
+   IMAGENS DAS ALTERNATIVAS
+================================ */
+
+
+.answerquestion img {
+
+    max-width:100px !important;
+
+    max-height:100px !important;
+
+    width:auto !important;
+
+    height:auto !important;
+
+    display:inline-block !important;
+
+    vertical-align:middle !important;
+
+    object-fit:contain !important;
+
+}
+
+
+
+/* ===============================
+   MATEMÁTICA
+================================ */
+
+
+.mathjax-latex {
+
+    color:black !important;
+
+}
+
+
+
+/* ===============================
+   EVITAR QUEBRAS
+================================ */
+
+
+.containerquestion,
+.bodyquestion,
+.answerquestion {
+
+    break-inside:avoid !important;
+
+    page-break-inside:avoid !important;
+
+}
+
+
+
+/* ===============================
+   IMPRESSÃO
+================================ */
+
+
+@media print {
+
+
+    * {
+
+        -webkit-print-color-adjust:exact;
+
+        print-color-adjust:exact;
+
+    }
+
+
+}
+
+
+
+/* ==================================================
+   AJUSTES EXTRAS
+   Melhor aproveitamento da folha
+================================================== */
+
+
+/* Evita colunas com alturas diferentes */
+
+#pagina {
+
+    column-fill:auto !important;
+
+}
+
+
+
+/* Remove pequenos deslocamentos no topo */
+
+.containerquestion {
+
+    margin-top:0 !important;
+
+}
+
+
+
+/* ==================================================
+   QUESTÕES COM IMAGEM
+   Alternativas aproveitam espaço lateral
+================================================== */
+
+
+.containerquestion:has(.bodyquestion img) 
+.answerquestion form {
+
+
+    display:grid !important;
+
+
+    grid-template-columns:repeat(2, 1fr) !important;
+
+
+    column-gap:15px !important;
+
+
+    row-gap:2px !important;
+
+
+}
+
+
+
+/* remove quebras antigas */
+
+.containerquestion:has(.bodyquestion img) 
+.answerquestion br {
+
+
+    display:none !important;
+
+
+}
+
+
+
+/* deixa alternativas compactas */
+
+.containerquestion:has(.bodyquestion img) 
+.answerquestion label {
+
+
+    margin:1px 0 !important;
+
+
+}
+
+
+
+

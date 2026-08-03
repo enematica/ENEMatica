@@ -198,6 +198,7 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="{% static 'css/print_simulado.css' %}" media="print">
 </head>
 
 <!-- Filtering buttons for medium and big resolutions as pc-->
@@ -462,7 +463,7 @@ new MultiSelectTag('tempo',{
       {% endif %}
   {% endfor %}
 
-  <div class="headerquestion" style="margin: 10px; padding: 10px;">
+  <div id="mensagem-final-prova" class="headerquestion" style="margin: 10px; padding: 10px;">
     <span>Responda todas as questões para Enviar a prova.</span>
   </div>
   <input type="submit" class="responder" id="responder" value="Responder" name="responder" onclick="Responder()" style="display: block; margin:auto;">
@@ -478,6 +479,7 @@ new MultiSelectTag('tempo',{
 
 <!-- Second javascript file, needs to stay here-->
 <script type="text/javascript" src="{% static 'js/questoes.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/print.js' %}"></script>
 
 {% if object_list.count >= quant_questoes %}
 <script>
