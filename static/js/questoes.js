@@ -150,3 +150,33 @@ function EnviarDados(){
     }
     document.getElementById('dificuldades2').value = valoreselecionados3
 }
+
+
+function Expandir() {
+    const tamanhos = document.querySelectorAll(".containerquestion");
+
+    tamanhos.forEach(tamanho => {
+        if (tamanho.offsetWidth < 1000) {
+            tamanho.style.maxWidth = "2000px";
+            tamanho.style.fontSize = "12px";
+
+            const imagens = tamanho.querySelectorAll(".bodyquestion img");
+
+            imagens.forEach(imagem => {
+                imagem.style.maxWidth = "300px";
+                imagem.style.height = "auto";
+            });
+
+        } else {
+            tamanho.style.maxWidth = "920px";
+            tamanho.style.fontSize = "";
+
+            const imagens = tamanho.querySelectorAll(".bodyquestion img");
+
+            imagens.forEach(imagem => {
+                imagem.style.maxWidth = "";
+                imagem.style.height = "";
+            });
+        }
+    });
+}
