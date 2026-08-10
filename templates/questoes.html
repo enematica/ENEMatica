@@ -144,11 +144,21 @@
     <div class="containerquestion">
       
         <div class="headerquestion">
-            <span><b>Número:</b> {{questoe.numero}}&nbsp&nbsp</span>
-            <span><b>Ano:</b> {{questoe.ano}}&nbsp&nbsp</span>
-            <span><b>Dificuldade:</b> {{questoe.dificuldade}}&nbsp&nbsp</span>
-            <span><b>Conteúdo:</b> {{questoe.conteudo}}&nbsp&nbsp</span>
-            <button onclick="Expandir()">expandir</button>
+            <section>
+              <span><b>Número:</b> {{questoe.numero}}&nbsp&nbsp</span>
+              <span><b>Ano:</b> {{questoe.ano}}&nbsp&nbsp</span>
+              <span><b>Dificuldade:</b> {{questoe.dificuldade}}&nbsp&nbsp</span>
+              <span><b>Conteúdo:</b> {{questoe.conteudo}}&nbsp&nbsp</span>
+            </section>
+            <section>
+              <button class="botao-expandir" onclick="Expandir()" title="Expandir">
+                  <img class="img-expandir"
+                      src="{% static 'imagens/expand-button.png' %}"
+                      data-normal="{% static 'imagens/expand-button.png' %}"
+                      data-expandido="{% static 'imagens/expand-button2.png' %}"
+                      alt="button-image">
+              </button>
+            </section>
         </div>
         <!-- Questions body-->
         <div class="bodyquestion" id="question{{questoe.id}}">

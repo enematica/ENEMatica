@@ -154,15 +154,17 @@ function EnviarDados(){
 
 function Expandir() {
     const tamanhos = document.querySelectorAll(".containerquestion");
+    const imagensExpandir = document.querySelectorAll(".img-expandir");
+    const botoes = document.querySelectorAll(".botao-expandir");
 
-    tamanhos.forEach(tamanho => {
+    if (!tamanhos.length) {
+        return;
+    }
 
-        if (tamanho.offsetWidth < 1000) {
+    const expandido = tamanhos[0].dataset.expandido === "true";
 
-            // ==========================
-            // EXPANDIR
-            // ==========================
-
+    if (!expandido) {
+        tamanhos.forEach(tamanho => {
             tamanho.style.maxWidth = "2000px";
             tamanho.style.fontSize = "12px";
 
@@ -173,29 +175,32 @@ function Expandir() {
                 imagem.style.height = "auto";
             });
 
-            // ==========================
-            // ALTERNATIVAS LADO A LADO
-            // ==========================
-
             const alternativas = tamanho.querySelector(".answerquestion form");
 
             if (alternativas) {
                 alternativas.classList.add("alternativas-expandidas");
 
-                // Esconde os <br> que estão separando
-                // cada alternativa
                 alternativas.querySelectorAll("br").forEach(br => {
                     br.dataset.alternativa = "true";
                     br.style.display = "none";
                 });
             }
 
-        } else {
+            tamanho.dataset.expandido = "true";
+        });
 
-            // ==========================
-            // VOLTAR AO NORMAL
-            // ==========================
+        imagensExpandir.forEach(imagem => {
+            imagem.src = imagem.dataset.expandido;
+        });
 
+        botoes.forEach(botao => {
+            botao.dataset.expandido = "true";
+            // Pega o texto configurado na imagem ou usa 'Recolher' como padrão
+            const img = botao.querySelector('.img-expandir');
+            botao.title = img?.dataset.titleExpandido || "Recolher";
+        });
+    } else {
+        tamanhos.forEach(tamanho => {
             tamanho.style.maxWidth = "920px";
             tamanho.style.fontSize = "";
 
@@ -206,21 +211,31 @@ function Expandir() {
                 imagem.style.height = "";
             });
 
-            // ==========================
-            // ALTERNATIVAS VOLTAM AO NORMAL
-            // ==========================
-
             const alternativas = tamanho.querySelector(".answerquestion form");
 
             if (alternativas) {
                 alternativas.classList.remove("alternativas-expandidas");
 
-                alternativas.querySelectorAll("br[data-alternativa='true']").forEach(br => {
-                    br.style.display = "";
-                    delete br.dataset.alternativa;
-                });
+                alternativas
+                    .querySelectorAll("br[data-alternativa='true']")
+                    .forEach(br => {
+                        br.style.display = "";
+                        delete br.dataset.alternativa;
+                    });
             }
-        }
-    });
-}
 
+            tamanho.dataset.expandido = "false";
+        });
+
+        imagensExpandir.forEach(imagem => {
+            imagem.src = imagem.dataset.normal;
+        });
+
+        botoes.forEach(botao => {
+            botao.dataset.expandido = "false";
+            // Pega o texto configurado na imagem ou usa 'Expandir' como padrão
+            const img = botao.querySelector('.img-expandir');
+            botao.title = img?.dataset.titleNormal || "Expandir";
+        });
+    }
+}
