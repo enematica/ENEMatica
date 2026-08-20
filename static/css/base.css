@@ -254,6 +254,10 @@ input[type="radio"] {
   border: 1px solid black;
 }
 
+.destaques > div a {
+    text-decoration: none;
+}
+
 .destaques > div a:hover {
     text-decoration: none;
     cursor: pointer;

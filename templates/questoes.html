@@ -3,19 +3,19 @@
 {% block content %}
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
-    <link rel="stylesheet" href="{% static 'css/questoes.css' %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{% static 'css/questoes.css' %}">
     <script type="text/javascript" src="{% static 'js/questoes2.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
 </head>
 
 <!--Botão para esconder a navbar-->
-<button id="toggleNavbarBtn" title="Mostrar/Esconder navbar" aria-label="Toggle Navbar">
+<button id="toggleNavbarBtn" title="Mostrar/Esconder navbar" aria-label="Toggle Navbar" onclick="toggleNavbar()">
   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M7 10l5 5 5-5H7z"/>
   </svg>
 </button>
-<script src="{% static 'js/escondernav.js' %}"></script>
+
 
 <!-- Filtering buttons for medium and big resolutions as pc-->
 <form method="GET" style="margin-top: 30px;" id="filtro">
@@ -142,7 +142,31 @@
   {% for questoe in object_list %}
   <div>    <!-- Questions header -->
     <div class="containerquestion">
-      
+        <div class="rascunho-container">
+          <canvas class="rascunho-canvas"></canvas>
+
+          <div class="rascunho-toolbar">
+              <button type="button" onclick="selecionarFerramenta(this, 'caneta')"><i class="fa-solid fa-pen"></i></button>
+              <button 
+                  type="button"onclick="selecionarFerramenta(this, 'marcatexto')"title="Marca-texto"><i class="fa-solid fa-highlighter"></i></button>
+              <button type="button" onclick="selecionarFerramenta(this, 'borracha')"><i class="fa-solid fa-eraser"></i></button>
+
+              <input type="color"
+                    value="#000000"
+                    onchange="mudarCor(this)">
+
+              <input type="range"
+                    min="1"
+                    max="15"
+                    value="3"
+                    onchange="mudarEspessura(this)">
+
+              <button type="button" onclick="desfazer(this)"><i class="fa-solid fa-rotate-left"></i></button>
+              <button type="button" onclick="refazer(this)"><i class="fa-solid fa-rotate-right"></i></button>
+              <button type="button" onclick="limparRascunho(this)"><i class="fa-solid fa-trash-can"></i></button>
+              <button type="button" onclick="fecharRascunho(this)">✕</button>
+          </div>
+      </div>
         <div class="headerquestion">
             <section>
               <span><b>Número:</b> {{questoe.numero}}&nbsp&nbsp</span>
@@ -150,15 +174,19 @@
               <span><b>Dificuldade:</b> {{questoe.dificuldade}}&nbsp&nbsp</span>
               <span><b>Conteúdo:</b> {{questoe.conteudo}}&nbsp&nbsp</span>
             </section>
-            <section>
-              <button class="botao-expandir" onclick="Expandir()" title="Expandir">
+            <section class="question-tools">
+              <button class="botao-rascunho" type="button" onclick="abrirRascunho(this)" title="Rascunho">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </button>
+
+              <button class="botao-expandir" type="button" onclick="Expandir()" title="Expandir">
                   <img class="img-expandir"
                       src="{% static 'imagens/expand-button.png' %}"
                       data-normal="{% static 'imagens/expand-button.png' %}"
                       data-expandido="{% static 'imagens/expand-button2.png' %}"
                       alt="button-image">
               </button>
-            </section>
+          </section>
         </div>
         <!-- Questions body-->
         <div class="bodyquestion" id="question{{questoe.id}}">
