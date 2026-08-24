@@ -411,9 +411,15 @@ img{
   background: none;
   border: none;
   padding: 0;
+  max-width: 27px;
   margin: 0;
   line-height: 0;
   outline: none;
+  cursor: pointer;
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    box-shadow .25s ease;
 }
 
 .botao-expandir:focus,
@@ -423,9 +429,9 @@ img{
 
 .botao-expandir img {
   display: block;
-  width: 25px;
+  width: 100%;
   padding: 0;
-  margin-bottom: -5px;
+  margin-bottom: -8px;
 }
 
 .answerquestion form.alternativas-expandidas {
@@ -475,6 +481,247 @@ img{
     justify-content: center;
 }
 
+
+.containerquestion {
+    position: relative;
+}
+
+
+.botao-rascunho {
+  font-size: 1em;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 0;
+  outline: none;
+  padding:6px;
+  max-width: 30px;
+  border-radius:5px;
+  align-items:center;
+  background-color: #0b6d1d;
+  color:#ffffff;
+  cursor: pointer;
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    box-shadow .25s ease;
+}
+
+.botao-rascunho.ativo{
+    background:#bbb5a2;
+    color:#ffffff;
+}
+
+.botao-rascunho:focus,
+.botao-rascunho:focus-visible,
+.botao-rascunho:active{
+    outline:none;
+}
+
+
+
+
+.rascunho-container {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.rascunho-container.ativo {
+    display: block;
+}
+
+.rascunho-canvas {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 51;
+
+    pointer-events: auto;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.rascunho-toolbar {
+    position: sticky;
+    top: 70px;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    width: fit-content;
+    max-width: calc(100% - 20px);
+
+    margin: 10px auto 0;
+    padding: 6px 8px;
+
+    background: #fff;
+
+    border: 1px solid #d0d0d0;
+    border-radius: 10px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.18);
+
+    pointer-events: auto;
+}
+
+body.navbar-escondida .rascunho-toolbar {
+    top: 10px;
+}
+
+.rascunho-toolbar button {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: white;
+    color: #353535;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        background-color .22s ease,
+        color .22s ease,
+        box-shadow .22s ease;
+}
+
+.rascunho-toolbar button:hover:not(.ferramenta-ativa) {
+    background: #edf8ed;
+    color: #2f7d32;
+}
+
+.rascunho-toolbar button.ferramenta-ativa {
+    background: #2f7d32;
+    color: #fff;
+
+    box-shadow: 0 0 0 3px rgba(47,125,50,.18);
+}
+
+.rascunho-toolbar button:focus,
+.rascunho-toolbar button:focus-visible,
+.rascunho-toolbar button:active {
+    outline: none;
+}
+
+.rascunho-toolbar input[type="color"] {
+    width: 34px;
+    height: 34px;
+
+    padding: 2px;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    background: white;
+
+    transition: box-shadow .2s ease;
+}
+
+.rascunho-toolbar input[type="color"]:hover {
+    box-shadow: 0 0 0 2px rgba(47,125,50,.18);
+}
+
+.rascunho-toolbar input[type="range"] {
+    width: 80px;
+    cursor: pointer;
+
+    accent-color: #2f7d32;
+}
+
+@media (max-width:768px){
+
+    .rascunho-toolbar{
+
+        gap:4px;
+
+        padding:5px 6px;
+
+        max-width:95%;
+    }
+
+    .rascunho-toolbar button{
+
+        width:30px;
+        height:30px;
+
+        font-size:13px;
+    }
+
+    .rascunho-toolbar input[type="color"]{
+
+        width:30px;
+        height:30px;
+    }
+
+    .rascunho-toolbar input[type="range"]{
+
+        width:60px;
+    }
+
+    .rascunho-toolbar button:nth-of-type(4),
+    .rascunho-toolbar button:nth-of-type(5){
+
+        display:none;
+    }
+
+}
+
+@media (max-width:420px){
+
+    .rascunho-toolbar{
+
+        gap:3px;
+
+        padding:4px;
+
+        max-width:98%;
+    }
+
+    .rascunho-toolbar button{
+
+        width:28px;
+        height:28px;
+
+        font-size:12px;
+    }
+
+    .rascunho-toolbar input[type="color"]{
+
+        width:28px;
+        height:28px;
+    }
+
+    .rascunho-toolbar input[type="range"]{
+
+        width:50px;
+    }
+
+}
 /*Media queries to get the site responsive*/
 @media (max-width: 600px) {
     .answerquestion form.alternativas-expandidas {
@@ -649,114 +896,4 @@ img{
   #buttonsfiltercelular{
     margin-top: 200px;
   }
-}
-
-.containerquestion {
-    position: relative;
-}
-
-.rascunho-container {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 50;
-    pointer-events: none;
-}
-
-.rascunho-container.ativo {
-    display: block;
-}
-
-.rascunho-canvas {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 51;
-
-    pointer-events: auto;
-    cursor: crosshair;
-    touch-action: none;
-}
-
-
-.rascunho-toolbar {
-    position: sticky;
-    top: 70px;
-
-    z-index: 100;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-
-    width: fit-content;
-
-    margin: 10px auto 0 auto;
-    padding: 6px 8px;
-
-    background: white;
-
-    border: 1px solid #d0d0d0;
-    border-radius: 10px;
-
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
-
-    pointer-events: auto;
-}
-
-body.navbar-escondida .rascunho-toolbar {
-  top: 10px;
-}
-
-.rascunho-toolbar button {
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-
-    border: 1px solid #ddd;
-    border-radius: 6px;
-
-    background: white;
-
-    cursor: pointer;
-
-    font-size: 17px;
-}
-
-.rascunho-toolbar button:hover {
-    background: #f0f0f0;
-}
-
-.rascunho-toolbar button.ferramenta-ativa {
-    background: #e0e0e0;
-    border-color: #999;
-}
-
-.rascunho-toolbar input[type="color"] {
-  width: 34px;
-  height: 34px;
-
-  padding: 2px;
-
-  border: 1px solid #ddd;
-  border-radius: 6px;
-
-  cursor: pointer;
-}
-
-.rascunho-toolbar input[type="range"] {
-    width: 80px;
-    cursor: pointer;
 }
