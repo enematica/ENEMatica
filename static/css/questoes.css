@@ -722,6 +722,7 @@ body.navbar-escondida .rascunho-toolbar {
     }
 
 }
+
 /*Media queries to get the site responsive*/
 @media (max-width: 600px) {
     .answerquestion form.alternativas-expandidas {
