@@ -508,44 +508,208 @@
     vertical-align: middle;
 }
 
+/* ================= RECOMENDAÇÕES ================= */
 
+.modelo-recomendacoes{
+    width:100%;
+    max-width:920px;
+    margin:50px auto;
+}
+
+.modelo-recomendacoes h4{
+    position:relative;
+    margin-bottom:25px;
+    padding-top:12px;
+    border-top:1px solid #cfd4da;
+
+    color:#678142;
+    font-size:1.05rem;
+    font-weight:600;
+}
+
+.modelo-recomendacoes h4::before{
+    content:"";
+    position:absolute;
+    top:-1px;
+    left:0;
+
+    width:70px;
+    height:2px;
+
+    background:#92b562;
+}
+
+.modelo-recomendacoes{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.modelo-recomendacoes h4{
+    width:100%;
+}
+
+.modelo-recomendacoes .card{
+    width:210px;
+    background:#fff;
+    border:1px solid #d6d9de;
+    border-radius:3px;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    transition:.18s;
+}
+
+.modelo-recomendacoes .card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+    text-decoration:none;
+}
+
+.modelo-recomendacoes .card-img-wrapper{
+    width:100%;
+    height:185px;
+    overflow:hidden;
+    border-bottom:1px solid #ececec;
+}
+
+.modelo-recomendacoes .card-img-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.25s;
+}
+
+.modelo-recomendacoes .card:hover img{
+    transform:scale(1.02);
+}
+
+.modelo-recomendacoes .card-body{
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.modelo-recomendacoes .card h3{
+    font-size:.92rem;
+    font-weight:600;
+    color:#222;
+    margin-bottom:5px;
+    line-height:1.3;
+}
+
+.modelo-recomendacoes .card-descricao{
+    font-size:.78rem;
+    color:#6b7280;
+    line-height:1.45;
+
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+
+.paginacao{
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+}
+
+
+.paginacao a,
+.paginacao .pagina-atual{
+    width:34px;
+    height:34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:#eaeae1;
+    color:#000;
+    border:1px solid #d9d9d9;
+    border-right:none;
+    font-size:16px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:.2s;
+}
+
+
+.paginacao a:first-child{
+    border-radius:4px 0 0 4px;
+}
+
+
+.paginacao a:last-child{
+    border-right:1px solid #d9d9d9;
+    border-radius:0 4px 4px 0;
+}
+
+
+.paginacao a:hover{
+    background-color:#adad85;
+}
+
+
+.paginacao .ativo{
+    background-color:#adad85;
+    cursor:default;
+}
 
 /* RESPONSIVO */
 
-@media(max-width:1000px){
+@media(max-width:650px){
+    .modelo-recomendacoes{
+        justify-content:center;
+    }
+    .modelo-recomendacoes .card{
+        width:calc(50% - 10px);
+        min-width:160px;
+        max-width:210px;
+    }
+    .modelo-recomendacoes .card-img-wrapper{
+        height:170px;
+    }
+}
 
+@media(max-width:480px){
+    .modelo-recomendacoes .card{
+        width:100%;
+        max-width:300px;
+    }
+    .modelo-recomendacoes .card-img-wrapper{
+        height:220px;
+    }
+}
+
+
+@media(max-width:1000px){
     .modelo-galeria{
         flex-direction:column;
         align-items:center;
         width:100%;
     }
-
     .imagem-principal{
         width:90vw;
         height:90vw;
-
         max-width:450px;
         max-height:450px;
     }
-
     .miniaturas{
         width:90vw;
         max-width:450px;
-
         height:110px;
-
         margin-top:15px;
-
         display:flex;
         flex-direction:row;
         gap:12px;
-
         overflow-x:auto;
         overflow-y:hidden;
-
         padding-bottom:8px;
         padding-right:0;
-
         scrollbar-width:thin;
         scrollbar-color:#888787 #e5e7eb;
     }
@@ -628,5 +792,26 @@
 
     .modelo-descricao{
         border-radius: 0px;
+    }
+}
+
+@media(max-width:430px){
+    .headerquestion span {
+        font-size: 0.8em;
+    }
+}
+
+@media(max-width:400px){
+    .headerquestion{
+        margin:0;
+    }
+
+    .headerquestion span{
+        font-size:0.6em;
+    }
+
+    .headerquestion,
+    .bodyquestion{
+        font-size:15px;
     }
 }

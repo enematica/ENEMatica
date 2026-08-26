@@ -131,6 +131,75 @@
     </div>
 </div>
 
+<div class="modelo-recomendacoes">
+    {% if jogo.impressora_3d and jogo.cortadora_laser %}
+        <h4>Mais em Impressora 3D e Cortadora Laser</h4>
+    {% else %}
+        {% if jogo.impressora_3d %}
+            <h4>Mais em Impressora 3D</h4>
+        {% endif %}
+        {% if jogo.cortadora_laser %}
+            <h4>Mais em Cortadora Laser</h4>
+        {% endif %}
+    {% endif %}
+    
+    {% for material in materiais_relacionados %}
+
+        <a href="{{ material.url }}" class="card">
+            <div class="card-img-wrapper">
+                <img src="{{ material.imagem }}" alt="{{ material.titulo }}">
+            </div>
+
+            <div class="card-body">
+                <h3>{{ material.titulo }}</h3>
+
+                <p class="card-descricao">
+                {{ material.descricao|safe|truncatewords_html:15 }}
+                </p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% if materiais_relacionados.has_other_pages %}
+
+    <div class="paginacao">
+
+        {% if materiais_relacionados.has_previous %}
+            <a href="?page={{ materiais_relacionados.previous_page_number }}">
+                «
+            </a>
+        {% endif %}
+
+
+        {% for num in materiais_relacionados.paginator.page_range %}
+
+            {% if materiais_relacionados.number == num %}
+
+                <span class="pagina-atual ativo">
+                    {{ num }}
+                </span>
+
+            {% else %}
+
+                <a href="?page={{ num }}">
+                    {{ num }}
+                </a>
+
+            {% endif %}
+
+        {% endfor %}
+
+
+        {% if materiais_relacionados.has_next %}
+            <a href="?page={{ materiais_relacionados.next_page_number }}">
+                »
+            </a>
+        {% endif %}
+
+    </div>
+
+{% endif %}
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="{% static 'materiais_apoio/js/thumbslider.js' %}"></script>
