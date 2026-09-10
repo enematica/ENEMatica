@@ -41,22 +41,4 @@ document.addEventListener('DOMContentLoaded', function () {
         carregarPaginaRelacionados(link.href);
     });
 
-
-    // ---- Botão "voltar" com comportamento de histórico do navegador ----
-
-    document.querySelectorAll('.btn-voltar').forEach(function (botao) {
-
-        botao.addEventListener('click', function (e) {
-
-            var veioDoMesmoSite =
-                document.referrer &&
-                document.referrer.indexOf(window.location.origin) === 0;
-
-            if (veioDoMesmoSite && window.history.length > 1) {
-                e.preventDefault();
-                window.history.back();
-            }
-        });
-    });
-
 });
