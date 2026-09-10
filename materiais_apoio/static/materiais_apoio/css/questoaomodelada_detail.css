@@ -542,8 +542,10 @@
 .modelo-recomendacoes{
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
     gap:15px;
 }
+
 
 .modelo-recomendacoes h4{
     width:100%;
@@ -657,6 +659,14 @@
 .paginacao .ativo{
     background-color:#adad85;
     cursor:default;
+}
+
+#relacionados {
+    scroll-margin-top: 130px;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* RESPONSIVO */

@@ -436,6 +436,7 @@
 .modelo-recomendacoes{
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
     gap:15px;
 }
 
@@ -551,6 +552,14 @@
 .paginacao .ativo{
     background-color:#adad85;
     cursor:default;
+}
+
+#relacionados {
+    scroll-margin-top: 180px;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* RESPONSIVO */
