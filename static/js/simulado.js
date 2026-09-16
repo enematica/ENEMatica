@@ -229,3 +229,5 @@ function Apresentar() {
   }
   iniciarCronometro();
 }
+
+
