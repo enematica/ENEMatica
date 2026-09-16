@@ -4,85 +4,161 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* =====================================
+                TÍTULO
+===================================== */
+
 .h3divs {
-    margin-top: 100px;
+    margin-top: 90px;
+    margin-bottom: 10px;
     text-align: center;
-    color: green;
+    color: #2f7d32;
     font-size: 32px;
+    font-weight: 700;
 }
 
-/* Container1 (equivalente ao antigo container2) */
+.subtitulo-equipe {
+    max-width: 760px;
+    margin: 0 auto 55px;
+    padding: 0 20px;
+    text-align: center;
+    color: #7a7a7a;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* =====================================
+                EQUIPE
+===================================== */
+
 #container1 {
-    display: flex;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto 90px;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
     justify-content: center;
-    font-size: 15px;
-    flex-wrap: wrap;
-    column-gap: 60px;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 50px;
+    gap: 35px;
 }
 
-#container1 img {
-    width: 150px;
-    height: 150px;
-    border-radius: 100px;
-    object-fit: cover;
-}
+.membro-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 18px;
 
-#container1 div {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    text-decoration: none;
+    color: inherit;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, .08),
+        0 10px 30px rgba(0, 0, 0, .12);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
 }
 
-#container1 h3 {
-    font-size: 18px !important;
-    margin-top: 20px;
-    color: rgb(0, 0, 0);
+.membro-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, .12),
+        0 16px 40px rgba(0, 0, 0, .18);
 }
 
-#container1 p {
-    margin-top: 5px;
-    color: rgb(58, 54, 54);
+.membro-card img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-/* Responsividade para container1 */
-@media (max-width: 850px) {
+.membro-card h3 {
+    text-decoration: none;
+    margin: 18px 0 6px;
+    font-size: 18px;
+    color: #222;
+    line-height: 1.3;
+}
+
+a{
+    text-decoration: none;
+}
+
+.membro-card h3 b{
+    text-decoration: none;
+}
+.membro-card p {
+    text-decoration: none;
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+/* =====================================
+            RESPONSIVIDADE
+===================================== */
+
+@media (max-width: 1000px) {
+
     #container1 {
+        grid-template-columns: repeat(2, 300px);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .h3divs {
+        margin-top: 70px;
+        font-size: 28px;
+    }
+
+    .subtitulo-equipe {
+        font-size: 10px;
+        margin-bottom: 40px;
+    }
+
+    #container1 {
+        width: 92%;
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .membro-card {
         width: 100%;
-        column-gap: 30px;
+        max-width: 320px;
+        margin: 0 auto;
     }
 
-    #container1 div {
-        max-width: 45%;
+    .membro-card img {
+        width: 115px;
+        height: 115px;
     }
+
 }
 
-@media (max-width: 480px) {
-    #container1 div {
-        max-width: 100%;
-    }
-
-    #container1 img {
-        width: 120px;
-        height: 120px;
-    }
-}
-
-/* ====== CSS do equipe ====== */
+/* =====================================
+        CSS ANTIGO (COMPATIBILIDADE)
+===================================== */
 
 #p1equipe {
     text-align: center;
     margin-top: 40px;
     font-size: 30px;
-    color: rgb(11, 148, 11);
+    color: #2f7d32;
 }
 
 #p2equipe {
     text-align: center;
-    color: rgb(58, 54, 54);
+    color: #666;
     font-size: 25px;
 }
 
@@ -101,16 +177,15 @@ body {
 .imgsequipe {
     width: 200px;
     height: 200px;
-    text-align: center;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .p3equipe {
-    color: rgb(11, 148, 11);
+    color: #2f7d32;
 }
 
 .p4equipe {
-    color: rgb(58, 54, 54);
+    color: #666;
     margin-top: -15px;
 }

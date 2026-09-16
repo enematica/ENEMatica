@@ -2,73 +2,90 @@
 {% load static %}
 {% block content %}
 
-<!-- Se quiser pode linkar um CSS específico para essa página aqui -->
 <head>
-  <link rel="stylesheet" href="{% static 'css/sobre_nos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sobre_nos.css' %}">
 </head>
 
-<h3 class="h3divs"><b>Equipe</b></h3>
+<h3 class="h3divs"><b>Nossa Equipe</b></h3>
+
+<p class="subtitulo-equipe">
+    Conheça os coordenadores, colaboradores e bolsistas que contribuíram para a construção e o desenvolvimento do projeto ENEMática ao longo de sua trajetória.
+</p>
+
 <div id="container1">
-  <div>
-    <img src="{% static 'imagens/marcelo.jpeg' %}">
-    <h3><b>Marcelo Maraschin</b></h3>
-    <p>Coordenador</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/ricardo.jpg' %}">
-    <h3><b>Ricardo Luis</b></h3>
-    <p>Ex-colaborador</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/maria.jpg' %}">
-    <h3><b>Maria Paim</b></h3>
-    <p>Ex-bolsista</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/vinicius.jpg' %}">
-    <h3><b>Vinícius Lodi</b></h3>
-    <p>Ex-Bolsista</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/gabriel.jpeg' %}">
-    <h3><b>Gabriel Athaydes</b></h3>
-    <p>Ex-Bolsista</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/gabriela.jpeg' %}">
-    <h3><b>Gabriela Teixeira</b></h3>
-    <p>Ex-Bolsista</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/lais.jpeg' %}">
-    <h3><b>Laís Mayane</b></h3>
-    <p>Ex-Bolsista Voluntária</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/erika.jpeg' %}">
-    <h3><b>Érika Lima</b></h3>
-    <p>Ex-Bolsista Voluntária</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/gabrielp.jpg' %}">
-    <h3><b>Gabriel Paim</b></h3>
-    <p>Ex-Bolsista Voluntário</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/antonieli.jpg' %}">
-    <h3><b>Antonieli Fernandes</b></h3>
-    <p>Ex-Bolsista</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/cristhian.jpg' %}">
-    <h3><b>Cristhian Michels</b></h3>
-    <p>Bolsista</p>
-  </div>
-  <div>
-    <img src="{% static 'imagens/lorenzo.jpg' %}">
-    <h3><b>Lorenzo Lisboa</b></h3>
-    <p>Bolsista</p>
-  </div>
+
+    <a href="http://lattes.cnpq.br/2401617723166211" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/marcelo.jpeg' %}">
+        <h3><b>Marcelo Maraschin</b></h3>
+        <p>Coordenador</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/7688277063810544" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/ricardo.jpg' %}">
+        <h3><b>Ricardo Luis</b></h3>
+        <p>Ex-colaborador</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/6969941203956724" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/maria.jpg' %}">
+        <h3><b>Maria Paim</b></h3>
+        <p>Ex-bolsista</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/1276450561403518" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/vinicius.jpg' %}">
+        <h3><b>Vinícius Lodi</b></h3>
+        <p>Ex-Bolsista</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/2103388934699072" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/gabriel.jpeg' %}">
+        <h3><b>Gabriel Athaydes</b></h3>
+        <p>Ex-Bolsista</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/1289547875967318" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/gabriela.jpeg' %}">
+        <h3><b>Gabriela Teixeira</b></h3>
+        <p>Ex-Bolsista</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/2213892548221384" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/lais.jpeg' %}">
+        <h3><b>Laís Mayane</b></h3>
+        <p>Ex-Bolsista Voluntária</p>
+    </a>
+
+    <a href="" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/erika.jpeg' %}">
+        <h3><b>Érika Lima</b></h3>
+        <p>Ex-Bolsista Voluntária</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/5162914336722427" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/gabrielp.jpg' %}">
+        <h3><b>Gabriel Paim</b></h3>
+        <p>Ex-Bolsista Voluntário</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/4626588505572050" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/antonieli.jpg' %}">
+        <h3><b>Antonieli Fernandes</b></h3>
+        <p>Ex-Bolsista</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/1379620912021852" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/cristhian.jpg' %}">
+        <h3><b>Cristhian Michels</b></h3>
+        <p>Bolsista</p>
+    </a>
+
+    <a href="http://lattes.cnpq.br/4640993827481681" target="_blank" rel="noopener noreferrer" class="membro-card">
+        <img src="{% static 'imagens/lorenzo.jpg' %}">
+        <h3><b>Lorenzo Lisboa</b></h3>
+        <p>Bolsista</p>
+    </a>
+
 </div>
 
 {% endblock content %}
