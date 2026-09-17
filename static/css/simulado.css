@@ -27,6 +27,7 @@ padding-top: 8px;
 padding-bottom: 8px;
 margin: -80px auto -50px auto;
 background: #f8f9fa;
+
 }
 #titulo span{
 font-size: 2.1em;
@@ -206,10 +207,11 @@ font-weight: 700;
 
 .simulado-header h1{
     margin:0 0 5px;
+    font-size:2.0rem;
+    font-weight:500;
     color:#2f7d32;
-    font-size:1.9rem;
-    font-weight:600;
     letter-spacing:-.5px;
+    margin-bottom:8px;
 }
 
 .simulado-header p{
