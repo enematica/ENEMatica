@@ -221,7 +221,7 @@
       footer {
         margin-top: auto;
         background: #ebebe0;
-        border-top: 1px solid black;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
       }
 
       footer button {
@@ -517,8 +517,9 @@
 <body>
   <main>
 
+    <!-- Hero (slider) sobre faixa de fundo -->
+    <div class="faixa-hero">
     <div class="separarnav"></div> <!--Separação da Navbar da main-->
-    <!-- Container 1 -->
     <div id="container1">
 
         <!-- Radio Buttons (inputs) devem ficar antes e irmãos da div .slides -->
@@ -555,8 +556,8 @@
         <!-- Setas de Navegação -->
         <div class="nav-arrows">
             <div class="arrows-set" id="arrows1">
-                <label for="radio4">&#10094;</label> <!-- ← -->
-                <label for="radio2">&#10095;</label> <!-- → -->
+                <label for="radio4">&#10094;</label>
+                <label for="radio2">&#10095;</label>
             </div>
             <div class="arrows-set" id="arrows2">
                 <label for="radio1">&#10094;</label>
@@ -578,85 +579,129 @@
           <label for="radio2" class="manual-btn"></label>
           <label for="radio3" class="manual-btn"></label>
           <label for="radio4" class="manual-btn"></label>
-        </div>       
+        </div>
+    </div>
     </div>
     <script src="{% static 'js/slider.js' %}"></script>
 
-    <!-- Container2 -->
-    <div id="container2">
+    <!-- Sobre o projeto -->
+    <section class="faixa faixa-sobre"><div class="faixa-inner sobre">
       <div>
-        <h3 class="texto_enematica"><b>ENEMática</b></h3>
-        <p style="text-indent: 2em;">Projeto de extensão do Instituto Federal do Rio Grande do Sul (IFRS) – Campus Vacaria, cujo objetivo é oferecer oficinas voltadas aos conteúdos de Matemática abordados no Exame Nacional do Ensino Médio (ENEM), destinadas a estudantes do ensino médio de escolas públicas. O projeto dispõe de um site próprio, desenvolvido com o propósito de auxiliar na preparação dos alunos para a prova do ENEM, no site o aluno pode filtrar questões, fazer simulados, acessar resoluções e mapas mentais.</p>
+        <span class="tag">Sobre o projeto</span>
+        <h2>ENEMática</h2>
+        <p>Projeto de extensão do Instituto Federal do Rio Grande do Sul (IFRS) – Campus Vacaria, cujo objetivo é oferecer oficinas voltadas aos conteúdos de Matemática abordados no Exame Nacional do Ensino Médio (ENEM), destinadas a estudantes do ensino médio de escolas públicas. O projeto dispõe de um site próprio, desenvolvido com o propósito de auxiliar na preparação dos alunos para a prova do ENEM, no site o aluno pode filtrar questões, fazer simulados, acessar resoluções e mapas mentais.</p>
       </div>
-    </div>
+      <!-- Substituir por imagem -->
+      <div class="placeholder"><i class="fa-regular fa-image"></i></div>
+    </div></section>
 
-    <!--Container3-->
-    <h3 class="h3divs"><b>Destaques</b></h3>
-    <div id="container3">
+    <!-- Destaques -->
+    <section class="faixa faixa-destaques"><div class="faixa-inner">
+      <h3 class="titulo-secao">Destaques</h3>
       <div class="destaques">
-        
-        <div class="destaque1">
-          <a href="{% url 'app:simulado' %}">
-          <h4 class="h4divs"><b>Simulado</b></h4>
-            <p>Desafie-se com exercícios para testar seu conhecimento.</p>
-          </a>
-        </div>
 
-        <div class="destaque2">
-          <a href="{% url 'app:resumos' %}">
-            <h4 class="h4divs"><b>Resumos</b></h4>
-            <p>Resumos dos principais temas de matemática para o ENEM.</p>
-          </a>
-        </div>
+        <a class="card-destaque" href="{% url 'app:simulado' %}">
+          <span class="card-icone"><i class="uil uil-play"></i></span>
+          <h4>Simulado</h4>
+          <p>Desafie-se com exercícios para testar seu conhecimento.</p>
+          <span class="card-seta"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
 
-        <div class="destaque3">
-          <a href="{% url 'app:galeria' %}">
-            <h4 class="h4divs"><b>Galeria</b></h4>
-            <p>Fotos dos encontros e momentos especiais do nosso projeto.</p>
-          </a>
+        <a class="card-destaque" href="{% url 'app:resumos' %}">
+          <span class="card-icone"><i class="fa-regular fa-file-lines"></i></span>
+          <h4>Resumos</h4>
+          <p>Resumos dos principais temas de matemática para o ENEM.</p>
+          <span class="card-seta"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+
+        <a class="card-destaque" href="{% url 'app:materiais_apoio:materiais_apoio' %}">
+          <span class="card-icone"><i class="uil uil-book-open"></i></span>
+          <h4>Modelagens</h4>
+          <p>Baixe nossos modelos 3D para impressão e explore materiais didáticos interativos de Matemática.</p>
+          <span class="card-seta"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+
+      </div>
+    </div></section>
+
+    <!-- Chamada para questões -->
+    <section class="faixa faixa-cta"><div class="faixa-inner cta">
+      <div class="cta-conteudo">
+        <svg class="cta-icone" viewBox="0 0 64 64" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M54 32a22 22 0 1 1-22-22"/>
+          <path d="M43 32a11 11 0 1 1-11-11"/>
+          <circle cx="32" cy="32" r="3" fill="#ffffff" stroke="none"/>
+          <path d="M32 32L55 9"/>
+          <path d="M55 9V3M55 9h6"/>
+          <path d="M49 15V9M49 15h-6"/>
+        </svg>
+        <div>
+          <h3>Vem estudar com a gente e arrasar no ENEM</h3>
+          <p>Conte conosco para garantir seu sucesso no exame!</p>
+          <a class="cta-btn" href="{% url 'app:questoes' %}">Ver Questões <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-    </div>
+      <!-- Substituir por imagem -->
+      <div class="placeholder"><i class="fa-regular fa-image"></i></div>
+    </div></section>
 
-
-    <!-- Container4 -->
-    <div id="container4">
-      <div>
-        <h3 class="texto_enematica"><b>Vem estudar com a gente e arrasar no ENEM</b></h3>
-        <p>Conte conosco para garantir seu sucesso no exame!</p>
-        <a href="{% url 'app:questoes' %}">Ver Questões</a></div>
+    <!-- Fale conosco -->
+    <section class="faixa faixa-contato"><div class="faixa-inner contato-box">
+      <div class="contato-info">
+        <!-- Substituir por imagem -->
+        <div class="placeholder"><i class="fa-regular fa-image"></i></div>
+        <div>
+          <h3>Fale conosco</h3>
+          <p>Tire suas dúvidas, envie sugestões ou entre em contato com a nossa equipe.</p>
+        </div>
       </div>
-    </div>
 
-
-    <!-- Container5 -->
-    <h3 class="h3divs"><b>Fale conosco</b></h3>
-    <div id="container5">
-      <form action="https://formsubmit.co/enematica@vacaria.ifrs.edu.br" method="POST">
+      <form class="contato-form" action="https://formsubmit.co/enematica@vacaria.ifrs.edu.br" method="POST">
         {% csrf_token %}
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <input type="text" name="_subject" class="form-control" id="formGroupExampleInput" placeholder="Nome" required>
-          </div>
-          <div class="form-group col-md-6">
-            <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="E-mail" required>
-          </div>
+        <div class="campos">
+          <input type="text" name="_subject" id="formGroupExampleInput" placeholder="Nome" required>
+          <input type="email" name="email" id="exampleFormControlInput1" placeholder="E-mail" required>
         </div>
-        <div class="form-group">
-          <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="Mensagem" rows="3" required autocomplete="off"></textarea>
-        </div>
-        <div id="div2contato">
-          <button type="submit" id="buttoncontato" class="btn">Enviar mensagem</button>
-        </div>
-        <div>
-          <input type="hidden" name="_url" value="http://enematica.vacaria.ifrs.edu.br">
-        </div>
-        <div>
-          <input type="hidden" name="_next" value="http://enematica.vacaria.ifrs.edu.br/thanks/">
-        </div>
+        <textarea name="message" id="exampleFormControlTextarea1" placeholder="Mensagem" rows="3" required autocomplete="off"></textarea>
+        <button type="submit" id="buttoncontato" class="btn-enviar"><i class="fa-regular fa-paper-plane"></i> Enviar mensagem</button>
+        <input type="hidden" name="_url" value="http://enematica.vacaria.ifrs.edu.br">
+        <input type="hidden" name="_next" value="http://enematica.vacaria.ifrs.edu.br/thanks/">
       </form>
-    </div>
+    </div></section>
+
   </main>
+
+  <!-- Animação de entrada ao rolar a página -->
+  <script>
+    (function () {
+      if (!('IntersectionObserver' in window) ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var alvos = document.querySelectorAll(
+        '.sobre p, .sobre > .placeholder, .titulo-secao, .card-destaque, .cta-conteudo, .cta .placeholder, .contato-info, .contato-form'
+      );
+
+      var io = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+      var c = 0;
+      alvos.forEach(function (el) {
+        el.classList.add('reveal');
+        if (el.classList.contains('card-destaque')) {
+          el.style.setProperty('--delay', ((c++ % 3) * 0.1) + 's');
+        } else if (el.matches('.cta .placeholder, .contato-form')) {
+          el.style.setProperty('--delay', '0.1s');
+        }
+        io.observe(el);
+      });
+    })();
+  </script>
 
 {% endblock content %}
 
