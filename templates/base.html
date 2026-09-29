@@ -19,76 +19,77 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="icon" href="{% static 'imagens/logofavicon.png' %}" type="image/png">
     <title>ENEMática</title>
-    <!-- This css is here cause1 it will be inherit by the other templates, is the nav and footer css-->
+
+    <!-- Este CSS fica aqui porque é herdado pelos outros templates (navbar, sidebar, footer e formulário) -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=Oswald:wght@600&family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,400;1,300;1,400&family=Kanit:ital,wght@0,300;0,400;1,300&family=Tillana:wght@600&display=swap');
-      *{
-        font-family:"Roboto", sans-serif;
+
+      /* =========================================================
+         GERAL
+         ========================================================= */
+      * {
+        font-family: "Roboto", sans-serif;
       }
 
-      #navHome{
+      .ml-2, .mx-2 {
+        margin: 0 !important;
+      }
+
+
+      /* =========================================================
+         NAVBAR DESKTOP
+         ========================================================= */
+      #navHome {
         display: flex;
         justify-content: center;
-        min-height: 55px; align-items: center;
-        column-gap: 30px;
-        background: #ebebe0;
-        padding-bottom: 4px;
-        padding-top: 4px;
-        border-bottom: 1px solid green;
+        align-items: center;
         flex-wrap: wrap;
+        min-height: 55px;
+        column-gap: 30px;
         row-gap: 10px;
         margin: 10px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        background: #ebebe0;
+        border-bottom: 1px solid green;
         border-radius: 30px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.103);
-      }
-
-      #navHome a:not(.logo-link){
-        color: #126312;
-        text-decoration: none!important;
-        font-size: 0.87rem;
-        border-bottom: 3px solid transparent;
-        transition: color 0.3s ease, border-color 0.3s ease;
-       }
-
-      .logo-link{
-        margin-left: 20px;
-        position:relative;
       }
 
       #navHome a {
         font-family: 'Kanit', sans-serif !important;
       }
 
-      #navHome a:hover{
-        border-color: green; color: green;
+      #navHome a:not(.logo-link) {
+        color: #126312;
+        text-decoration: none !important;
+        font-size: 0.87rem;
+        border-bottom: 3px solid transparent;
+        transition: color 0.3s ease, border-color 0.3s ease;
+      }
+
+      #navHome a:hover {
+        border-color: green;
+        color: green;
+      }
+
+      .logo-link {
+        position: relative;
+        margin-left: 20px;
+        margin-right: 20px;
       }
 
       .navbar-nav .nav-item {
-        margin: 0 7px; 
-      }
-
-      .navbar-toggler{
-        width:30px;
-        height:24px;
-        padding:0;
-        border:none;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
-        background:none;
-      }
-
-      .toggler-line{display:block;
-        height:3px;
-        width:100%;
-        background-color:#126312;
-        border-radius:2px;
-        transition:0.3s ease;
+        margin: 0 7px;
       }
 
       .navbar-nav .nav-link {
         display: inline-block;
+        padding: 8px 15px;
+        color: #126312 !important;
+        font-size: 23px;
+        font-family: 'Kanit', sans-serif !important;
         border-bottom: 3px solid transparent;
       }
 
@@ -97,151 +98,56 @@
         color: green !important;
       }
 
-      footer{
-        background: #ebebe0;
-         margin-top: auto;
-          border-top: 1px solid black;
-      }
-
-      footer button{
-        background: transparent;
-      }
-
-      .btn-primary{
-        background: none;
-        color: black;
+      /* Botão hambúrguer da navbar */
+      .navbar-toggler {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 24px;
+        padding: 0;
         border: none;
-        transition: 0.3s;
+        background: none;
       }
 
-      footer div .btn-primary:first-child:hover{
-        background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        -webkit-text-fill-color: transparent
+      .toggler-line {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #126312;
+        border-radius: 2px;
+        transition: 0.3s ease;
       }
 
-      footer div .btn-primary:nth-child(2):hover{
-        color: rgb(104, 10, 148)!important;
-      }
 
-      footer div .btn-primary:nth-child(3):hover{
-        color: rgb(216, 17, 17)!important;
-      }
-
-      footer .p-3{
-        color: #212529!important;
-        background: #92b562;
-      }
-
-      .ml-2, .mx-2{
-        margin: 0!important;
-      }
-
-      .btn-primary:focus, .btn-primary:active, .btn-primary:hover{
-        color: black!important;
-        outline: none!important;
-        box-shadow: none!important;
-        background-color: transparent!important;
-      }
-
-      .btn-group-lg > .btn, .btn-lg{
-        font-size: 1.8rem!important;
-        padding: 0.5rem!important;
-        }
-
-      .fa-instagram{
-        transition: 0.3s;
-      }
-      
-      .fa-instagram:hover{
-        color: transparent;
-        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-        background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-        background-clip: text; 
-        -webkit-background-clip: text;
-      }
-
-      @media(max-width: 454px){
-        #navHome{
-          height: auto;
-        }
-      }
-
-      @media(max-width:1000px){ 
-        #navHome{ 
-          justify-content:center;align-items:center;
-        } 
-          .logo-link
-        {
-          position:static;transform:none;margin:0;
-        }
-      }
-      
-      .navbar-nav .nav-link{
-        color:#126312!important;
-        font-size:23px;
-        font-family:'Kanit',sans-serif!important;
-        border-bottom:3px solid transparent;
-        padding:8px 15px;
-
-      }
-
-      .logo-link{
-        margin-right:20px;
-      }
-
-      @media(max-width:992px){
-        .navbar-nav{
-          text-align:center;
-        }
-      }
-
-      @media(min-width:992px){
-        .logo-link{
-          position:absolute;
-          left:40px;
-          top:50%;
-          transform:translateY(-50%);
-        }
-
-        .sidebar{
-          display: none !important;
-        }
-      }
-
-      @media (max-width: 991.98px){
-        .navbar-brand.logo-link{
-          margin-left:10px!important;
-          margin-right:auto!important;
-          position:relative!important;
-          transform:none!important;
-        }
-      }
-
-      @media(max-width:992px){
-        #navHome {
-          margin: 0; border-radius: 0;
-        }
-      }
-
-      .sidebar{
+      /* =========================================================
+         SIDEBAR MOBILE
+         ========================================================= */
+      .sidebar {
         background-color: #ebebe0 !important;
         border-bottom: 1px solid green;
       }
 
-      .sidebar .offcanvas{
+      .sidebar .offcanvas {
         background-color: #ebebe0 !important;
       }
 
-      .sidebar .navbar-toggler-icon{
-      filter: invert(24%) sepia(54%) saturate(992%) hue-rotate(76deg) brightness(91%) contrast(94%) !important;
+      .sidebar .navbar-toggler-icon {
+        filter: invert(24%) sepia(54%) saturate(992%) hue-rotate(76deg) brightness(91%) contrast(94%) !important;
+      }
+
+      .sidebar .offcanvas-body {
+        display: flex;
+        flex-direction: column;
       }
 
       .sidebar .offcanvas-body .navbar-nav {
+        display: flex;
+        flex-direction: column;
         align-items: flex-start !important;
         width: 100%;
+        height: auto;
+        flex-grow: 0;
       }
 
       .sidebar .offcanvas-body .nav-item {
@@ -249,44 +155,40 @@
       }
 
       .sidebar .offcanvas-body .nav-link {
-        width: 100%;
-        text-align: left;
-        display: block;
-      }
-      .sidebar .offcanvas-body .nav-link {
         display: flex !important;
         align-items: center;
-        padding: 10px 15px !important;
+        width: 100%;
         margin-bottom: 8px;
-        border-radius: 10px;
+        padding: 10px 15px !important;
+        text-align: left;
         color: #126312 !important;
         font-size: 1.05rem;
         font-weight: 500;
-        border-left: 4px solid transparent;
         background-color: transparent !important;
-        transition: all 0.3s ease;
+        border-radius: 10px;
+        border-left: 4px solid transparent;
+        border-bottom: none !important;
+        transition: 0.3s;
       }
 
       .sidebar .offcanvas-body .nav-link i {
-        width: 30px;
-        font-size: 1.3rem;
-        margin-right: 15px;
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        width: 30px;
+        margin-right: 15px;
+        font-size: 1.3rem;
       }
-
 
       .sidebar .offcanvas-body .nav-link:hover,
       .sidebar .offcanvas-body .nav-link.active {
+        color: #126312 !important;
         background-color: rgba(50, 116, 38, 0.11) !important;
         border-left: 4px solid #126312 !important;
         border-bottom: none !important;
-        color: #126312 !important;
       }
 
-      .sidebar .offcanvas-body .nav-item:has(~ .nav-item .nav-link.active) .nav-link.active,
-      .sidebar .offcanvas-body .nav-item:not(:first-child) .nav-link.active ~ .sidebar .offcanvas-body .nav-item:first-child .nav-link {
+      .sidebar .offcanvas-body .nav-item:has(~ .nav-item .nav-link.active) .nav-link.active {
         background-color: transparent !important;
         border-left-color: transparent !important;
       }
@@ -296,86 +198,212 @@
         align-items: center;
         justify-content: flex-start;
         gap: 12px;
+        max-width: 150px;
+        margin-top: auto;
+        margin-bottom: 15px;
+        padding: 0 5px;
+        color: #3b3b3b !important;
         font-size: 0.70rem;
         font-weight: 400;
-        max-width: 150px;
-        color: #3b3b3b !important;
-        margin-top: 15px;
-        padding: 0 5px;
         line-height: 1.3;
       }
 
-
       .sidebar .offcanvas-body p i {
-        font-size: 1.8rem;
-        color: #126312;
         flex-shrink: 0;
-      }
-      
-
-      #container5{
-          width:100%;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          margin:40px 0 70px;
+        color: #126312;
+        font-size: 1.8rem;
       }
 
-      #container5 form{
-          width:90%;
-          max-width:800px;
+
+      /* =========================================================
+         FOOTER
+         ========================================================= */
+      footer {
+        margin-top: auto;
+        background: #ebebe0;
+        border-top: 1px solid black;
       }
 
-      #container5 .form-row{
-          display:flex;
-          gap:15px;
-          margin-bottom:15px;
+      footer button {
+        background: transparent;
       }
 
-      #container5 .form-group{
-          flex:1;
+      footer .p-3 {
+        color: #212529 !important;
+        background: #92b562;
+      }
+
+      .btn-primary {
+        color: black;
+        background: none;
+        border: none;
+        transition: 0.3s;
+      }
+
+      .btn-primary:focus,
+      .btn-primary:active,
+      .btn-primary:hover {
+        color: black !important;
+        background-color: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      .btn-group-lg > .btn,
+      .btn-lg {
+        padding: 0.5rem !important;
+        font-size: 1.8rem !important;
+      }
+
+      /* Hover Google */
+      footer div .btn-primary:first-child:hover {
+        background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Hover GitHub */
+      footer div .btn-primary:nth-child(2):hover {
+        color: rgb(104, 10, 148) !important;
+      }
+
+      /* Hover YouTube */
+      footer div .btn-primary:nth-child(3):hover {
+        color: rgb(216, 17, 17) !important;
+      }
+
+      /* Hover Instagram */
+      .fa-instagram {
+        transition: 0.3s;
+      }
+
+      .fa-instagram:hover {
+        color: transparent;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+
+
+      /* =========================================================
+         FORMULÁRIO "FALE CONOSCO"
+         ========================================================= */
+      #container5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 40px 0 70px;
+      }
+
+      #container5 form {
+        width: 90%;
+        max-width: 800px;
+      }
+
+      #container5 .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      #container5 .form-group {
+        flex: 1;
       }
 
       #container5 input,
-      #container5 textarea{
-          width:100%;
-          border:none;
-          border-bottom:1px solid #8b6d6d;
-          border-radius:0;
-          box-shadow:none !important;
-          background:transparent;
-          padding:8px 0;
-          font-size:18px;
+      #container5 textarea {
+        width: 100%;
+        padding: 8px 0;
+        font-size: 18px;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #8b6d6d;
+        border-radius: 0;
+        box-shadow: none !important;
       }
 
-      #container5 textarea{
-          resize:none;
-          min-height:45px;
+      #container5 textarea {
+        min-height: 45px;
+        resize: none;
       }
 
       #container5 input:focus,
-      #container5 textarea:focus{
-          outline:none;
-          border-bottom:2px solid #2f7d32;
+      #container5 textarea:focus {
+        outline: none;
+        border-bottom: 2px solid #2f7d32;
       }
 
-      #div2contato{
-          display:flex;
-          justify-content:center;
-          margin-top:25px;
+      #div2contato {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
       }
 
-      @media(max-width:768px){
 
-          #container5 .form-row{
-              flex-direction:column;
-              gap:15px;
-          }
+      /* =========================================================
+         RESPONSIVO
+         ========================================================= */
 
+      /* Desktop: some a sidebar e posiciona o logo à esquerda */
+      @media (min-width: 992px) {
+        .logo-link {
+          position: absolute;
+          left: 40px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .sidebar {
+          display: none !important;
+        }
       }
 
+      @media (max-width: 1000px) {
+        .logo-link {
+          position: static;
+          transform: none;
+          margin: 0 20px 0 0;
+        }
+      }
+
+      @media (max-width: 992px) {
+        #navHome {
+          margin: 0;
+          border-radius: 0;
+        }
+
+        .navbar-nav {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar-brand.logo-link {
+          position: relative !important;
+          transform: none !important;
+          margin-left: 10px !important;
+          margin-right: auto !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        #container5 .form-row {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+
+      @media (max-width: 454px) {
+        #navHome {
+          height: auto;
+        }
+      }
     </style>
-    
+
 </head>
 <header id="body" style="display: flex; flex-direction: column; height: 100%; width: 100%; margin: 0; padding-top: 5px;">
     <!--Navbar-->
@@ -407,47 +435,80 @@
     <!-- #Começo da sidebar mobile -->
 
   <nav class="navbar bg-body-tertiary fixed-top sidebar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'app:base' %}"><img src="{% static 'imagens/logo.png' %}" width="39px" height="39px" alt="Logo"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body"><h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: #2a6020; font-weight: bold; font-size: 25px; text-align: center; padding-bottom: 50px;">ENEMática</h5>
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link nav-side" aria-current="page" href="{% url 'app:base' %}"><i class="uil uil-estate"></i> Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-side"  href="{% url 'app:questoes' %}"><i class="fa-regular fa-circle-question"></i> Questões</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-side"  href="{% url 'app:simulado' %}"><i class="uil uil-play"></i>Simulados</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-side"  href="{% url 'app:resumos' %}"><i class="uil uil-clipboard-alt"></i></i> Resumos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-side" href="{% url 'app:materiais_apoio:materiais_apoio' %}"><i class="uil uil-book-open"></i></i>Modelagens</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-side" href="{% url 'app:galeria' %}"><i class="uil uil-scenery"></i> Galeria</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-side" href="{% url 'app:sobre_nos' %}"><i class="uil uil-users-alt"></i> Sobre Nós</a>
-            <hr>
-            <br>
-            <p><i class="uil uil-graduation-cap"></i>Mais que provas, é sobre seu futuro!</p>
-          </li>
-        </ul>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'app:base' %}">
+        <img src="{% static 'imagens/logo.png' %}" width="39px" height="39px" alt="Logo">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: #2a6020; font-weight: bold; font-size: 25px; text-align: center; padding-bottom: 50px;">
+            ENEMática
+          </h5>
+
+          <ul class="navbar-nav pe-3">
+            <li class="nav-item">
+              <a class="nav-link nav-side" aria-current="page" href="{% url 'app:base' %}">
+                <i class="uil uil-estate"></i> Inicio
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link nav-side" href="{% url 'app:questoes' %}">
+                <i class="fa-regular fa-circle-question"></i> Questões
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link nav-side" href="{% url 'app:simulado' %}">
+                <i class="uil uil-play"></i> Simulados
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link nav-side" href="{% url 'app:resumos' %}">
+                <i class="uil uil-clipboard-alt"></i> Resumos
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link nav-side" href="{% url 'app:materiais_apoio:materiais_apoio' %}">
+                <i class="uil uil-book-open"></i> Modelagens
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link nav-side" href="{% url 'app:galeria' %}">
+                <i class="uil uil-scenery"></i> Galeria
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link nav-side" href="{% url 'app:sobre_nos' %}">
+                <i class="uil uil-users-alt"></i> Sobre Nós
+              </a>
+            </li>
+          </ul>
+
+          <hr>
+
+          <p>
+            <i class="uil uil-graduation-cap"></i>
+            Mais que provas, é sobre seu futuro!
+          </p>
+
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
   </header>
 {% block content %}
   <head>
