@@ -12,7 +12,10 @@ import os
 def MateriaisApoio(request):
     figura = Figura.objects.all().order_by('-id')
     jogo = Jogo.objects.all().order_by('-id')
-    questao = QuestaoModelada.objects.all().order_by('-id')
+    questao = QuestaoModelada.objects.select_related('questao').order_by(
+    '-questao__ano',
+    '-questao__numero'
+)
 
     contexto = {
         "figura": figura,
