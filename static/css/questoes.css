@@ -275,6 +275,8 @@ label{
   color: white;
   border-radius: 5px;
   border-color: green;
+  border-top: white;
+  border-left: white;
   margin-left: -16px;
   transition: 0.5s;
 }
