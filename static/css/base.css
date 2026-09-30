@@ -17,23 +17,24 @@ body {
 }
 
 /* =========================================================
-   HERO (slider) - mantido como estava
+   HERO (slider) 
    ========================================================= */
 .faixa-hero {
     margin-top: -5px;
-    padding-top: 70px; /* distância navbar → hero (igual à do hero → Sobre) */
+    padding-top: 70px; 
     background: #ffffff;
 }
 
 #container1 {
     width: 94%;
-    max-width: 1200px; /* mais largo que o resto (1100px) para quebrar a centralização */
+    max-width: 1200px;
     height: 480px;
     aspect-ratio: 16/9;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.192);
 }
 
 .slides {
@@ -165,7 +166,7 @@ input[type="radio"] {
 }
 
 .faixa-destaques {
-    margin-top: -30px;
+    margin-top: -40px;
     background: var(--bege);
     border-top: 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -334,8 +335,9 @@ input[type="radio"] {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 30px;
-    align-items: center;
-    padding: 40px 50px;
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden;
     background: linear-gradient(115deg, var(--verde-escuro) 0%, var(--medio) 105%, var(--claro) 130%);
     color: #ffffff;
     border-radius: 28px;
@@ -345,6 +347,7 @@ input[type="radio"] {
     display: flex;
     align-items: flex-start;
     gap: 24px;
+    padding: 40px 0 40px 50px;
 }
 
 .cta-icone {
@@ -388,18 +391,21 @@ input[type="radio"] {
 #pc-img{
     display: block;
     width: 100%;
-    max-width: 450px;
+    max-width: 430px;
     aspect-ratio: 1 / 1;
     margin-left: auto;
     object-fit: contain; 
 }
 
-#livros-img{
+#livros-img {
     display: block;
     width: 100%;
-    max-width: 710px;
+    height: 100%;
+    max-width: none;
     margin-left: auto;
-    object-fit: contain; 
+    object-fit: cover;
+    object-position: left center;
+    margin-right: -2px;
 }
 
 /* =========================================================
@@ -511,19 +517,19 @@ input[type="radio"] {
     }
 }
 
-/* de 930px pra baixo */
 @media (max-width: 930px) {
-    /* some a imagem dos livros */
     #livros-img {
         display: none;
     }
 
-    /* como a imagem sumiu, a faixa verde vira 1 coluna só */
     .cta {
         grid-template-columns: 1fr;
     }
 
-    /* some a linha verde ao lado do texto do Sobre */
+    .cta-conteudo {
+        padding: 40px 50px;
+    }
+
     .sobre p {
         border-left: none;
         padding-left: 0;
@@ -543,7 +549,6 @@ input[type="radio"] {
         margin: 0 auto;
     }
 
-    /* NOVO: imagem do PC menor e centralizada embaixo do texto */
     #pc-img {
         max-width: 340px;
         margin: 0 auto;
@@ -563,15 +568,16 @@ input[type="radio"] {
         padding: 36px 0;
     }
 
-    .cta {
+    .cta-conteudo {
         padding: 30px 26px;
     }
 }
 
 @media (max-width: 500px) {
     .separarnav {
-        height: 0;
+        height: 35px;
     }
+    
 
     #container1 {
         width: 100%;
@@ -595,7 +601,6 @@ input[type="radio"] {
         grid-template-columns: 1fr;
     }
 
-    /* ALTERADO: imagem continua do lado esquerdo do texto, só que menor */
     .contato-info {
         flex-direction: row;
         text-align: left;
@@ -606,7 +611,6 @@ input[type="radio"] {
         width: 90px;
     }
 
-    /* NOVO: imagem do PC um pouco menor no celular */
     #pc-img {
         max-width: 260px;
     }

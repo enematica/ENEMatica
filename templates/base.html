@@ -481,7 +481,7 @@
 
             <li class="nav-item">
               <a class="nav-link nav-side" href="{% url 'app:materiais_apoio:materiais_apoio' %}">
-                <i class="uil uil-book-open"></i> Modelagens
+                <i class="uil uil-cube"></i> Modelagens
               </a>
             </li>
 
@@ -614,9 +614,9 @@
         </a>
 
         <a class="card-destaque" href="{% url 'app:materiais_apoio:materiais_apoio' %}">
-          <span class="card-icone"><i class="uil uil-book-open"></i></span>
+          <span class="card-icone"><i class="uil uil-cube"></i></span>
           <h4>Modelagens</h4>
-          <p>Baixe nossos modelos 3D para impressão e explore materiais didáticos interativos de Matemática.</p>
+          <p>Explore materiais didáticos interativos de Matemática.</p>
           <span class="card-seta"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
@@ -675,7 +675,7 @@
           window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       var alvos = document.querySelectorAll(
-        '.sobre p, .sobre > .placeholder, .titulo-secao, #pc-img, .card-destaque, .cta-conteudo, .cta-img, .contato-info, .contato-form'
+        '.sobre p, .sobre > .placeholder, .titulo-secao, #pc-img, #livros-img, .card-destaque, .cta-conteudo, .cta-img, .contato-info, .contato-form'
       );
 
       var io = new IntersectionObserver(function (entradas) {
