@@ -589,10 +589,9 @@
       <div>
         <span class="tag">Sobre o projeto</span>
         <h2>ENEMática</h2>
-        <p>Projeto de extensão do Instituto Federal do Rio Grande do Sul (IFRS) – Campus Vacaria, cujo objetivo é oferecer oficinas voltadas aos conteúdos de Matemática abordados no Exame Nacional do Ensino Médio (ENEM), destinadas a estudantes do ensino médio de escolas públicas. O projeto dispõe de um site próprio, desenvolvido com o propósito de auxiliar na preparação dos alunos para a prova do ENEM, no site o aluno pode filtrar questões, fazer simulados, acessar resoluções e mapas mentais.</p>
+        <p>Projeto de extensão do Instituto Federal do Rio Grande do Sul (IFRS) – Campus Vacaria, que tem como objetivo desenvolver estratégias didáticas inovadoras para o ensino de Matemática, visando preparar estudantes para o ingresso em diversos vestibulares, com destaque para o Exame Nacional do Ensino Médio (ENEM). O projeto dispõe de um site próprio, desenvolvido para apoiar a aprendizagem por meio de questões, simulados, resoluções comentadas, mapas mentais e materiais didáticos que auxiliam na compreensão dos conteúdos matemáticos.</p>
       </div>
-      <!-- Substituir por imagem -->
-      <div class="placeholder"><i class="fa-regular fa-image"></i></div>
+      <img id="pc-img"  src="{% static 'imagens/pcenematica.png' %}" alt="Imagem ilustrativa">
     </div></section>
 
     <!-- Destaques -->
@@ -641,15 +640,13 @@
           <a class="cta-btn" href="{% url 'app:questoes' %}">Ver Questões <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-      <!-- Substituir por imagem -->
-      <div class="placeholder"><i class="fa-regular fa-image"></i></div>
+      <img id="livros-img" src="{% static 'imagens/livros.png' %}" alt="Livros">
     </div></section>
 
     <!-- Fale conosco -->
     <section class="faixa faixa-contato"><div class="faixa-inner contato-box">
       <div class="contato-info">
-        <!-- Substituir por imagem -->
-        <div class="placeholder"><i class="fa-regular fa-image"></i></div>
+        <img id="contato-img" src="{% static 'imagens/mensagem.png' %}" alt="Mensagem">
         <div>
           <h3>Fale conosco</h3>
           <p>Tire suas dúvidas, envie sugestões ou entre em contato com a nossa equipe.</p>
@@ -678,7 +675,7 @@
           window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       var alvos = document.querySelectorAll(
-        '.sobre p, .sobre > .placeholder, .titulo-secao, .card-destaque, .cta-conteudo, .cta .placeholder, .contato-info, .contato-form'
+        '.sobre p, .sobre > .placeholder, .titulo-secao, #pc-img, .card-destaque, .cta-conteudo, .cta-img, .contato-info, .contato-form'
       );
 
       var io = new IntersectionObserver(function (entradas) {
@@ -695,7 +692,7 @@
         el.classList.add('reveal');
         if (el.classList.contains('card-destaque')) {
           el.style.setProperty('--delay', ((c++ % 3) * 0.1) + 's');
-        } else if (el.matches('.cta .placeholder, .contato-form')) {
+        } else if (el.matches('.cta-img, .contato-form')) {
           el.style.setProperty('--delay', '0.1s');
         }
         io.observe(el);

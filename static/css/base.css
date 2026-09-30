@@ -1,7 +1,6 @@
 :root {
     --verde: #126312;
     --verde-escuro: #154e15;
-    --verde-btn: rgb(0, 107, 0);
     --claro: #a9c97d;
     --medio: #92b562;
     --bege: #ebebe0;
@@ -161,11 +160,12 @@ input[type="radio"] {
 }
 
 .faixa-sobre {
-    padding-top: 28px;
+    margin-top: -75px;
     background: #ffffff;
 }
 
 .faixa-destaques {
+    margin-top: -30px;
     background: var(--bege);
     border-top: 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -187,9 +187,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #e7e7e1;
-    color: #b9b9b1;
-    border: 1px dashed #d0d0c8;
+    background: white;
     font-size: 2.5rem;
     border-radius: 18px;
     aspect-ratio: 4 / 3;
@@ -338,7 +336,7 @@ input[type="radio"] {
     gap: 30px;
     align-items: center;
     padding: 40px 50px;
-    background: linear-gradient(115deg, var(--verde-escuro) 0%, var(--verde) 55%, var(--medio) 130%);
+    background: linear-gradient(115deg, var(--verde-escuro) 0%, var(--medio) 105%, var(--claro) 130%);
     color: #ffffff;
     border-radius: 28px;
 }
@@ -386,11 +384,22 @@ input[type="radio"] {
     color: var(--verde);
 }
 
-.cta .placeholder {
+
+#pc-img{
+    display: block;
+    width: 100%;
+    max-width: 450px;
     aspect-ratio: 1 / 1;
-    max-width: 210px;
     margin-left: auto;
-    font-size: 2.2rem;
+    object-fit: contain; 
+}
+
+#livros-img{
+    display: block;
+    width: 100%;
+    max-width: 710px;
+    margin-left: auto;
+    object-fit: contain; 
 }
 
 /* =========================================================
@@ -409,11 +418,12 @@ input[type="radio"] {
     gap: 24px;
 }
 
-.contato-info .placeholder {
+#contato-img {
+    display: block;
     flex-shrink: 0;
-    width: 110px;
+    width: 200px;
     aspect-ratio: 1 / 1;
-    font-size: 1.8rem;
+    object-fit: contain; 
 }
 
 .contato-info h3 {
@@ -482,19 +492,44 @@ input[type="radio"] {
     padding: 10px 26px;
     color: #ffffff;
     font-weight: 500;
-    background: var(--verde);
+    background: #8bac5d;
     border: none;
     border-radius: 999px;
     transition: background 0.2s ease;
 }
 
 .btn-enviar:hover {
-    background: var(--verde-btn);
+    background: var(--claro);
 }
 
 /* =========================================================
    RESPONSIVO
    ========================================================= */
+@media (max-width: 1050px) {
+    .faixa-sobre {
+        margin-top: 0px;
+    }
+}
+
+/* de 930px pra baixo */
+@media (max-width: 930px) {
+    /* some a imagem dos livros */
+    #livros-img {
+        display: none;
+    }
+
+    /* como a imagem sumiu, a faixa verde vira 1 coluna só */
+    .cta {
+        grid-template-columns: 1fr;
+    }
+
+    /* some a linha verde ao lado do texto do Sobre */
+    .sobre p {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
 @media (max-width: 900px) {
     .sobre,
     .cta,
@@ -504,7 +539,13 @@ input[type="radio"] {
 
     .sobre { gap: 30px; }
 
-    .cta .placeholder {
+    .cta-img {
+        margin: 0 auto;
+    }
+
+    /* NOVO: imagem do PC menor e centralizada embaixo do texto */
+    #pc-img {
+        max-width: 340px;
         margin: 0 auto;
     }
 }
@@ -554,9 +595,20 @@ input[type="radio"] {
         grid-template-columns: 1fr;
     }
 
+    /* ALTERADO: imagem continua do lado esquerdo do texto, só que menor */
     .contato-info {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        text-align: left;
+        gap: 16px;
+    }
+
+    #contato-img {
+        width: 90px;
+    }
+
+    /* NOVO: imagem do PC um pouco menor no celular */
+    #pc-img {
+        max-width: 260px;
     }
 }
 
