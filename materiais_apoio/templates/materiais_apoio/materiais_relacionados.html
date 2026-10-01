@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h3>{{ material.titulo }}</h3>
                 <p class="card-descricao">
-                    {{ material.descricao|safe|truncatewords_html:15 }}
+                    {{ material.descricao|truncatewords:15 }}
                 </p>
             </div>
         </a>

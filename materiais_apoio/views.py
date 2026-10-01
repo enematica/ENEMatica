@@ -7,6 +7,7 @@ from .models import Figura, Jogo, QuestaoModelada
 from io import BytesIO
 import zipfile
 import os
+from django.utils.html import strip_tags
 
 
 def MateriaisApoio(request):
@@ -68,21 +69,21 @@ def MateriaisRelacionados(request, impressora_3d, cortadora_laser, objeto=None):
         })
 
     for f in figuras:
-        materiais.append({
-            "id": f.id,
-            "titulo": f.nome_figura,
-            "descricao": f.descricao,
-            "imagem": f.capa.url,
-            "url": reverse("app:materiais_apoio:figura_detail", args=[f.id]),
+        materiais.append({ 
+            "id": f.id, 
+            "titulo": f.nome_figura, 
+            "descricao": strip_tags(f.descricao),
+            "imagem": f.capa.url, 
+            "url": reverse("app:materiais_apoio:figura_detail", args=[f.id]), 
         })
 
     for j in jogos:
-        materiais.append({
-            "id": j.id,
-            "titulo": j.nome_jogo,
-            "descricao": j.descricao,
-            "imagem": j.capa.url,
-            "url": reverse("app:materiais_apoio:jogo_detail", args=[j.id]),
+        materiais.append({ 
+            "id": j.id, 
+            "titulo": j.nome_jogo, 
+            "descricao": strip_tags(j.descricao),
+            "imagem": j.capa.url, 
+            "url": reverse("app:materiais_apoio:jogo_detail", args=[j.id]), 
         })
 
     materiais.sort(key=lambda x: x["id"], reverse=True)
