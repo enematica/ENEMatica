@@ -8,6 +8,7 @@ from io import BytesIO
 import zipfile
 import os
 from django.utils.html import strip_tags
+from html import unescape
 
 
 def MateriaisApoio(request):
@@ -72,7 +73,7 @@ def MateriaisRelacionados(request, impressora_3d, cortadora_laser, objeto=None):
         materiais.append({ 
             "id": f.id, 
             "titulo": f.nome_figura, 
-            "descricao": strip_tags(f.descricao),
+            "descricao": unescape(strip_tags(f.descricao)),
             "imagem": f.capa.url, 
             "url": reverse("app:materiais_apoio:figura_detail", args=[f.id]), 
         })
@@ -81,7 +82,7 @@ def MateriaisRelacionados(request, impressora_3d, cortadora_laser, objeto=None):
         materiais.append({ 
             "id": j.id, 
             "titulo": j.nome_jogo, 
-            "descricao": strip_tags(j.descricao),
+            "descricao": unescape(strip_tags(j.descricao)),
             "imagem": j.capa.url, 
             "url": reverse("app:materiais_apoio:jogo_detail", args=[j.id]), 
         })
