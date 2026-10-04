@@ -657,6 +657,11 @@ html {
     .descricao-conteudo p{
         font-size: 0.95em;
     }
+
+    #titulo-relacionados{
+        margin-left: 20px;
+        font-size: 1em;
+    }
     
 }
 

@@ -755,6 +755,10 @@ html {
         font-size: 0.95em;
     }
     
+    #titulo-relacionados{
+        margin-left: 20px;
+        font-size: 1em;
+    }
 }
 
 @media(max-width:600px){
