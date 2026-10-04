@@ -349,9 +349,17 @@ img{
 #modalContent{
   height: 500px;
 }
-.modal-header .close{
-  font-size: 30px!important;
+
+.modal-header .btn-close {
+  opacity: 1;
+  width: 1.3em;
+  height: 1.3em;
 }
+
+.modal-header .btn-close:hover {
+  opacity: 0.6;
+}
+
 .modal-header{
   border-bottom: 0px!important;
   padding: 0 20px 0 0!important;
