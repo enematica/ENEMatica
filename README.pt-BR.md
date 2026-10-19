@@ -56,11 +56,9 @@ A aplicação é construída com **Python e Django** no backend e **HTML, CSS e 
 ### Página inicial: desktop e mobile
 
 <p align="center">
-  <img src="docs/gifs/home-desktop.gif" alt="Página inicial no desktop" width="800">
-</p>
-
-<p align="center">
-  <img src="docs/gifs/home-mobile.gif" alt="Página inicial no mobile" width="300">
+  <img src="docs/gifs/home-desktop.gif" alt="Página inicial no desktop" height="320">
+  &nbsp;&nbsp;
+  <img src="docs/gifs/home-mobile.gif" alt="Página inicial no mobile" height="320">
 </p>
 
 A página inicial apresenta a navegação principal, a identidade visual do projeto, os destaques do site e os cards de acesso rápido. Na versão mobile, a navegação e o layout se reorganizam para telas menores.

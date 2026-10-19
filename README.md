@@ -58,11 +58,9 @@ The application is built with **Python and Django** on the backend and **HTML, C
 ### Home page: desktop and mobile
 
 <p align="center">
-  <img src="docs/gifs/home-desktop.gif" alt="Home page on desktop" width="800">
-</p>
-
-<p align="center">
-  <img src="docs/gifs/home-mobile.gif" alt="Home page on mobile" width="300">
+  <img src="docs/gifs/home-desktop.gif" alt="Home page on desktop" height="320">
+  &nbsp;&nbsp;
+  <img src="docs/gifs/home-mobile.gif" alt="Home page on mobile" height="320">
 </p>
 
 The home page presents the main navigation, the project's visual identity, highlights, and quick access cards. On mobile, the navigation and layout rearrange themselves for smaller screens.
