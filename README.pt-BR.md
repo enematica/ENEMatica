@@ -1,8 +1,11 @@
 <div align="center">
 
-<img src="docs/images/logo.png" alt="ENEMática logo" width="90">
+<sub><b>projeto</b></sub>
 
-# ENEMática
+<h1 align="center">
+  <img src="docs/images/logo.png" alt="" height="64" align="absmiddle">
+  ENEMática
+</h1>
 
 **Plataforma educacional de Matemática com foco na preparação para o ENEM**
 
