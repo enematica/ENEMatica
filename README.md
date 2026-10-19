@@ -1,10 +1,12 @@
 <div align="center">
 
+<img src="docs/images/logo.png" alt="ENEMática logo" width="90">
+
 # ENEMática
 
 **Mathematics education platform focused on ENEM preparation**
 
-[![Website](https://img.shields.io/badge/Website-enematica.vacaria.ifrs.edu.br-1f6feb?style=for-the-badge)](https://enematica.vacaria.ifrs.edu.br/)
+[![Website](https://img.shields.io/badge/Website-enematica.vacaria.ifrs.edu.br-2e7d32?style=for-the-badge)](https://enematica.vacaria.ifrs.edu.br/)
 [![GitHub](https://img.shields.io/badge/GitHub-enematica%2FENEMatica-181717?style=for-the-badge&logo=github)](https://github.com/enematica/ENEMatica)
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
@@ -17,7 +19,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)
 
-[Visit the platform](https://enematica.vacaria.ifrs.edu.br/) · [View source code](https://github.com/enematica/ENEMatica)
+[Features](#key-features) · [Demo](#demo) · [Running locally](#running-locally) · [Source code](https://github.com/enematica/ENEMatica)
 
 🌐 **English** | [Português (Brasil)](README.pt-BR.md)
 
