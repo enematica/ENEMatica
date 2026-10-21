@@ -1,4 +1,19 @@
-<div align="center"> <h1 align="center"><sub><sub>project&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub></sub><br><sup><sup><img src="docs/images/logo.png" alt="" height="74" align="absmiddle"></sup></sup>ENEMática&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+<div align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="docs/images/project-darkmode.png"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="docs/images/project-whitemode.png"
+    />
+    <img
+      src="docs/images/project-whitemode.png"
+      alt="Project ENEMática"
+    />
+  </picture>
+</div>
 
 **Mathematics education platform focused on ENEM preparation**
 

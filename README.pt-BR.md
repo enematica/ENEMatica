@@ -1,4 +1,19 @@
-<div align="center"> <h1 align="center"><sub><sub>projeto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</sub></sub><br><sup><sup><img src="docs/images/logo.png" alt="" height="74" align="absmiddle"></sup></sup>ENEMática&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+<div align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="docs/images/projeto-darkmode.png"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="docs/images/projeto-whitemode.png"
+    />
+    <img
+      src="docs/images/projeto-whitemode.png"
+      alt="Projeto ENEMática"
+    />
+  </picture>
+</div>
 
 **Plataforma educacional de Matemática com foco na preparação para o ENEM**
 
