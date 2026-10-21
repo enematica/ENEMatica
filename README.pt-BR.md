@@ -13,9 +13,13 @@
       alt="Projeto ENEMática" width="250"
     />
   </picture>
+  <br>
 </div>
+
 <div align="center">
-**Plataforma educacional de Matemática com foco na preparação para o ENEM**
+<p>
+  <strong>Plataforma educacional de Matemática com foco na preparação para o ENEM</strong>
+</p>
 
 [![Site](https://img.shields.io/badge/Site-enematica.vacaria.ifrs.edu.br-2e7d32?style=for-the-badge)](https://enematica.vacaria.ifrs.edu.br/)
 [![GitHub](https://img.shields.io/badge/GitHub-enematica%2FENEMatica-181717?style=for-the-badge&logo=github)](https://github.com/enematica/ENEMatica)

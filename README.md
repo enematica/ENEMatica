@@ -13,10 +13,13 @@
       alt="Project ENEMática" width="250"
     />
   </picture>
+  <br>
 </div>
 
 <div align="center">
-**Mathematics education platform focused on ENEM preparation**
+<p>
+  <strong>Mathematics education platform focused on ENEM preparation</strong>
+</p>
 
 [![Website](https://img.shields.io/badge/Website-enematica.vacaria.ifrs.edu.br-2e7d32?style=for-the-badge)](https://enematica.vacaria.ifrs.edu.br/)
 [![GitHub](https://img.shields.io/badge/GitHub-enematica%2FENEMatica-181717?style=for-the-badge&logo=github)](https://github.com/enematica/ENEMatica)
