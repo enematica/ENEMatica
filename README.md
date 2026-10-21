@@ -10,11 +10,12 @@
     />
     <img
       src="docs/images/project-whitemode.png"
-      alt="Project ENEMática"
+      alt="Project ENEMática" width="250"
     />
   </picture>
 </div>
 
+<div align="center">
 **Mathematics education platform focused on ENEM preparation**
 
 [![Website](https://img.shields.io/badge/Website-enematica.vacaria.ifrs.edu.br-2e7d32?style=for-the-badge)](https://enematica.vacaria.ifrs.edu.br/)
